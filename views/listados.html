@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listados</title>
+    <!--CSS bootstrap-->
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
+</head>
+
+<body>
+    <!--Se agrega esa clase extraida de Boostrap5 para fijar el navbar-->
+    <header>
+        <!--Creamos el navbar con el logo respectivo y sus botones-->
+        <!--Indicamos los tamaños de pantalla que deceamos usar.-->
+        <nav class="navbar navbar-expand-lg navbar-light navbar-dark">
+            <div class="container-fluid">
+                <img src="../resources/img/logo.jpeg" height="80">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="login.html">login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="listados.html">Usuario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="historial.html">Historial de
+                                facturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inventario.html">Inventario </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Facturas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="facturan.html">Factura Normal</a></li>
+                                <li><a class="dropdown-item" href="credito.html">Factura credito</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h1 class="titul">Lista de usuarios</h1>
+    <section class="container-xl tamaño">
+        <div class="row">
+            <div class="col">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modalusuario">
+                    agregar cliente
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="Modalusuario" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar cliente</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="First name">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="formGroupExampleInput" class="form-label">Apellido</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                </div>
+                                <div class="clave">
+                                    <div class="row ">
+                                        <div class="col-lg-6">
+                                            <label for="formGroupExampleInput" class="form-label">Dui</label>
+                                            <input type="text" class="form-control" placeholder=""
+                                                aria-label="Last name">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="formGroupExampleInput" class="form-label">Telefono</label>
+                                            <input type="text" class="form-control" placeholder=""
+                                                aria-label="Last name">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="formGroupExampleInput" class="form-label">Departamento</label>
+                                            <input type="text" class="form-control" placeholder=""
+                                                aria-label="Last name">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="formGroupExampleInput" class="form-label">Municipio</label>
+                                            <input type="text" class="form-control" placeholder=""
+                                                aria-label="Last name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalproveedor">
+                    agregar proveedor
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalproveedor" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">agregar Proveedor</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="First name">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="formGroupExampleInput" class="form-label">Contacto</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="formGroupExampleInput" class="form-label">Marca</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+                                <button type="button" class="btn btn-primary">guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    agregar usuario
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">agregar usuarios</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="First name">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="formGroupExampleInput" class="form-label">Apellido</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label for="formGroupExampleInput" class="form-label">Correo</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                </div>
+                                <div class="clave">
+                                    <div class="row ">
+                                        <div class="col-lg-4">
+                                            <label for="formGroupExampleInput" class="form-label">Clave </label>
+                                            <input type="password" class="form-control" placeholder=""
+                                                aria-label="First name">
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <label for="formGroupExampleInput" class="form-label">Cargo</label>
+                                            <select class="form-select" id="floatingSelect"
+                                                aria-label="Floating label select example">
+                                                <option selected>Seleccione una opcion</option>
+                                                <option value="1">Administrador</option>
+                                                <option value="2">Empleado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">guardar </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="separa">
+        <main class="container-xl">
+            <section class="container-xl">
+                <div class="contenedortbad">
+                    <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true">usuarios</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                aria-selected="false">proveedores</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                                aria-selected="false">Cliente</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab">
+                            <div class="Listas">
+                                <nav class="navbar ">
+                                    <div class="container-fluid">
+                                      <form class="d-flex" role="search">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                                      </form>
+                                    </div>
+                                  </nav>
+                                <table class="table table-borderless">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Apellido</th>
+                                            <th scope="col">Correo</th>
+                                            <th scope="col">Clave</th>
+                                            <th scope="col">Cargo</th>
+                                        </tr>
+                                    </thead>
+                                    <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                                    <tbody>
+                                        <tr>
+                                            <td>Edgar</td>
+                                            <!--Primera columna-->
+                                            <td>Hernandez</td>
+                                            <!--Segunda columna-->
+                                            <td>edgar@gmail.com</td>
+                                            <!--Tercera columna-->
+                                            <td>1111</td>
+                                            <!--Cuarta columna-->
+                                            <td>Empleado</td>
+                                            <!--Quinta columna-->
+                                        </tr>
+                                        <tr>
+                                            <td>David</td>
+                                            <td>Paz</td>
+                                            <td>david@gmail.com</td>
+                                            <td>1112</td>
+                                            <td>Empleado</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Flor</td>
+                                            <td>Perez</td>
+                                            <td>Flor@gmail.com</td>
+                                            <td>1113</td>
+                                            <td>Administrador</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                            aria-labelledby="pills-profile-tab">
+                            <div class="Listas">
+                                <nav class="navbar ">
+                                    <div class="container-fluid">
+                                      <form class="d-flex" role="search">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                                      </form>
+                                    </div>
+                                  </nav>
+                                <table class="table table-borderless">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Contacto</th>
+                                            <th scope="col">Marca</th>
+                                        </tr>
+                                    </thead>
+                                    <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                                    <tbody>
+                                        <tr>
+                                            <td>San Francisco</td>
+                                            <!--Primera columna-->
+                                            <td>sanfrancisco@gmail.com</td>
+                                            <!--Segunda columna-->
+                                            <td>San Francisco</td>
+                                            <!--Tercera columna-->
+                                        </tr>
+                                        <tr>
+                                            <td>Diana</td>
+                                            <td>dianaq@gmail.com</td>
+                                            <td>Diana</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coca-Cola</td>
+                                            <td>coca_cola@gmail.com</td>
+                                            <td>Coca-Cola</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                            aria-labelledby="pills-contact-tab" tabindex="0">
+                            <div class="Listas">
+                                <nav class="navbar ">
+                                    <div class="container-fluid">
+                                      <form class="d-flex" role="search">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                                      </form>
+                                    </div>
+                                  </nav>
+                                <table class="table table-borderless">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Apellido</th>
+                                            <th scope="col">Telefono</th>
+                                            <th scope="col">DUI</th>
+                                        </tr>
+                                    </thead>
+                                    <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                                    <tbody>
+                                        <tr>
+                                            <td>Samuel</td>
+                                            <!--Primera columna-->
+                                            <td>Rivas</td>
+                                            <!--Segunda columna-->
+                                            <td>73698520</td>
+                                            <!--Tercera columna-->
+                                            <td>00668634-5</td>
+                                            <!--Cuarta columna-->
+                                        </tr>
+                                        <tr>
+                                            <td>Dayana</td>
+                                            <td>Gonzalez</td>
+                                            <td>96354720</td>
+                                            <td>06789513-9</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Danila</td>
+                                            <td>Hernandez</td>
+                                            <td>56789630</td>
+                                            <td>08786655-6</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...
+                </div>
+    </div>
+    </main>
+    </div>
+    <!--JS bootstrap-->
+    <script src="../resources/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
