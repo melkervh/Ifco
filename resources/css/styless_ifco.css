@@ -1,0 +1,402 @@
+body {
+    background-color: #D9D9D9;
+}
+
+header {
+    background: #284B63;
+}
+
+a {
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    border: #284B63;
+
+}
+/* ................................................................................................... */
+
+/* Logo del nav */
+.logom{
+    width: 120px;
+    height: 120px;
+    margin-left: 30px;
+}
+
+/* Fondo del nav */
+.menu4{
+    background-color: #284B63;
+}
+
+/* Ajustes del footer */
+.footerc{
+    padding-left: 20px;
+    position: relative;
+    bottom: 0;
+}
+
+/* Letar del título */
+.letrat{
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 45px;
+    margin-top: 45px;
+}
+
+/* Logo */
+.logoc{
+    width: 450px;
+    height: 450px;    
+    display: block;
+    margin: auto;
+}
+
+/* Letra de los campos */
+.letrac{
+    font-size: 20px;
+    text-align: justify;    
+    margin-bottom: 20px;
+}
+
+/* Espacio de la columna donde están los campos*/
+.campos{
+    padding: 50px;
+}
+
+/* Espacio de los campos */
+.espacioc{
+    margin-bottom: 40px;
+}
+
+/* Margen del contenedor principal */
+.cuerpo{
+    margin-bottom: 40px;
+}
+.recuperar{
+  text-align: left;
+  color: #284B63;
+}
+/* Botón de iniciar sesión */
+.botondise{
+    background-color: #284B63;
+    width: 150px;
+    height: 35px;
+    margin-top: 40px;
+    color: #FFF;
+    text-align: center;
+}
+
+.botondise:hover{
+    color: #FFF;
+    background-color: #1b3141;
+}
+
+/* css de recuperar */
+/* Botón de recuperar y enviar correo*/
+.botonr{
+    background-color: #284B63;
+    display: block;
+    width: 150px;
+    height: 35px;
+    border-radius: 40px;   
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #FFF;
+    text-align: center;
+}
+
+.botonr:hover{
+    color: #FFF;
+    background-color: #1b3141;    
+}
+
+/* Imagen del usuario */
+.usuario{
+    width: 40px;
+    height: 40px;
+}
+
+
+.table1 {
+    font-size: 12pt;
+    font-family: 'arial';
+    width: 100%;
+    justify-content: center;
+    padding-left: 80px;
+    padding-right: 20px;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    border: #284B63;
+}
+
+table th {
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.textm{
+    color: #3C6E71;
+    text-align: center;
+    padding-top: 20px ;
+    padding-bottom: 10px;
+}
+.modic{ 
+    width: 50%;
+    border: #284B63 1px solid;  
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+  .clave{
+      padding-top: 20px;
+       
+  }
+  .container-fluid{
+    display: flex;
+      justify-content: center;	
+}
+.btn
+{
+    border-radius: 20px;
+}
+.modic12{ 
+    width: 50%;
+    border: #284B63 1px solid;  
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .btn4{
+    padding-top: 30px;
+    padding-bottom: 10px;
+
+  }
+.card{
+    background: #284B63;
+}
+.card{
+    background: #ffffff;
+}
+/*aqui inicia la parte del*/
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+.courses-container {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 350px;
+}
+
+.course h2 {
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.course-preview {
+	background-color: #284B63;
+	color: #fff;
+	padding: 10px;
+    width: 50%;
+}
+.course-preview > h2{
+	text-align: center;
+}
+
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 90%;
+}
+
+.progress-container {
+	position: absolute;
+	text-align: right;
+	width: 150px;
+}
+
+.progress {
+	background-color: #ddd;
+	border-radius: 3px;
+	height: 5px;
+	width: 100%;
+}
+
+.progress::after {
+	border-radius: 3px;
+	background-color: #118ee2;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 66%;
+}
+
+.progress-text {
+	font-size: 10px;
+	opacity: 0.6;
+	letter-spacing: 1px;
+}
+
+.btn2 {
+	background-color: #284B63;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 10px;
+	right: 48px;
+	letter-spacing: 1px;
+}
+.course_img{
+    width: 50px;
+}
+.cajita{
+    font-size: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+@media(max-width:768px){
+    .course{
+        flex-direction: column;
+        width: 90%;
+    }
+    .course-preview{
+        width: 100%;
+    }
+    .course-preview h2{
+        margin: 10px 0 0;
+    }
+    .course-preview a{
+        margin-top: 10px;
+    }
+    .course-info{
+        width: 100%;
+    }
+    .btn2{
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+.Listas{
+    text-align: center; 
+}
+
+.lis-cli{
+    padding-bottom: 40px;
+}
+.contenedortbad{
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+.factura1 {
+	margin-top: 20px;
+     border: #284B63 1px solid;  
+}
+.factura2 {
+     border: #284B63 1px solid;
+     padding-top: 15px;
+     padding-left: 10px;
+     padding-right: 10px;
+     padding-bottom: 15px;
+}
+.nfa{
+    float: right;
+    padding-top: 20px;
+    color: #3C6E71;
+}
+.agrefact{
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+.agretab{
+    border: #284B63 1px solid;
+    background-color: #ffffff;
+}
+.btnr7{
+    border: #284B63 1px solid;
+}
+.agrebtn{
+    color: #1b3141;
+}
+.btngt{
+    background-color: #284B63;
+    border: #ffffff 2px solid;
+}
+.totales{
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 40px;
+     border: #284B63 1px solid;
+}
+.totalef{
+    margin-top: 20px;
+    padding: 10px;
+}
+.titulofact{
+    color: #3C6E71;
+}
+
+/*historial*/
+.titul{
+    color: #3C6E71;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+.tpoj{
+    background-color: #ffffff;
+}
+.texte{
+    border: #ffffff 1px solid;
+}
+.tap01{
+    background: #fff;
+}
+.texto2{
+    text-align: center;
+    border: #284B63 1px solid;
+}
+.texto3{
+    text-align: center;
+    border: #284B63 1px solid;
+}
