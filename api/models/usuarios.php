@@ -125,5 +125,67 @@ class Usuarios extends Validator
         }
     }
 
+     /*
+    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
+    */
+
+    //Busqueda de Usuario//
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario
+                FROM usuario
+                WHERE apellido_usuario ILIKE ? OR nombre_usuario ILIKE ?
+                ORDER BY apellido_usuario';
+        $params = array("%$value%", "%$value%");
+        return Database::getRows($sql, $params);
+    }
+
+    //Insertar un nuevo Usuario//
+    public function createRow()
+    {
+        $sql = 'INSERT INTO usuario(nombre_usuario, apellido_usuario, clave_usuario, correo_usuario)
+                VALUES(?, ?, ?, ?)';
+        $params = array($this->nombre_usuario, $this->apellido_usuario, $this->clave_usuario $this->correo_usuario);
+        return Database::executeRow($sql, $params);
+    }
+
+    //Buscar varios Usuarios//
+    public function readAll()
+    {
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario
+                FROM usuario
+                ORDER BY apellido_usuario';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
+     //Buscar un Usuarios//
+    public function readOne()
+    {
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario
+                FROM usuario
+                WHERE id_usuario = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    //Modificar un Usuario//
+    public function updateRow()
+    {
+        $sql = 'UPDATE usuario 
+                SET nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?
+                WHERE id_usuario = ?';
+        $params = array($this->nombre_usuario, $this->apellido_usuario, $this->correo_usuario, $this->id_usuario);
+        return Database::executeRow($sql, $params);
+    }
+
+    //borrar un Usuario//
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM usuario
+                WHERE id_usuario = ?';
+        $params = array($this->id_usuario);
+        return Database::executeRow($sql, $params);
+    }
 }
 ?>
