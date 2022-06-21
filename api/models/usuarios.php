@@ -92,5 +92,38 @@ class Usuarios extends Validator
     {
         return $this->correo_usuario;
     }
+
+    /*
+    *   Métodos para gestionar la cuenta del usuario.
+    */
+
+    /*Funcion para la comprobacion del correo*/
+    public function ($correo_usuario)
+    {
+        $sql = 'SELECT id_usuario FROM usuario WHERE correo_usuario = ?';
+        $params = array($correo_usuario);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_usuario = $data['id_usuario'];
+            $this->correo_usuario = $correo_usuario;
+            return true; /*si se encuentra un id con ese correo retorna a un true*/
+        } else {
+            return false; /*de lo contrario retorna a un false*/
+        }
+    }
+
+    /*Funcion para comprobar la clave*/
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT clave_usuario FROM usuario WHERE id_usuario = ?';
+        $params = array($this->id_usuario);
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if (password_verify($password, $data['clave_usuario'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 ?>
