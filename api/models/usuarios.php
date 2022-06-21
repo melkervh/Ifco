@@ -64,4 +64,33 @@ class Usuarios extends Validator
             return false;
         }
     }
+
+    /*
+    *   Métodos para obtener valores de los atributos.
+    */
+    public function getIdUsuario()
+    {
+        return $this->id_usuario;
+    }
+
+    public function getNombreUsuario()
+    {
+        return $this->nombre_usuario;
+    }
+
+    public function getApellidoUsuario()
+    {
+        return $this->apellido_usuario;
+    }
+
+    public function getClaveUsuario()
+    {
+        return $this->clave_usuario;
+    }
+
+    public function getCorreoUsuario()
+    {
+        return $this->correo_usuario;
+    }
 }
+?>
