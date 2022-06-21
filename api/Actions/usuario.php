@@ -197,13 +197,13 @@ if (isset($_GET['action'])) {
                 break;
             case 'logIn':
                 $_POST = $usuario->validateForm($_POST);
-                if (!$usuario->checkUser($_POST['alias'])) {
-                    $result['exception'] = 'Alias incorrecto';
+                if (!$usuario->checkUser($_POST['correo'])) {
+                    $result['exception'] = 'correo incorrecto';
                 } elseif ($usuario->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
-                    $_SESSION['id_usuario'] = $usuario->getId();
-                    $_SESSION['alias_usuario'] = $usuario->getAlias();
+                    $_SESSION['id_usuario'] = $usuario->getIdUsuario();
+                    $_SESSION['correo_usuario'] = $usuario->getCorreoUsuario();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }
