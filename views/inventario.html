@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <!--CSS bootstrap-->
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light navbar-dark">
+            <div class="container-fluid">
+                <img src="../resources/img/logo.jpeg" height="80">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="login.html">login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="listados.html">Usuario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="historial.html">Historial de
+                                facturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inventario.html">Inventario </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Facturas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="facturan.html">Factura Normal</a></li>
+                                <li><a class="dropdown-item" href="credito.html">Factura credito</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h1 class="titul">inventario</h1>
+    <section class="container-xl tamaño">
+        <div class="row">
+            <div class="col">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    agregar producto
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="formGroupExampleInput" class="form-label">cantidad</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                </div>
+                                <div class="clave">
+                                    <div class="row ">
+                                        <div class="col-lg-6">
+                                            <label for="formGroupExampleInput" class="form-label">descripcion</label>
+                                            <input type="password" class="form-control" placeholder=""
+                                                aria-label="First name">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="formGroupExampleInput" class="form-label">Marca</label>
+                                            <select class="form-select" id="floatingSelect"
+                                                aria-label="Floating label select example">
+                                                <option selected></option>
+                                                <option value="1"></option>
+                                                <option value="2"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-lg-5">
+                                            <label for="formGroupExampleInput" class="form-label">estado</label>
+                                            <select class="form-select" id="floatingSelect"
+                                                aria-label="Floating label select example">
+                                                <option selected></option>
+                                                <option value="1"></option>
+                                                <option value="2"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#marca">
+                    agregar marca
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="marca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">agregar marca</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <label for="formGroupExampleInput" class="form-label">Nombre de la marca</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-lg-5">
+                                        <label for="formGroupExampleInput" class="form-label">tipo de producto</label>
+                                        <select class="form-select" id="floatingSelect"
+                                            aria-label="Floating label select example">
+                                            <option selected></option>
+                                            <option value="1"></option>
+                                            <option value="2"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tipopro">
+                    agregar marca
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="tipopro" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">agregar marca</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <label for="formGroupExampleInput" class="form-label">tipo de producto</label>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    <main class="container-xl">
+        <section class="container-xl">
+            <div class="contenedortbad">
+                <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                            aria-selected="true">productos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false">marcas</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                            aria-selected="false">tipos de producto</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                        aria-labelledby="pills-home-tab">
+                        <div class="Listas">
+                            <nav class="navbar ">
+                                <div class="container-fluid">
+                                  <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                                  </form>
+                                </div>
+                              </nav>
+                            <table class="table table-borderless">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">nombre</th>
+                                        <th scope="col">cantidad</th>
+                                        <th scope="col">descripcion</th>
+                                        <th scope="col">estado</th>
+                                        <th scope="col">marca</th>
+                                        <th scope="col">tipo</th>
+                                    </tr>
+                                </thead>
+                                <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="Listas">
+                            <nav class="navbar ">
+                                <div class="container-fluid">
+                                  <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                                  </form>
+                                </div>
+                              </nav>
+                            <table class="table table-borderless">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">tipo</th>
+                                        <th scope="col">proveedor</th>
+                                    </tr>
+                                </thead>
+                                <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+                        tabindex="0">
+                        <div class="Listas">
+                            <nav class="navbar ">
+                                <div class="container-fluid">
+                                  <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                                  </form>
+                                </div>
+                              </nav>
+                            <table class="table table-borderless">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nombre del tipo</th>
+                                    </tr>
+                                </thead>
+                                <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...
+            </div>
+
+            <!--JS bootstrap-->
+            <script src="../resources/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
