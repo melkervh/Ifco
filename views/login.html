@@ -5,7 +5,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
@@ -13,7 +12,6 @@
 </head>
 
 <body>
-
     <!-- Nav de la página web -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light navbar-dark">
@@ -34,40 +32,35 @@
             </div>
         </nav>
     </header>
-
     <!-- Cuerpo de la página web -->
     <main>
         <!-- Contenedor principal -->
-        <div class="container-lg cuerpo">
-            <div class="row ">
-                <div class="col-12">
-                    <h5 class="letrat">Iniciar Sesión</h5>
-                </div>
-
-                <div class="col-md-6 col-sm-12">
-                    <img src="../resources/img/logologin.jpeg" class="logoc">
-                </div>
-                <div class="col-md-6 col-sm-12 campos">
-                    <h5 class="letrac">Correo</h5>
-                    <div class="input-group">
-                        <span class="input-group-text espacioc" id="basic-addon3"></span>
-                        <input type="text" class="form-control espacioc" id="correo" aria-describedby="basic-addon3">
+        <form>
+            <div class="container-lg cuerpo">
+                <div class="row ">
+                    <div class="col-12">
+                        <h5 class="letrat">Iniciar Sesión</h5>
                     </div>
-                    <h5 class="letrac">Contraseña</h5>
-                    <div class="input-group">
-                        <span class="input-group-text" id="basic-addon3"></span>
-                        <input type="text" class="form-control" id="contraseña" aria-describedby="basic-addon3">
+                    <div class="col-md-6 col-sm-12">
+                        <img src="../resources/img/logologin.jpeg" class="logoc">
                     </div>
-                    <div class="recuperart"><a class="recuperar" href="recuperar_contrasena.html">Olvidaste tu
-                            contraseña</a></div>
-                    <button type="button" class="btn botondise"><a href="index.html">Ingresar</a></button>
-
+                    <div class="col-md-6 col-sm-12 campos">
+                        <h5 class="letrac">Correo</h5>
+                        <div class="input-group">
+                            <input id="correo" type="email" name="correo" class="form-control espacioc" required>
+                        </div>
+                        <h5 class="letrac">Contraseña</h5>
+                        <div class="input-group">
+                            <input id="clave" type="password" name="clave" class="form-control" required>
+                        </div>
+                        <div class="recuperart"><a class="recuperar" href="recuperar_contrasena.html">Olvidaste tu
+                                contraseña</a></div>
+                        <button type="submit" class="btn botondise" data-tooltip="Registrar">Registrar</button>
+                    </div>
                 </div>
-
             </div>
-        </div>
+        </form>
     </main>
-
     <!-- Footer de la página web -->
     <footer>
         <div class="container-fluid footerc">
@@ -76,10 +69,7 @@
             </p>
         </div>
     </footer>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="../resources/js/bootstrap.min.js"></script>
-
-  
 </body>
 
 </html>
