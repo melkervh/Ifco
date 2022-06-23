@@ -129,6 +129,14 @@ class Usuarios extends Validator
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
 
+    public function createRow()
+    {
+        $sql = 'INSERT INTO usuario(nombre_usuario, apellido_usuario, clave_usuario, correo_usuario )
+                VALUES(?, ?, ?, ?)';
+        $params = array($this->nombre_usuario, $this->apellido_usuario ,$this->clave_usuario, $this->correo_usuario);
+        return Database::executeRow($sql, $params);
+    }
+
     //Busqueda de Usuario//
     public function searchRows($value)
     {
