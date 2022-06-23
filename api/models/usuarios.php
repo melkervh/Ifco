@@ -98,16 +98,16 @@ class Usuarios extends Validator
     */
 
     /*Funcion para la comprobacion del correo*/
-    public function ($correo_usuario)
+    public function checkUser($correo_usuario)
     {
         $sql = 'SELECT id_usuario FROM usuario WHERE correo_usuario = ?';
         $params = array($correo_usuario);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_usuario = $data['id_usuario'];
             $this->correo_usuario = $correo_usuario;
-            return true; /*si se encuentra un id con ese correo retorna a un true*/
+            return true;
         } else {
-            return false; /*de lo contrario retorna a un false*/
+            return false;
         }
     }
 
@@ -138,15 +138,6 @@ class Usuarios extends Validator
                 ORDER BY apellido_usuario';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
-    }
-
-    //Insertar un nuevo Usuario//
-    public function createRow()
-    {
-        $sql = 'INSERT INTO usuario(nombre_usuario, apellido_usuario, clave_usuario, correo_usuario)
-                VALUES(?, ?, ?, ?)';
-        $params = array($this->nombre_usuario, $this->apellido_usuario, $this->clave_usuario $this->correo_usuario);
-        return Database::executeRow($sql, $params);
     }
 
     //Buscar varios Usuarios//
