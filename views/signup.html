@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ES">
 
 <head>
     <!-- Required meta tags -->
@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
-    <title>IFCO - Inició de sesión</title>
+    <title>Primer Registro</title>
 </head>
 
 <body>
@@ -32,35 +32,45 @@
             </div>
         </nav>
     </header>
-    <!-- Cuerpo de la página web -->
     <main>
-        <!-- Contenedor principal -->
-        <form method="post" id="session-form">
-            <div class="container-lg cuerpo">
-                <div class="row ">
-                    <div class="col-12">
-                        <h5 class="letrat">Iniciar Sesión</h5>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <img src="../resources/img/logologin.jpeg" class="logoc">
-                    </div>
-                    <div class="col-md-6 col-sm-12 campos">
-                        <h5 class="letrac">Correo</h5>
-                        <div class="input-group">
-                            <input id="correo" type="email" name="correo" class="form-control espacioc" required>
+        <div class="Primar">
+            <div class="signupFrm">
+                <div class="wrapper">
+                    <form method="post" id="register-form">
+                        <h1 class="title">Primer Usuario</h1>
+
+                        <div class="inputContainer">
+                            <input type="text" class="input" placeholder="a">
+                            <label for="" class="label">Nombre</label>
                         </div>
-                        <h5 class="letrac">Contraseña</h5>
-                        <div class="input-group">
-                            <input id="clave" type="password" name="clave" class="form-control" required>
+
+                        <div class="inputContainer">
+                            <input type="text" class="input" placeholder="a">
+                            <label for="" class="label">Apellido</label>
                         </div>
-                        <div class="recuperart"><a class="recuperar" href="recuperar_contrasena.html">Olvidaste tu
-                                contraseña</a></div>
-                        <button type="submit" class="btn botondise" data-tooltip="Registrar">Registrar</button>
+
+                        <div class="inputContainer">
+                            <input type="email" class="input" placeholder="a">
+                            <label for="" class="label">Email</label>
+                        </div>
+
+                        <div class="inputContainer">
+                            <input type="password" class="input" placeholder="a">
+                            <label for="" class="label">Clave</label>
+                        </div>
+
+                        <div class="inputContainer">
+                            <input type="password" class="input" placeholder="a">
+                            <label for="" class="label">Confirme Clave</label>
+                        </div>
+
+                        <input type="submit" class="submitBtn" value="Registrar">
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
+
     </main>
-    <!-- Footer de la página web -->
     <footer>
         <div class="container-fluid footerc">
             <p class="letraf2">
