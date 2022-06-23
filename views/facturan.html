@@ -57,69 +57,30 @@
             <thead class="table-dark">
               <tr>
                 <th class="text-center"> # </th>
-                <th class="text-center"> cantidad </th>
-                <th class="text-center"> unidades</th>
-                <th class="text-center"> nombre</th>
+                <th class="text-center"> codigo</th>
+                <th class="text-center"> cantidad</th>
                 <th class="text-center"> Precio unidad </th>
                 <th class="text-center"> Total </th>
+                <TH>acciones</TH>
               </tr>
             </thead>
             <tbody>
               <tr id='addr0'>
                 <td>1</td>
-                <td><input type="text" name='product[]' placeholder='Cantidad' class="form-control" /></td> 
-                <td><input type="text" name='product[]' placeholder='unidades' class="form-control" /></td> 
-                <td><input type="text" name='product[]' placeholder='Nombre' class="form-control" /></td> 
-                <td><input type="text" name='product[]' placeholder='precio unidad' class="form-control" /></td> 
+                <td><input type="text" name='product[]' placeholder='codigo' class="form-control" /></td> 
+                <td><input type="number" name='product[]' placeholder='cantidad' class="form-control" min="1" max="99" /></td> 
+                <td><input type="number" name='product[]' placeholder='0.00' class="form-control"step="0.00" min="0" max="99"/></td> 
                 <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly /></td>
                 <td><button id="add_row" class="btn btn-default pull-left btnr7"><a href="" class="agrebtn">agregar</a></button></td>
               </tr>
-              <tr id='addr1'></tr>
             </tbody>
           </table>                 
         </div>
       </div>
       <div class="row clearfix">
         <div class="col-md-12">
-          <button id='delete_row' class="pull-right btn btn-default btngt"><a href="" class="colorfact">guardar factura</a></button>
-          <button id='delete_row' class="pull-right btn btn-default btngt"><a href="credito.html"  class="colorfact">credito fiscal</a></button>
-          <button id='delete_row' class="pull-right btn btn-default btngt"><a href="" class="colorfact">eliminar</a></button>
-        </div>
-      </div>
-      <div class="row clearfix totalef">
-        <div class=" col-md-4">
-          <table class="table table-bordered table-hover" id="tab_logic_total">
-            <tbody class="totales">
-              <tr>
-                <th class="text-center">Sub Total</th>
-                <td class="text-center"><input type="number" name='sub_total' placeholder='0.00' class="form-control"
-                    id="sub_total" readonly /></td>
-                    <tr>
-                      <th class="text-center">Sumas</th>
-                      <td class="text-center"><input type="text" name='sub_total' placeholder='0.00' class="form-control"
-                          id="sub_total" readonly /></td>
-                    </tr>
-                    <tr>
-                      <th class="text-center">VTA. No sujeta</th>
-                      <td class="text-center">
-                        <div class="input-group mb-2 mb-sm-0">
-                          <input type="text" class="form-control" id="tax" placeholder="0">
-                          <div class="input-group-addon">%</div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th class="text-center">Ventas exentas</th>
-                      <td class="text-center"><input type="text" name='tax_amount' id="tax_amount" placeholder='0.00'
-                          class="form-control" readonly /></td>
-                    </tr>
-                    <tr>
-                      <th class="text-center"> Total</th>
-                      <td class="text-center"><input type="number" name='total_amount' id="total_amount" placeholder='0.00'
-                          class="form-control" readonly /></td>
-                    </tr>
-            </tbody>
-          </table>
+          <button id='delete_row' class="pull-right btn btn-default btngt colorfact">guardar factura</button>
+              <a href="credito.html"  class="btn btngt  colorfact">credito fiscal</a>
         </div>
       </div>
     </div>
