@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
   <!--CSS bootstrap-->
   <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
@@ -69,7 +69,7 @@
                 <td>1</td>
                 <td><input type="text" name='product[]' placeholder='codigo' class="form-control" /></td> 
                 <td><input type="number" name='product[]' placeholder='cantidad' class="form-control" min="1" max="99" /></td> 
-                <td><input type="number" name='product[]' placeholder='0.00' class="form-control"step="0.00" min="0" max="99"/></td> 
+                <td><input type="number" step="0.01" min="0.01" name='product[]' placeholder='0.00' class="form-control"/></td> 
                 <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly /></td>
                 <td><button id="add_row" class="btn btn-default pull-left btnr7"><a href="" class="agrebtn">agregar</a></button></td>
               </tr>
