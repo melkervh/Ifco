@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (response.status) {
                     sweetAlert(4, 'Debe autenticarse para ingresar', null);
                 } else {
-                    sweetAlert(3, response.exception, 'firstregister.html');
+                    sweetAlert(3, response.exception, 'signup.html');
                 }
             });
         } else {
