@@ -110,12 +110,12 @@ class Clientes extends Validator
         return $this->municipio;
     }
 /*c funcion para agregar un cliente */
-public function createRow()
+public function createCliente()
 {
     $sql = 'INSERT INTO cliente(
         nombre_cli, apellido_cli, "DUI")
-       VALUES ( ?, ?, ?);';
-    $params = array($this->nombre_cli, $this->apellido_cli, $this->DUI ,);
+       VALUES ( ?, ?, ?)';
+    $params = array($this->nombre_cli, $this->apellido_cli, $this->DUI );
     return Database::executeRow($sql, $params);
 }
     
