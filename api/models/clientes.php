@@ -62,7 +62,7 @@ class Clientes extends Validator
     }
     public function setDepartamento($value)
     {
-        if ($this->validateAlphabetic($value, 1, 50)) {
+        if ($this->validateString($value, 1, 50)) {
             $this->Departamento= $value;
             return true;
         } else {

@@ -17,7 +17,7 @@
     <header>
     </header>
     <main class="container">
-        <form action="">
+        <form method="post" id="save-form">
             <section class="bg-light container factura1 ">
                 <h5 class="nfa">N°factura</h5>
                 <h1 class="display-4 text titulofact">Factura</h1>
@@ -26,35 +26,35 @@
                 <div class="row ">
                     <input class="hidden" style="visibility:hidden;" type="number" id="id_cliente" name="id_cliente">
                     <div class="col-lg-4">
-                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" placeholder="nombre" aria-label="First name" id="nombre"
-                            name="nombre" required>
+                        <label for="nombre_cli" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" placeholder="nombre" aria-label="First name" id="nombre_cli"
+                            name="nombre_cli" required>
                     </div>
                     <div class="col-lg-4">
-                        <label for="formGroupExampleInput" class="form-label">Apellido</label>
+                        <label for="apellido" class="form-label">Apellido</label>
                         <input type="text" class="form-control" placeholder="apellido" aria-label="Last name"
                             id="apellido" name="apellido" required>
                     </div>
                     <div class="col-lg-4">
-                        <label for="formGroupExampleInput" class="form-label">Direccion</label>
+                        <label for="direccion" class="form-label">Direccion</label>
                         <input type="text" class="form-control" placeholder="Direccion" aria-label="Last name"
-                            id="direccion" name="direcion">
+                            id="direccion" name="direccion">
                     </div>
                 </div>
                 <div class="clave">
                     <div class="row ">
                         <div class="col-lg-4">
-                            <label for="formGroupExampleInput" class="form-label">Venta a cuenta de </label>
+                            <label for="venta" class="form-label">Venta a cuenta de </label>
                             <input type="text" class="form-control" placeholder="" aria-label="First name" id="venta"
                                 name="venta" required>
                         </div>
                         <div class="col-lg-4">
-                            <label for="formGroupExampleInput" class="form-label">Fecha </label>
-                            <input type="text" class="form-control" placeholder="fecha" aria-label="Last name"
+                            <label for="fecha" class="form-label">Fecha </label>
+                            <input type="date" class="form-control" placeholder="fecha" aria-label="Last name"
                                 id="fecha" name="fecha" required>
                         </div>
                         <div class="col-lg-4">
-                            <label for="formGroupExampleInput" class="form-label">Dui</label>
+                            <label for="DUI" class="form-label">Dui</label>
                             <input type="text" class="form-control" placeholder="Dui" aria-label="Last name" id="DUI"
                                 name="DUI" required>
                         </div>
@@ -80,16 +80,16 @@
                             <tbody>
                                 <tr id='addr0'>
                                     <td>1</td>
-                                    <td><input type="text" name='product[]' placeholder='codigo del producto'
-                                            class="form-control" id="id_producto" name="id_producto" />
+                                    <td><input type="text"  placeholder='codigo del producto'
+                                            class="form-control" id="codigo " name="codigo " />
                                     </td>
-                                    <td><input type="number" name='qty[]' placeholder='cantidad'
+                                    <td><input type="number"  placeholder='cantidad'
                                             class="form-control qty" step="0" min="0" id="cantidad" name="cantidad" />
                                     </td>
-                                    <td><input type="number" name='price[]' placeholder='Precio unidad'
+                                    <td><input type="number"  placeholder='Precio unidad'
                                             class="form-control price" step="0.01" min="0.01" id="precioU"
                                             name="precioU" /></td>
-                                    <td><input type="number" name='total[]' placeholder='0.00'
+                                    <td><input type="number" placeholder='0.00'
                                             class="form-control total" readonly id="total" name="total" />
                                     </td>
                                 </tr>
@@ -123,7 +123,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button id='save-form' class="pull-right btn btn-default btngt colorfact">guardar
+                        <button type="submit" class="pull-right btn btn-default btngt colorfact">guardar
                             factura</button>
                     </div>
                 </div>
@@ -137,6 +137,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/acounst.js"></script>
+    <script src="../controllers/facturan.js"></script>
     <script src="../resources/js/funcionalida.js"></script>
 </body>
 
