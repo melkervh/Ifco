@@ -1,5 +1,5 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_USUARIOS = SERVER + 'Actions/usuarios.php?action=';
+const API_USUARIOS = SERVER + 'Actions/usuario.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(request.status + ' ' + request.statusText);
         }
     });
-    // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-    M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 });
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de registrar.

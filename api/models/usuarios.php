@@ -97,6 +97,7 @@ class Usuarios extends Validator
     *   Métodos para gestionar la cuenta del usuario.
     */
 
+    //En las siguientes funciones nos ayudaran a verificar el correo y su clave extraidas desde la base de datos//
     /*Funcion para la comprobacion del correo*/
     public function checkUser($correo_usuario)
     {
@@ -128,6 +129,15 @@ class Usuarios extends Validator
      /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+
+    //Insertar un usuario
+    public function createRow()
+    {
+        $sql = 'INSERT INTO usuario(nombre_usuario, apellido_usuario, clave_usuario, correo_usuario)
+                VALUES(?, ?, ?, ?)';
+        $params = array($this->nombre_usuario, $this->apellido_usuario, $this->clave_usuario, $this->correo_usuario,);
+        return Database::executeRow($sql, $params);
+    }
 
     //Busqueda de Usuario//
     public function searchRows($value)
