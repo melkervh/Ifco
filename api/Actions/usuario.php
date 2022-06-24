@@ -176,15 +176,17 @@ if (isset($_GET['action'])) {
                 break;
             case 'register':
                 $_POST = $usuario->validateForm($_POST);
-                if (!$usuario->setNombreUsuario($_POST['nombres'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$usuario->setApellidoUsuario($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellido incorrecto';
+                if (!$usuario->setNombres($_POST['nombres'])) {
+                    $result['exception'] = 'Nombres incorrectos';
+                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+                    $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$usuario->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
+                } elseif (!$usuario->setAlias($_POST['alias'])) {
+                    $result['exception'] = 'Alias incorrecto';
                 } elseif ($_POST['clave'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
-                } elseif (!$usuario->setClaveUsuario($_POST['clave'])) {
+                } elseif (!$usuario->setClave($_POST['clave'])) {
                     $result['exception'] = $usuario->getPasswordError();
                 } elseif ($usuario->createRow()) {
                     $result['status'] = 1;

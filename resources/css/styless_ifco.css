@@ -360,7 +360,7 @@ table th {
 }
 .btngt{
     background-color: #284B63;
-    border: #ffffff 2px solid;
+  color: #fff;
 }
 .totales{
     margin-top: 20px;
@@ -503,3 +503,28 @@ table th {
 .input:focus {
   border: 2px solid purple;
 }
+/* footer */
+.container-fluid{
+    color:#000 ;
+}
+  .color-text{
+      color:#757575 ;
+  }  
+    footer{
+      color:#fff;
+   }
+  
+   li{
+       margin-top: 20px ;
+       margin-bottom: 20px ;
+   }
+   
+  
+  .row-1{
+      background-color:#1E242A ;
+  }
+  
+  .row-2{
+      
+      background-color: #28323C ;
+  }
