@@ -152,24 +152,26 @@ class createfactura extends Validator{
         }
     }
    
- /*funcion para insertar los datos en las tabla de detalle */
+     /*funcion para insertar los datos en las tabla de detalle */
     public function createDetalle()
-           {
+    {
     $sql = 'INSERT INTO detalle_factura(
-        id_producto, precio_u, precio_total,cantidad_com)
-       VALUES ( ?, ?, ?, ?)';
+    id_producto, precio_u, precio_total,cantidad_com)
+    VALUES ( ?, ?, ?, ?)';
     $params = array($this->id_producto, $this->precio_u, $this->precio_total, $this->cantidad_com);
     return Database::executeRow($sql, $params);
-      }
-            /*c funcion para agregar un cliente */
-        public function createCliente()
-        {
-            $sql = 'INSERT INTO cliente(
-                nombre_cli, apellido_cli, "DUI",departamento)
-            VALUES ( ?, ?, ?,?)';
-            $params = array($this->nombre_cli, $this->apellido_cli, $this->DUI,$this->Departamento );
-            return Database::executeRow($sql, $params);
-        }
+    }
+
+     /*c funcion para agregar un cliente */
+    public function createCliente()
+    {
+    $sql = 'INSERT INTO cliente(
+    nombre_cli, apellido_cli, "DUI",departamento)
+    VALUES ( ?, ?, ?,?)';
+    $params = array($this->nombre_cli, $this->apellido_cli, $this->DUI,$this->Departamento );
+    return Database::executeRow($sql, $params);
+    }
+
         /*funcion para incertar datos en la tabla factura_normal */
     public function createfactura()
     {
