@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['id_usuario'])OR TRUE) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action'])
@@ -28,29 +28,44 @@ if (isset($_GET['action'])) {
                 } elseif (!$crearfactu->setdui($_POST['DUI'])) {
                     $result['exception'] = 'DUI no valida';
                 }elseif (!$crearfactu->setDepartamento($_POST['direccion'])) {
-                    $result['exception'] = 'direcion no valido';
-                }elseif ($crearfactu-> createCliente()) {
-                } elseif (!$crearfactu->setventa($_POST['venta'])) {
-                    $result['exception'] = 'dato de la venta incorrecto';
-                } elseif (!$crearfactu->setfecha($_POST['fecha'])) {
-                    $result['exception'] = 'fecha no valida';
-                } elseif ($crearfactu->createfactura()) {
-                }elseif (!$crearfactu->setIdProducto($_POST['codigo '])) {
-                 $result['exception'] = 'id_producto incorrecto';
-                }  elseif (!$crearfactu->setPrecioU($_POST['precioU'])) {
-                    $result['exception'] = 'precio no valida';
-                }elseif (!$crearfactu->setPrecioTotal($_POST['total'])) {
-                    $result['exception'] = 'precio no valida';
-                }elseif (!$crearfactu-> setCantidadCom($_POST['cantidad'])) {
-                    $result['exception'] = 'cantidad no valida';
-                }elseif ($crearfactu->createDetalle()) {
+                    $result['exception'] = 'direcion no valido';        
+                }elseif ($crearfactu->createCliente()) {
                     $result['status'] = 1;
-                     $result['message'] = 'factura creada' ;
-                    
+                    $result['message'] = 'cliente creado' ;
                 } else {
                     $result['exception'] = Database::getException();;
                 }
                 break;
+                case 'createfactu':
+                    $_POST =$crearfactu->validateForm($_POST);
+                    if (!$crearfactu->setventa($_POST['venta'])) {
+                        $result['exception'] = 'dato de la venta incorrecto';
+                    } elseif (!$crearfactu->setfecha($_POST['fecha'])) {
+                        $result['exception'] = 'fecha no valida';
+                    } elseif ($crearfactu->createfactura()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'factura creada' ;
+                    }else {
+                        $result['exception'] = Database::getException();;
+                    }
+                    break;
+                    case 'createdetalle':
+                        $_POST = $crearfactu->validateForm($_POST);
+                        if (!$crearfactu->setIdProducto($_POST['codigo'])) {
+                            $result['exception'] = 'id_producto incorrecto';
+                           }  elseif (!$crearfactu->setPrecioU($_POST['precioU'])) {
+                               $result['exception'] = 'precio unidad no valido';
+                           }elseif (!$crearfactu->setPrecioTotal($_POST['total'])) {
+                               $result['exception'] = 'precio no valido';
+                           }elseif (!$crearfactu-> setCantidadCom($_POST['cantidad'])) {
+                               $result['exception'] = 'cantidad no valida';
+                           }elseif ($crearfactu->createDetalle()) {
+                               $result['status'] = 1;
+                                $result['message'] = 'detalle creado' ;     
+                           } else {
+                            $result['exception'] = Database::getException();;
+                        }
+                        break;
             default:
             $result['exception'] = 'Acción no disponible dentro de la sesión';
         }        

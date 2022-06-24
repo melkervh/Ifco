@@ -2,7 +2,7 @@
 
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
-require_once('../models/factura.php');
+require_once('../models/crearfactura.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -40,14 +40,16 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'No hay coincidencias';
                     }
                     break;
-            case 'create':
+            case 'createfactu':
                 $_POST = $factura->validateForm($_POST);
                 if (!$factura->setventa($_POST['venta'])) {
                     $result['exception'] = 'dato de la venta incorrecto';
                 } elseif (!$factura->setfecha($_POST['fecha'])) {
                     $result['exception'] = 'fecha no valida';
-                } elseif ($factura->createfactura()) {
-                } else {
+                } elseif ($crearfactu->createfactura()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'factura creada' ;
+                }else {
                     $result['exception'] = Database::getException();;
                 }
                 break;

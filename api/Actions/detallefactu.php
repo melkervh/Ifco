@@ -2,7 +2,7 @@
 
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
-require_once('../models/detallefactu.php');
+require_once('../models/crearfactura.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -40,18 +40,20 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'No hay coincidencias';
                     }
                     break;
-            case 'create':
+            case 'createdetalle':
                 $_POST = $detallefactu->validateForm($_POST);
-                if (!$detallefactu->setIdProducto($_POST['id_producto'])) {
+                elseif (!$crearfactu->setIdProducto($_POST['codigo'])) {
                     $result['exception'] = 'id_producto incorrecto';
-                } elseif (!$detallefactu->setCantidad($_POST['cantidad'])) {
-                    $result['exception'] = 'cantidad no valida';
-                } elseif (!$detallefactu->setPrecioU($_POST['precioU'])) {
-                    $result['exception'] = 'precio no valida';
-                }elseif (!$detallefactu->setPreciototal($_POST['total'])) {
-                    $result['exception'] = 'precio no valida';
-                }elseif ($detallefactu->createDetalle()) {
-                } else {
+                   }  elseif (!$crearfactu->setPrecioU($_POST['precioU'])) {
+                       $result['exception'] = 'precio unidad no valido';
+                   }elseif (!$crearfactu->setPrecioTotal($_POST['total'])) {
+                       $result['exception'] = 'precio no valido';
+                   }elseif (!$crearfactu-> setCantidadCom($_POST['cantidad'])) {
+                       $result['exception'] = 'cantidad no valida';
+                   }elseif ($crearfactu->createDetalle()) {
+                       $result['status'] = 1;
+                        $result['message'] = 'detalle creado' ;     
+                   } else {
                     $result['exception'] = Database::getException();;
                 }
                 break;
