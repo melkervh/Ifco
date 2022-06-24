@@ -3,132 +3,134 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
-    <!--CSS bootstrap-->
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
+  <!--CSS bootstrap-->
+  <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
-    <header>
-    </header>
-    <form>
-        <main class="container">
-            <section class="bg-light container factura1 ">
-                <h5 class="nfa">N°factura</h5>
-                <h1 class="display-4 text titulofact">Factura</h1>
-            </section>
-            <div class="factura2">
-                <div class="row ">
-                    <div class="col-lg-4">
-                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" placeholder="nombre" aria-label="First name" required>
-                    </div>
-                    <div class="col-lg-4">
-                        <label for="formGroupExampleInput" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" placeholder="apellido" aria-label="Last name" required>
-                    </div>
-                    <div class="col-lg-4">
-                        <label for="formGroupExampleInput" class="form-label">Direccion</label>
-                        <input type="text" class="form-control" placeholder="Direccion" aria-label="Last name">
-                    </div>
-                </div>
-                <div class="clave">
-                    <div class="row ">
-                        <div class="col-lg-4">
-                            <label for="formGroupExampleInput" class="form-label">Venta a cuenta de </label>
-                            <input type="text" class="form-control" placeholder="" aria-label="First name">
-                        </div>
-                        <div class="col-lg-4">
-                            <label for="formGroupExampleInput" class="form-label">Fecha </label>
-                            <input type="text" class="form-control" placeholder="fecha" aria-label="Last name" required>
-                        </div>
-                        <div class="col-lg-4">
-                            <label for="formGroupExampleInput" class="form-label">Dui</label>
-                            <input type="text" class="form-control" placeholder="Dui" aria-label="Last name" required>
-                        </div>
-                    </div>
-                </div>
+  <header>
+  </header>
+  <form>
+    <main class="container">
+      <section class="bg-light container factura1 ">
+        <h5 class="nfa">N°factura</h5>
+        <h1 class="display-4 text titulofact">Factura</h1>
+      </section>
+      <div class="factura2">
+        <div class="row ">
+          <input class="hidden" style="visibility:hidden;" type="number" id="id_cliente" name="id_cliente">
+          <div class="col-lg-4">
+            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+            <input type="text" class="form-control" placeholder="nombre" aria-label="First name" required>
+          </div>
+          <div class="col-lg-4">
+            <label for="formGroupExampleInput" class="form-label">Apellido</label>
+            <input type="text" class="form-control" placeholder="apellido" aria-label="Last name" required>
+          </div>
+          <div class="col-lg-4">
+            <label for="formGroupExampleInput" class="form-label">Direccion</label>
+            <input type="text" class="form-control" placeholder="Direccion" aria-label="Last name">
+          </div>
+        </div>
+        <div class="clave">
+          <div class="row ">
+            <div class="col-lg-4">
+              <label for="formGroupExampleInput" class="form-label">Venta a cuenta de </label>
+              <input type="text" class="form-control" placeholder="" aria-label="First name">
             </div>
+            <div class="col-lg-4">
+              <label for="formGroupExampleInput" class="form-label">Fecha </label>
+              <input type="text" class="form-control" placeholder="fecha" aria-label="Last name" required>
+            </div>
+            <div class="col-lg-4">
+              <label for="formGroupExampleInput" class="form-label">Dui</label>
+              <input type="text" class="form-control" placeholder="Dui" aria-label="Last name" required>
+            </div>
+            <input class="hidden" style="visibility:hidden;" type="number" id="id_fact_nor" name="id_fact_nor">
+          </div>
+        </div>
+      </div>
 
 
-            <!------ Include the above in your HEAD tag ---------->
-            <section>
-                <div class="container agrefact">
-                    <div class="row clearfix">
-                        <div class="col-md-12">
-                            <table class="table table-bordered table-hover" id="tab_logic">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th class="text-center"> # </th>
-                                        <th class="text-center"> codigo del producto </th>
-                                        <th class="text-center"> cantidad</th>
-                                        <th class="text-center"> precio</th>
-                                        <th class="text-center"> Total </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr id='addr0'>
-                                        <td>1</td>
-                                        <td><input type="text" name='product[]' placeholder='codigo del producto'
-                                                class="form-control" /></td>
-                                        <td><input type="number" name='qty[]' placeholder='cantidad'
-                                                class="form-control qty" step="0" min="0" /></td>
-                                        <td><input type="number" name='price[]' placeholder='Precio unidad'
-                                                class="form-control price" step="0.01" min="0.01" /></td>
-                                        <td><input type="number" name='total[]' placeholder='0.00'
-                                                class="form-control total" readonly /></td>
-                                    </tr>
-                                    <tr id='addr1'></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-md-12">
-                            <button id="add_row" class="pull-right btn btn-default btngt colorfact">agregar
-                                producto</button>
-                            <button id='delete_row' class="pull-right btn btn-default btngt colorfact">eliminar
-                                producto</button>
-                        </div>
-                    </div>
-                    <div class="row clearfix" style="margin-top:20px">
-                        <div class="pull-right col-md-4">
-                            <table class="table table-bordered table-hover" id="tab_logic_total">
-                                <tbody>
-                                    <tr>
-                                        <th class="text-center table-dark">Sub Total</th>
-                                        <td class="text-center"><input type="number" name='sub_total' placeholder='0.00'
-                                                class="form-control" id="sub_total" readonly /></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-center table-dark">Grand Total</th>
-                                        <td class="text-center"><input type="number" name='total_amount'
-                                                id="total_amount" placeholder='0.00' class="form-control" readonly />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button id='save-form' class="pull-right btn btn-default btngt colorfact">guardar
-                                factura</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    </form>
-    </main>
-    <footer></footer>
+      <!------ Include the above in your HEAD tag ---------->
+      <section>
+        <div class="container agrefact">
+          <div class="row clearfix">
+            <div class="col-md-12">
+              <table class="table table-bordered table-hover" id="tab_logic">
+                <thead class="table-dark">
+                  <tr>
+                    <th class="text-center"> # </th>
+                    <th class="text-center"> codigo del producto </th>
+                    <th class="text-center"> cantidad</th>
+                    <th class="text-center"> precio</th>
+                    <th class="text-center"> Total </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id='addr0'>
+                    <td>1</td>
+                    <td><input type="text" name='product[]' placeholder='codigo del producto' class="form-control" />
+                    </td>
+                    <td><input type="number" name='qty[]' placeholder='cantidad' class="form-control qty" step="0"
+                        min="0" /></td>
+                    <td><input type="number" name='price[]' placeholder='Precio unidad' class="form-control price"
+                        step="0.01" min="0.01" /></td>
+                    <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly />
+                    </td>
+                  </tr>
+                  <tr id='addr1'></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="col-md-12">
+              <button id="add_row" class="pull-right btn btn-default btngt colorfact">agregar
+                producto</button>
+              <button id='delete_row' class="pull-right btn btn-default btngt colorfact">eliminar
+                producto</button>
+            </div>
+          </div>
+          <div class="row clearfix" style="margin-top:20px">
+            <div class="pull-right col-md-4">
+              <table class="table table-bordered table-hover" id="tab_logic_total">
+                <tbody>
+                  <tr>
+                    <th class="text-center table-dark">Sub Total</th>
+                    <td class="text-center"><input type="number" name='sub_total' placeholder='0.00'
+                        class="form-control" id="sub_total" readonly /></td>
+                  </tr>
+                  <tr>
+                    <th class="text-center table-dark">Grand Total</th>
+                    <td class="text-center"><input type="number" name='total_amount' id="total_amount"
+                        placeholder='0.00' class="form-control" readonly />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button id='save-form' class="pull-right btn btn-default btngt colorfact">guardar
+                factura</button>
+            </div>
+          </div>
+        </div>
+      </section>
+  </form>
+  </main>
+  <footer></footer>
 
-    <!--JS bootstrap-->
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../controllers/components.js"></script>
-    <script src="../controllers/acounst.js"></script>
-    <script src="../resources/js/funcionalida.js"></script>
+  <!--JS bootstrap-->
+  <script src="../resources/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="../controllers/components.js"></script>
+  <script src="../controllers/acounst.js"></script>
+  <script src="../resources/js/funcionalida.js"></script>
 </body>
 
 </html>
