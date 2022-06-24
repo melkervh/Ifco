@@ -73,7 +73,7 @@ class FacturaNormal extends Validator
     $sql = 'INSERT INTO factura_normal(
         vnta_dt, fecha_fn)
        VALUES ( ?, ?)';
-    $params = array($this->venta, $this->fecha, $this->numero,);
+    $params = array($this->venta, $this->fecha,);
     return Database::executeRow($sql, $params);
       }
 }

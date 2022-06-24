@@ -2,14 +2,14 @@
 
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
-require_once('../models/factura.php');
+require_once('../models/detallefactu.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $factura= new Factura;
+    $detallefactu= new Detalle;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action'])
         {
             case 'readAll':
-                if ($result['dataset'] = $factura->readAll()) {
+                if ($result['dataset'] = $detallefactu->readAll()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -28,10 +28,10 @@ if (isset($_GET['action'])) {
                 }
                 break;
                 case 'search':
-                    $_POST = $factura->validateForm($_POST);
+                    $_POST = $detallefactu->validateForm($_POST);
                     if ($_POST['search'] == '') {
                         $result['exception'] = 'Ingrese un valor para buscar';
-                    } elseif ($result['dataset'] = $factura->searchRows($_POST['search'])) {
+                    } elseif ($result['dataset'] = $detallefactu->searchRows($_POST['search'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Valor encontrado';
                     } elseif (Database::getException()) {
@@ -41,12 +41,16 @@ if (isset($_GET['action'])) {
                     }
                     break;
             case 'create':
-                $_POST = $factura->validateForm($_POST);
-                if (!$factura->setventa($_POST['venta'])) {
-                    $result['exception'] = 'dato de la venta incorrecto';
-                } elseif (!$factura->setfecha($_POST['fecha'])) {
-                    $result['exception'] = 'fecha no valida';
-                } elseif ($factura->createfactura()) {
+                $_POST = $detallefactu->validateForm($_POST);
+                if (!$detallefactu->setIdProducto($_POST['id_producto'])) {
+                    $result['exception'] = 'id_producto incorrecto';
+                } elseif (!$detallefactu->setCantidad($_POST['cantidad'])) {
+                    $result['exception'] = 'cantidad no valida';
+                } elseif (!$detallefactu->setPrecioU($_POST['precioU'])) {
+                    $result['exception'] = 'precio no valida';
+                }elseif (!$detallefactu->setPreciototal($_POST['total'])) {
+                    $result['exception'] = 'precio no valida';
+                }elseif ($detallefactu->createDetalle()) {
                 } else {
                     $result['exception'] = Database::getException();;
                 }

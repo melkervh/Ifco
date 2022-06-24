@@ -113,9 +113,9 @@ class Clientes extends Validator
 public function createCliente()
 {
     $sql = 'INSERT INTO cliente(
-        nombre_cli, apellido_cli, "DUI")
-       VALUES ( ?, ?, ?)';
-    $params = array($this->nombre_cli, $this->apellido_cli, $this->DUI );
+        nombre_cli, apellido_cli, "DUI",departamento,)
+       VALUES ( ?, ?, ?,?)';
+    $params = array($this->nombre_cli, $this->apellido_cli, $this->DUI,$this->Departamento );
     return Database::executeRow($sql, $params);
 }
     
