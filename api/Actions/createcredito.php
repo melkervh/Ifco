@@ -1,8 +1,7 @@
 <?php
-<?php
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
-require_once('../models/crearfactura.php');
+require_once('../models/crearcredito.php');
 
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
@@ -10,7 +9,7 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $crearfactu = new createfactura;
+    $crearcredito = new createcredito;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -19,47 +18,57 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action'])
         {
-            case 'create':
-                $_POST = $crearfactu ->validateForm($_POST);
-                if (!$crearfactu ->setNombrecliente($_POST['nombre_cli'])) {
+            case 'createcliente':
+                $_POST = $crearcredito ->validateForm($_POST);
+                if (!$crearcredito->setNombrescliente($_POST['nombre_cli'])) {
                     $result['exception'] = 'nombre incorrecto';
-                } elseif (!$crearfactu->setApellidocliente($_POST['apellido'])) {
-                    $result['exception'] = 'apellido no vslido';
-                } elseif (!$crearfactu->setdui($_POST['DUI'])) {
+                } elseif (!$crearcredito->setApellidoscliente($_POST['apellido_cliente'])) {
+                    $result['exception'] = 'apellido no valido';
+                } elseif (!$crearcredito->setDUI($_POST['DUI'])) {
                     $result['exception'] = 'DUI no valida';
-                }elseif (!$crearfactu->setDepartamento($_POST['direccion'])) {
+                }elseif (!$crearcredito->setDepartamentoClie($_POST['departamento'])) {
                     $result['exception'] = 'direcion no valido';        
-                }elseif ($crearfactu->createCliente()) {
+                }elseif (!$crearcredito->setMunicipio($_POST['municipio'])) {
+                    $result['exception'] = 'direcion no valido';        
+                }elseif ($crearcredito->createClienteCredito()) {
                     $result['status'] = 1;
-                    $result['message'] = 'cliente creado' ;
+                    $result['message'] = 'factura creado' ;
                 } else {
                     $result['exception'] = Database::getException();;
                 }
                 break;
-                case 'createfactu':
-                  $_POST =$crearfactu->validateForm($_POST);
-                if (!$crearfactu->setventa($_POST['venta'])) {
-                $result['exception'] = 'dato de la venta incorrecto';
-                } elseif (!$crearfactu->setfecha($_POST['fecha'])) {
+                case 'createcredito':
+                  $_POST =$crearcredito->validateForm($_POST);
+                if (!$crearcredito->setNotamision($_POST['mision'])) {
+                $result['exception'] ='nota  incorrecto';
+                } elseif (!$crearcredito->setcondicion($_POST['condicion'])) {
+                    $result['exception'] ='condicion no valido';
+                }elseif (!$crearcredito->setgiro($_POST['giro'])) {
+                    $result['exception'] ='giro no valido';
+                }elseif (!$crearcredito->setVia($_POST['via'])) {
+                    $result['exception'] ='via no valido';
+                }elseif (!$crearcredito->setfechacre($_POST['fecha_cre'])) {
                         $result['exception'] = 'fecha no valida';
-                } elseif ($crearfactu->createfactura()) {
+                } elseif ($crearcredito->createCredito()) {
                         $result['status'] = 1;
-                        $result['message'] = 'factura creada' ;
+                        $result['message'] ='factura creada' ;
                 }else {
                         $result['exception'] = Database::getException();;
                 }
                 break;
-                case 'createdetalle':
-                $_POST = $crearfactu->validateForm($_POST);
-                if (!$crearfactu->setIdProducto($_POST['codigo'])) {
-                $result['exception'] = 'id_producto incorrecto';
-                }  elseif (!$crearfactu->setPrecioU($_POST['precioU'])) {
-                $result['exception'] = 'precio unidad no valido';
-                }elseif (!$crearfactu->setPrecioTotal($_POST['total'])) {
-                $result['exception'] = 'precio no valido';
-                }elseif (!$crearfactu-> setCantidadCom($_POST['cantidad'])) {
+                case 'createdetallecredi':
+                $_POST = $crearcredito->validateForm($_POST);
+                if (!$crearcredito->setIdProductoCre($_POST['codigo01'])) {
+                $result['exception'] = 'codigo no valido ';
+                } elseif (!$crearcredito->setNombrCre($_POST['nombre_pro'])) {
+                $result['exception'] = 'nombre del producto no valido';
+                }elseif (!$crearcredito->setCantidadCre($_POST['cantidad_cre'])) {
                 $result['exception'] = 'cantidad no valida';
-                }elseif ($crearfactu->createDetalle()) {
+                }elseif (!$crearcredito->setPrecioUni($_POST['precio_u'])) {
+                $result['exception'] = 'precio unidad no valido';
+                }elseif (!$crearcredito->setTotal($_POST['total'])) {
+                $result['exception'] = 'precio no valido';
+                }elseif ($crearcredito->createDetalleCre()) {
                 $result['status'] = 1;
                 $result['message'] = 'detalle creado' ;     
                 } else {

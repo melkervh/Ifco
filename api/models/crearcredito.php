@@ -137,7 +137,7 @@ class createcredito extends Validator
     public function setnumerocre($value)
     {
         if ($this->validateString($value)) {
-            $this->fecha_credito = $value;
+            $this->numero_credi = $value;
             return true;
         } else {
             return false;
@@ -156,7 +156,7 @@ class createcredito extends Validator
     public function setIdProductoCre($value)
     {
         if ($this->validateNaturalNumber($value)) {
-            $this->$id_producto = $value;
+            $this->id_producto = $value;
             return true;
         } else {
             return false;
@@ -213,9 +213,9 @@ class createcredito extends Validator
     public function createCredito()
     {
     $sql = 'INSERT INTO credito_fiscal(
-        nota_mision, condicion_pago, giro, via_a_cta_de, fecha_credito)
-       VALUES ( ?, ?, ?, ?, ?);';
-    $params = array($this->nota_mision,$this->condicion_pago,$this->giro,$this->via_a_cta_de,$this->fecha_credito);
+        nota_mision, condicion_pago, giro, via_a_cta_de, fecha_credito,numero_credi)
+       VALUES ( ?, ?, ?, ?,?,?);';
+    $params = array($this->nota_mision,$this->condicion_pago,$this->giro,$this->via_a_cta_de,$this->fecha_credito,$this->numero_credi);
     return Database::executeRow($sql, $params);
     }
     /* metodo de creacion de credito fiscal*/

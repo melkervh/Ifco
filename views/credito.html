@@ -18,116 +18,128 @@
     </header>
 
     <main class="container ">
-        <section class="bg-light container factura1 ">
-            <h5 class="nfa">N°factura</h5>
-            <h1 class="display-4 text titulofact">Factura</h1>
-        </section>
-        <div class="factura2">
-            <div class="row">
-                <div class="col-lg-4">
-                    <label for="formGroupExampleInput" class="form-label">Cliente</label>
-                    <input type="text" class="form-control" placeholder="Cambiar nombre" aria-label="First name">
-                </div>
-                <div class="col-lg-4">
-                    <label for="formGroupExampleInput" class="form-label">Direccion</label>
-                    <input type="text" class="form-control" placeholder="cambiar apellido" aria-label="Last name">
-                </div>
-                <div class="col-lg-4">
-                    <label for="formGroupExampleInput" class="form-label">Municipio</label>
-                    <input type="text" class="form-control" placeholder="cambiar apellido" aria-label="Last name">
-                </div>
-            </div>
-            <div class="clave">
-                <div class="row ">
+        <form method="post" id="save-form">
+            <section class="bg-light container factura1 ">
+                <h5 class="nfa">N°factura</h5>
+                <h1 class="display-4 text titulofact">Factura</h1>
+            </section>
+            <div class="factura2">
+                <div class="row">
                     <div class="col-lg-3">
-                        <label for="formGroupExampleInput" class="form-label">Departamento</label>
-                        <input type="text" class="form-control" placeholder="cambiar correo" aria-label="First name">
+                        <label for="nombre_cli" class="form-label">nombre</label>
+                        <input type="text" class="form-control" placeholder="Cambiar nombre" aria-label="First name"
+                            id="nombre_cli" name="nombre_cli">
                     </div>
                     <div class="col-lg-3">
-                        <label for="formGroupExampleInput" class="form-label">Nota de emicion </label>
-                        <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name">
+                        <label for="apellido_cliente" class="form-label">apellido</label>
+                        <input type="text" class="form-control" placeholder="Cambiar nombre" aria-label="First name"
+                            id="apellido_cliente" name="apellido_cliente">
                     </div>
                     <div class="col-lg-3">
-                        <label for="formGroupExampleInput" class="form-label">Condiciones de pago </label>
-                        <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name">
+                        <label for="departamento" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" placeholder="cambiar apellido" aria-label="Last name"
+                            id="departamento" name="departamento">
                     </div>
                     <div class="col-lg-3">
-                        <label for="formGroupExampleInput" class="form-label">Fecha </label>
-                        <input type="date" class="form-control" placeholder="cambiar clave" aria-label="Last name">
+                        <label for="municipio" class="form-label">Municipio</label>
+                        <input type="text" class="form-control" placeholder="cambiar apellido" aria-label="Last name"
+                            id="municipio" name="municipio">
                     </div>
                 </div>
-            </div>
-            <div class="clave">
-                <div class="row ">
-                    <div class="col-lg-3">
-                        <label for="formGroupExampleInput" class="form-label">Registro No: </label>
-                        <input type="text" class="form-control" placeholder="cambiar correo" aria-label="First name">
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="formGroupExampleInput" class="form-label">Giro</label>
-                        <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name">
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="formGroupExampleInput" class="form-label">Dui </label>
-                        <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name">
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="formGroupExampleInput" class="form-label">Via.a.Cta.de: </label>
-                        <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <section>
-            <div class="container agrefact">
-                <div class="row clearfix">
-                    <div class="col-md-12">
-                        <table class="table table-bordered table-hover" id="tab_logic">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th class="text-center"> # </th>
-                                    <th class="text-center"> codigo del producto </th>
-                                    <th class="text-center"> Nombre del producto </th>
-                                    <th class="text-center"> cantidad</th>
-                                    <th class="text-center"> precio</th>
-                                    <th class="text-center"> Total </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr id='addr0'>
-                                    <td>1</td>
-                                    <td><input type="text"  placeholder='codigo del producto'
-                                            class="form-control" /></td>
-                                    <td><input type="text"  placeholder='Nombre del producto'
-                                            class="form-control" /></td>
-                                    <td><input type="number"  placeholder='cantidad'
-                                            class="form-control qty" step="0" min="0" /></td>
-                                    <td><input type="number"  placeholder='Precio unidad'
-                                            class="form-control price" step="0.01" min="0.01" /></td>
-                                    <td><input type="number"  placeholder='0.00'
-                                            class="form-control total" readonly /></td>
-                                </tr>
-                                <tr id='addr1'></tr>
-                            </tbody>
-                        </table>
+                <div class="clave">
+                    <div class="row ">
+                        <div class="col-lg-3">
+                            <label for="mision" class="form-label">Nota de emicion </label>
+                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                                id="mision" name="mision">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="condicion" class="form-label">Condiciones de pago </label>
+                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                                id="condicion" name="condicion">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="fecha_cre" class="form-label">Fecha </label>
+                            <input type="date" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                                id="fecha_cre" name="fecha_cre">
+                        </div>
                     </div>
                 </div>
-                <div class="row clearfix">
-                    <div class="col-md-12">
-                        <a id="add_row" class="pull-right btn btn-default btngt colorfact">agregar
-                            producto</a>
-                        <a id='delete_row' class="pull-right btn btn-default btngt colorfact">eliminar
-                            producto</a>
-                    </div>
-                </div>
-                <div class="row clearfix" style="margin-top:20px">
-                    <div class="pull-right col-md-4">
-                        <button type="submit" class="pull-right btn btn-default btngt colorfact">guardar
-                            factura</button>
+                <div class="clave">
+                    <div class="row ">
+                        <div class="col-lg-3">
+                            <label for="giro" class="form-label">Giro</label>
+                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                                id="giro" name="giro">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="DUI" class="form-label">Dui </label>
+                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                                id="DUI" name="DUI">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="via" class="form-label">Via.a.Cta.de: </label>
+                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                                id="via" name="via">
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <section>
+                <div class="container agrefact">
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-hover" id="tab_logic">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th class="text-center"> # </th>
+                                        <th class="text-center"> codigo del producto </th>
+                                        <th class="text-center"> Nombre del producto </th>
+                                        <th class="text-center"> cantidad</th>
+                                        <th class="text-center"> precio</th>
+                                        <th class="text-center"> Total </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id='addr0'>
+                                        <td>1</td>
+                                        <td><input type="text" placeholder='codigo del producto' for="codigo01"
+                                                class="form-control" id="codigo01" name="codigo01" /></td>
+                                        <td><input type="text" placeholder='Nombre del producto' for="nombre_pro"
+                                                class="form-control" id="nombre_pro" name="nombre_pro" />
+                                        </td>
+                                        <td><input type="number" placeholder='cantidad' class="form-control qty"
+                                                step="0" min="0" for="cantidad_cre" id="cantidad_cre"
+                                                name="cantidad_cre" /></td>
+                                        <td><input type="number" placeholder='Precio unidad' class="form-control price"
+                                                step="0.01" min="0.01" for="precio_u" id="precio_u" name="precio_u" />
+                                        </td>
+                                        <td><input type="number" placeholder='0.00' class="form-control total"
+                                                for="total" id="total" name="total" />
+                                        </td>
+                                    </tr>
+                                    <tr id='addr1'></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <a id="add_row" class="pull-right btn btn-default btngt colorfact">agregar
+                                producto</a>
+                            <a id='delete_row' class="pull-right btn btn-default btngt colorfact">eliminar
+                                producto</a>
+                        </div>
+                    </div>
+                    <div class="row clearfix" style="margin-top:20px">
+                        <div class="pull-right col-md-4">
+                            <button type="submit" class="pull-right btn btn-default btngt colorfact">guardar
+                                factura</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
     </main>
     <footer>
 
@@ -137,6 +149,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../resources/js/funcionalida.js"></script>
+    <script src="../controllers/credito.js"></script>
     <script src="../controllers/acounst.js"></script>
 </body>
 
