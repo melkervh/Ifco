@@ -7,16 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
 document.getElementById('save-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    let actioncliente = 'createcliente';
-    let actioncredito = 'createcredito';
-    let actiondetallecredito = 'createdetallecredi';
+    let action = 'create';
+    let actionfactu = 'createfactuC';
+    let actiondetalle = 'createdetallec';
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
-    saveRowcredito(API_CREDITO , actioncredito,'save-form');
-    saveRowcliente(API_CREDITO , actioncliente,'save-form');
-    saveRowdetallecre(API_CREDITO , actiondetallecredito,'save-form');
+    saveRowFac(API_CREDITO , actionfactu,'save-form');
+    saveRowclien(API_CREDITO , action,'save-form');
+    saveRowdetalle(API_CREDITO , actiondetalle,'save-form');
 });
-function saveRowcredito(api, actioncredito, form) {
-    fetch(api + actioncredito , {
+function saveRowFac(api, actionfactu, form) {
+    fetch(api + actionfactu , {
         method: 'post',
         body: new FormData(document.getElementById(form))
     }).then(function (request) {
@@ -36,8 +36,8 @@ function saveRowcredito(api, actioncredito, form) {
         }
     });
 }
-function saveRowcliente(api, actioncliente, form) {
-    fetch(api + actioncliente , {
+function saveRowclien(api, action, form) {
+    fetch(api + action , {
         method: 'post',
         body: new FormData(document.getElementById(form))
     }).then(function (request) {
@@ -57,8 +57,8 @@ function saveRowcliente(api, actioncliente, form) {
         }
     });
 }
-function saveRowdetallecre(api, actiondetallecredito, form) {
-    fetch(api + actiondetallecredito , {
+function saveRowdetalle(api, actiondetalle, form) {
+    fetch(api + actiondetalle , {
         method: 'post',
         body: new FormData(document.getElementById(form))
     }).then(function (request) {

@@ -204,8 +204,8 @@ class createcredito extends Validator
     {
     $sql = 'INSERT INTO cliente(
     nombre_cli, apellido_cli, "DUI", departamento, municipio)
-    VALUES ( ?, ?, ?, ?, ?)';
-    $params = array($this->nombre_cliente, $this->apellido_cliente, $this->DUI_cli,$this->Departamento_clien,$this->municipio );
+    VALUES ( ?, ?, ?, ?, ?);';
+    $params = array($this->nombre_cliente, $this->apellido_cliente, $this->DUI_cli,$this->Departamento_clien,$this->municipio);
     return Database::executeRow($sql, $params);
     }
 
@@ -213,9 +213,9 @@ class createcredito extends Validator
     public function createCredito()
     {
     $sql = 'INSERT INTO credito_fiscal(
-        nota_mision, condicion_pago, giro, via_a_cta_de, fecha_credito,numero_credi)
-       VALUES ( ?, ?, ?, ?,?,?);';
-    $params = array($this->nota_mision,$this->condicion_pago,$this->giro,$this->via_a_cta_de,$this->fecha_credito,$this->numero_credi);
+        nota_mision, condicion_pago, giro, via_a_cta_de, fecha_credito)
+       VALUES ( ?, ?, ?, ?,?);';
+    $params = array($this->nota_mision,$this->condicion_pago,$this->giro,$this->via_a_cta_de,$this->fecha_credito);
     return Database::executeRow($sql, $params);
     }
     /* metodo de creacion de credito fiscal*/

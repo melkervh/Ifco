@@ -25,24 +25,25 @@
             </section>
             <div class="factura2">
                 <div class="row">
+                    <input class="hidden" style="visibility:hidden;" type="number" id="id_cliente" name="id_cliente">
                     <div class="col-lg-3">
                         <label for="nombre_cli" class="form-label">nombre</label>
-                        <input type="text" class="form-control" placeholder="Cambiar nombre" aria-label="First name"
+                        <input type="text" class="form-control" placeholder=" nombre" aria-label="First name"
                             id="nombre_cli" name="nombre_cli">
                     </div>
                     <div class="col-lg-3">
                         <label for="apellido_cliente" class="form-label">apellido</label>
-                        <input type="text" class="form-control" placeholder="Cambiar nombre" aria-label="First name"
-                            id="apellido_cliente" name="apellido_cliente">
+                        <input type="text" class="form-control" placeholder="apellido" aria-label="First name"
+                            id="apellido_cliente" name="apellido_cli">
                     </div>
                     <div class="col-lg-3">
                         <label for="departamento" class="form-label">Direccion</label>
-                        <input type="text" class="form-control" placeholder="cambiar apellido" aria-label="Last name"
+                        <input type="text" class="form-control" placeholder="Direccion" aria-label="Last name"
                             id="departamento" name="departamento">
                     </div>
                     <div class="col-lg-3">
                         <label for="municipio" class="form-label">Municipio</label>
-                        <input type="text" class="form-control" placeholder="cambiar apellido" aria-label="Last name"
+                        <input type="text" class="form-control" placeholder="municipio" aria-label="Last name"
                             id="municipio" name="municipio">
                     </div>
                 </div>
@@ -50,18 +51,18 @@
                     <div class="row ">
                         <div class="col-lg-3">
                             <label for="mision" class="form-label">Nota de emicion </label>
-                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                            <input type="text" class="form-control" placeholder="Nota de emicion" aria-label="Last name"
                                 id="mision" name="mision">
                         </div>
                         <div class="col-lg-3">
                             <label for="condicion" class="form-label">Condiciones de pago </label>
-                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                            <input type="text" class="form-control" placeholder="Condiciones de pago cambiar clave" aria-label="Last name"
                                 id="condicion" name="condicion">
                         </div>
                         <div class="col-lg-3">
-                            <label for="fecha_cre" class="form-label">Fecha </label>
-                            <input type="date" class="form-control" placeholder="cambiar clave" aria-label="Last name"
-                                id="fecha_cre" name="fecha_cre">
+                            <label for="fecha" class="form-label">Fecha </label>
+                            <input type="date" class="form-control" placeholder="Fecha" aria-label="Last name"
+                                id="fecha" name="fecha">
                         </div>
                     </div>
                 </div>
@@ -69,19 +70,20 @@
                     <div class="row ">
                         <div class="col-lg-3">
                             <label for="giro" class="form-label">Giro</label>
-                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                            <input type="text" class="form-control" placeholder="Giro" aria-label="Last name"
                                 id="giro" name="giro">
                         </div>
                         <div class="col-lg-3">
                             <label for="DUI" class="form-label">Dui </label>
-                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                            <input type="text" class="form-control" placeholder="Dui" aria-label="Last name"
                                 id="DUI" name="DUI">
                         </div>
                         <div class="col-lg-3">
                             <label for="via" class="form-label">Via.a.Cta.de: </label>
-                            <input type="text" class="form-control" placeholder="cambiar clave" aria-label="Last name"
+                            <input type="text" class="form-control" placeholder="Via.a.Cta.de:" aria-label="Last name"
                                 id="via" name="via">
                         </div>
+                        <input class="hidden" style="visibility:hidden;" type="number" id="id_fiscal" name="id_fiscal">
                     </div>
                 </div>
             </div>
@@ -109,8 +111,8 @@
                                                 class="form-control" id="nombre_pro" name="nombre_pro" />
                                         </td>
                                         <td><input type="number" placeholder='cantidad' class="form-control qty"
-                                                step="0" min="0" for="cantidad_cre" id="cantidad_cre"
-                                                name="cantidad_cre" /></td>
+                                                step="0" min="0" for="cantidad" id="cantidad"
+                                                name="cantidad" /></td>
                                         <td><input type="number" placeholder='Precio unidad' class="form-control price"
                                                 step="0.01" min="0.01" for="precio_u" id="precio_u" name="precio_u" />
                                         </td>
