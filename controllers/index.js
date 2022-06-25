@@ -13,7 +13,7 @@ function openShowFechas() {
 
     // Petición para obtener los datos del registro solicitado.
     fetch(API_PRODUCTOS + 'showFechas', {
-        method: 'post'
+        method: 'get'
     }).then(function (request) {
 
         // Se verifica si la petición es correcta.
@@ -57,7 +57,7 @@ function openShowFechasc() {
 
     // Petición para obtener los datos del registro solicitado.
     fetch(API_PRODUCTOS + 'showFechasc', {
-        method: 'post'
+        method: 'get'
     }).then(function (request) {
 
         // Se verifica si la petición es correcta.
