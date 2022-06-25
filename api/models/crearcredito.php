@@ -203,9 +203,9 @@ class createcredito extends Validator
     public function createClienteCredito()
     {
     $sql = 'INSERT INTO cliente(
-    nombre_cli, apellido_cli, "DUI", departamento, municipio)
+    nombre_cli, apellido_cli, "DUI", departamento)
     VALUES ( ?, ?, ?, ?, ?);';
-    $params = array($this->nombre_cliente, $this->apellido_cliente, $this->DUI_cli,$this->Departamento_clien,$this->municipio);
+    $params = array($this->nombre_cliente, $this->apellido_cliente, $this->DUI_cli,$this->Departamento_clien);
     return Database::executeRow($sql, $params);
     }
 

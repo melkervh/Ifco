@@ -26,9 +26,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'apellido no vslido';
                 } elseif (!$createcredito ->setDUI($_POST['DUI'])) {
                     $result['exception'] = 'DUI no valida';
-                }elseif (!$createcredito ->setDepartamentoClie($_POST['departamento'])) {
-                    $result['exception'] = 'direcion no valido';        
-                }elseif (!$createcredito ->setMunicipio($_POST['municipio'])) {
+                }elseif (!$createcredito ->setDepartamentoClie($_POST['direccion'])) {
                     $result['exception'] = 'direcion no valido';        
                 }elseif ( $createcredito ->createClienteCredito()) {
                     $result['status'] = 1;
