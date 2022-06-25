@@ -20,7 +20,8 @@ class createcredito extends Validator
     private $id_detallecre = null;
     private $id_producto = null;
     private $nombre_cre = null;
-    private $precio_uni = null;
+    private $cantidad_cre = null;
+    private $precio_u = null;
     private $total = null;
 
     /* set del cliente */
@@ -170,10 +171,10 @@ class createcredito extends Validator
             return false;
         }
     }
-    public function setNombrCre($value)
+    public function setCantidadCre($value)
     {
         if ($this->validateString($value, 1, 50)) {
-            $this->nombre_cre= $value;
+            $this->cantidad_cre= $value;
             return true;
         } else {
             return false;
@@ -182,7 +183,7 @@ class createcredito extends Validator
     public function setPrecioUni($value)
     {
         if ($this->validateAlphanumeric($value, 1, 50)) {
-            $this->precio_uni= $value;
+            $this->precio_u= $value;
             return true;
         } else {
             return false;
@@ -223,7 +224,7 @@ class createcredito extends Validator
     $sql = 'INSERT INTO detalle_credito(
         id_producto, nombre_cre, cantidad_cre, precio_u, total)
         VALUES ( ?, ?, ?, ?, ?);';
-    $params = array($this->,);
+    $params = array($this->id_producto,$this->nombre_cre,$this->cantidad_cre,$this->precio_u,$this->total);
     return Database::executeRow($sql, $params);
     }
 }
