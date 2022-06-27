@@ -7,13 +7,11 @@ class Historial extends Validator{
     /* Método para cargar el historial ....................................................... */
     public function readAll()
     {
-        $sql = 'SELECT id_factura, nombre_cli, fecha_fn
-                FROM factura f
-                INNER JOIN factura_normal fn
-                ON f.id_fact_nor = fn.id_fact_nor
-                INNER JOIN cliente c
-                ON f.id_cliente = c.id_cliente
-                ORDER BY fecha_fn DESC';
+        $sql = 'SELECT id_fact_nor, nombre_cli, fecha_fn
+        FROM factura_normal
+        INNER JOIN cliente c
+        ON id_cliente = c.id_cliente
+        ORDER BY fecha_fn DESC';
         $params = null;
         return Database::getRows($sql, $params);
     }
