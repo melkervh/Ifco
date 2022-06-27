@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>historial</title>
     <!--CSS bootstrap-->
-    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
 </head>
@@ -21,8 +20,8 @@
             <div class="historial">
                 <nav class="navbar ">
                     <div class="container-fluid">
-                      <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <form class="d-flex" role="search" method="post" id="search-form">
+                        <input class="form-control me-2" type="search" name="search" id="search" placeholder="Buscar por nombre del cliente ..." aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit">Search</button>
                       </form>
                     </div>
@@ -37,90 +36,7 @@
                             <th scope="col" class="texte">VISTA</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row" class="texto2">1</td>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Billy</td>
-                            <td class="texto3">7-7-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                        role="button">Vista</a>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td scope="row" class="texto2">2</td>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Paola</td>
-                            <td class="texto3">20-3-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                    role="button">Vista</a>
-                        </tr>
-                        <tr>
-                            <td scope="row" class="texto2">3</td>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Erick</td>
-                            <td class="texto3">17-9-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                    role="button">Vista</a>
-                        </tr>
-                        <tr>
-                            <td scope="row" class="texto2">4</td>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Sofia</td>
-                            <td class="texto3">17-9-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                    role="button">Vista</a>
-                        </tr>
-                        <tr>
-                            <td scope="row" class="texto2">5</td>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Fatima</td>
-                            <td class="texto3">17-9-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                    role="button">Vista</a>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="texto2">6</th>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Elena</td>
-                            <td class="texto3">17-9-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                    role="button">Vista</a>
-                        </tr>
-                        <tr>
-                            <td scope="row" class="texto2">7</td>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Mario</td>
-                            <td class="texto3">17-9-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                    role="button">Vista</a>
-                        </tr>
-                        <tr>
-                            <td class="texto2">8</td>
-                                <td class="texto3">pdf</td>
-                                <td class="texto3">Carlos</td>
-                                <td class="texto3">17-9-22</td>
-                                <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                        role="button">Vista</a>
-                        </tr>
-                        <tr>
-                            <td scope="row" class="texto2">9</td>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Valeria</td>
-                            <td class="texto3">17-9-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                    role="button">Vista</a>
-                        </tr>
-                        <tr>
-                            <td scope="row" class="texto2">10</td>
-                            <td class="texto3">pdf</td>
-                            <td class="texto3">Erika</td>
-                            <td class="texto3">17-9-22</td>
-                            <td class="texto3"> <a class="btn btn-primary" href="modificar_prover.html"
-                                    role="button">Vista</a>
-                        </tr>
-                    </tbody>
+                    <tbody id="historial-tabla"></tbody>
                 </table>
             </div>
             </section>
@@ -132,6 +48,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/acounst.js"></script>
+    <script src="../controllers/historial.js"></script>
 </body>
 
 </html>

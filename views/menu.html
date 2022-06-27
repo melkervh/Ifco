@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <!--CSS bootstrap-->
-    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
 </head>
@@ -98,14 +97,14 @@
         <div class="contenedortbad">
             <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                    <button onclick="openShowFechas()" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                         aria-selected="true">productos recientes</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                    <button onclick="openShowFechasc()" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                        aria-selected="false">fecha corta</button>
+                        aria-selected="false">Fecha corta</button>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -116,40 +115,12 @@
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">cantidad</th>
-                                    <th scope="col">unidad</th>
                                     <th scope="col">costo</th>
                                     <th scope="col">fecha</th>
                                 </tr>
                             </thead>
                             <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                            <tbody>
-                                <tr>
-                                    <td>arroz</td>
-                                    <!--Primera columna-->
-                                    <td>4</td>
-                                    <!--Segunda columna-->
-                                    <td>56</td>
-                                    <!--Tercera columna-->
-                                    <td>$86</td>
-                                    <!--Cuarta columna-->
-                                    <td>23/04/2022</td>
-                                    <!--Quinta columna-->
-                                </tr>
-                                <tr>
-                                    <td>coca-cola</td>
-                                    <td>6</td>
-                                    <td>80</td>
-                                    <td>$89.99</td>
-                                    <td>23/04/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>capullo</td>
-                                    <td>2</td>
-                                    <td>48</td>
-                                    <td>$64.09</td>
-                                    <td>23/04/2022</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="productos-tabla"></tbody>
                         </table>
                     </div>
                 </div>
@@ -165,31 +136,7 @@
                                 </tr>
                             </thead>
                             <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                            <tbody>
-                                <tr>
-                                    <td>frigol</td>
-                                    <!--Primera columna-->
-                                    <td>2</td>
-                                    <!--Segunda columna-->
-                                    <td>30</td>
-                                    <!--Tercera columna-->
-                                    <!--Cuarta columna-->
-                                    <td>23/03/2022</td>
-                                    <!--Quinta columna-->
-                                </tr>
-                                <tr>
-                                    <td>revive</td>
-                                    <td>3</td>
-                                    <td>65</td>
-                                    <td>26/03/2022</td>
-                                </tr>
-                                <tr>
-                                    <td>california</td>
-                                    <td>2</td>
-                                    <td>24</td>
-                                    <td>01/04/2022</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="productosrec-tabla"></tbody>
                         </table>
                     </div>
                 </div>
@@ -206,6 +153,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/acounst.js"></script>
+    <script src="../controllers/index.js"></script> 
     
 </body>
 
