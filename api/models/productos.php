@@ -95,5 +95,49 @@ class inventario extends Validator
             return false;
         }
     }
+
+    /*
+    *   Métodos para obtener valores de los atributos.
+    */
+    public function getIProducto()
+    {
+        return $this->id_producto;
+    }
+
+    public function getNombreProducto()
+    {
+        return $this->nombre_prodroducto;
+    }
+
+    public function getCantidadProducto()
+    {
+        return $this->cantidad_prodroducto;
+    }
+
+    public function getDescripcionProducto()
+    {
+        return $this->descripcion_producto;
+    }
+
+    public function getEstadoProducto()
+    {
+        return $this->estado_producto;
+    }
+
+    public function getPrecioProducto()
+    {
+        return $this->precio_unidad;
+    }
+
+    public function getIdMarca()
+    {
+        return $this->id_marca;
+    }
+
+    public function getIdUsuario()
+    {
+        return $this->id_usuario;
+    }
+
 }
 ?>
