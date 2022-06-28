@@ -20,12 +20,12 @@
         <div class="row">
             <div class="col">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productosmo">
                     Agregar Producto
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="productosmo" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -81,9 +81,9 @@
                                 </div>
                                 <br>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
+                                    <button type="submit" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary">Guardar</button>
+                                    <button type="submit" class="btn btn-primary" id="buscaa">Guardar</button>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +191,7 @@
                                 <div class="container-fluid">
                                   <form class="d-flex" role="search">
                                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-primary" type="submit">Guardar</button>
+                                    <button class="btn btn-outline-primary" type="submit">Buscar</button>
                                   </form>
                                 </div>
                               </nav>
@@ -204,12 +204,12 @@
                                         <th scope="col">descripcion</th>
                                         <th scope="col">estado</th>
                                         <th scope="col">marca</th>
-                                        <th scope="col">tipo producto</th>
                                         <th scope="col">precio unitario</th>
+                                        <th scope="col">acciones</th>
                                     </tr>
                                 </thead>
                                 <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                                <tbody>
+                                <tbody id="producto">
                                 </tbody>
                             </table>
                         </div>
@@ -270,9 +270,11 @@
 <footer></footer>
             <!--JS bootstrap-->
             <script src="../resources/js/bootstrap.min.js"></script>
+            <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script src="../controllers/components.js"></script>
             <script src="../controllers/acounst.js"></script>
+            <script src="../controllers/productos.js"></script>
 </body>
 
 </html>

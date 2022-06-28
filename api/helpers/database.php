@@ -18,7 +18,7 @@ class Database
         $server = 'localhost';
         $database = 'ifco';
         $username = 'postgres';
-        $password = 'admin';
+        $password = '1234';
 
         // Se crea la conexión mediante la extensión PDO y el controlador para PostgreSQL.
         self::$connection = new PDO('pgsql:host=' . $server . ';dbname=' . $database . ';port=5432', $username, $password);
