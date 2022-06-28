@@ -67,6 +67,7 @@ if (isset($_GET['action'])) {
                 $result['message'] = 'detalle creado' ;     
                 } else {
                 $result['exception'] = Database::getException();;
+                $result['message'] = 'no se logro crear la factura completa' ; 
                 }
                 break;
             default:
