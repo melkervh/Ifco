@@ -37,7 +37,7 @@ class Historial extends Validator
         $sql = 'SELECT id_fact_nor , nombre_cli, fecha_fn
         FROM factura_normal
         INNER JOIN cliente 
-        ON id_cliente = id_cliente
+        ON id_cliente = id_cliente                                                
         WHERE nombre_cli ILIKE ?';
         $params = array("%$value%");
         Database::getRows($sql, $params);
