@@ -115,12 +115,12 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA">
                     agregar usuario
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="usuaiosA" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -131,35 +131,18 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row">
+                                    <input class="hidden" style="visibility:hidden;" type="number" id="idtip" name="id_usuario">
                                     <div class="col-lg-4">
                                         <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="First name">
+                                        <input type="text" class="form-control" placeholder="" aria-label="First name" name="nombre_usuario" id="nombre_usuario">
                                     </div>
                                     <div class="col-lg-4">
                                         <label for="formGroupExampleInput" class="form-label">Apellido</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name" name="apellido_usuarios" id="apellido_usuario">
                                     </div>
                                     <div class="col-lg-4">
                                         <label for="formGroupExampleInput" class="form-label">Correo</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
-                                    </div>
-                                </div>
-                                <div class="clave">
-                                    <div class="row ">
-                                        <div class="col-lg-4">
-                                            <label for="formGroupExampleInput" class="form-label">Clave </label>
-                                            <input type="password" class="form-control" placeholder=""
-                                                aria-label="First name">
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <label for="formGroupExampleInput" class="form-label">Cargo</label>
-                                            <select class="form-select" id="floatingSelect"
-                                                aria-label="Floating label select example">
-                                                <option selected>Seleccione una opcion</option>
-                                                <option value="1">Administrador</option>
-                                                <option value="2">Empleado</option>
-                                            </select>
-                                        </div>
+                                        <input type="text" class="form-control" placeholder="" aria-label="Last name" name="correo_usuario" id="correo_usuario">
                                     </div>
                                 </div>
                             </div>
@@ -212,38 +195,12 @@
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Apellido</th>
                                             <th scope="col">Correo</th>
-                                            <th scope="col">Clave</th>
-                                            <th scope="col">Cargo</th>
+                                            <th scope="col">acciones</th>
                                         </tr>
                                     </thead>
                                     <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                                    <tbody>
-                                        <tr>
-                                            <td>Edgar</td>
-                                            <!--Primera columna-->
-                                            <td>Hernandez</td>
-                                            <!--Segunda columna-->
-                                            <td>edgar@gmail.com</td>
-                                            <!--Tercera columna-->
-                                            <td>1111</td>
-                                            <!--Cuarta columna-->
-                                            <td>Empleado</td>
-                                            <!--Quinta columna-->
-                                        </tr>
-                                        <tr>
-                                            <td>David</td>
-                                            <td>Paz</td>
-                                            <td>david@gmail.com</td>
-                                            <td>1112</td>
-                                            <td>Empleado</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Flor</td>
-                                            <td>Perez</td>
-                                            <td>Flor@gmail.com</td>
-                                            <td>1113</td>
-                                            <td>Administrador</td>
-                                        </tr>
+                                    <tbody id="usuarios-tabla">
+                                
                                     </tbody>
                                 </table>
                             </div>
@@ -253,8 +210,8 @@
                             <div class="Listas">
                                 <nav class="navbar ">
                                     <div class="container-fluid">
-                                      <form class="d-flex" role="search">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                      <form class="d-flex" role="search" method="post" id="search-form">
+                                        <input class="form-control me-2" type="search" name="search" id="search" placeholder="Buscar por nombre del cliente ..." aria-label="Search">
                                         <button class="btn btn-outline-primary" type="submit">Search</button>
                                       </form>
                                     </div>
@@ -349,8 +306,10 @@
     <footer></footer>
     <!--JS bootstrap-->
     <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
+    <script src="../controllers/usuarios.js"></script>
     <script src="../controllers/acounst.js"></script>
 </body>
 

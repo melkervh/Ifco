@@ -1,14 +1,14 @@
 <?php
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
-require_once('../models/productos.php');
+require_once('../models/detalle.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $productos = new Productos;
+    $detalles = new  Detalles;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     
@@ -21,7 +21,7 @@ if (isset($_GET['action'])) {
 
             // Evalua y consulta los registros para cargar la primera tabla 
             case 'showFechas':
-                if ($result['dataset'] = $productos->readAllFechas()) {
+                if ($result['dataset'] = $detalles->readAllFechas()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -32,7 +32,7 @@ if (isset($_GET['action'])) {
 
             // Evalua y consulta los registros para cargar la segunda tabla.
             case 'showFechasc':
-                if ($result['dataset'] = $productos->readAllFechaCorta()) {
+                if ($result['dataset'] = $detalles->readAllFechaCorta()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -41,20 +41,20 @@ if (isset($_GET['action'])) {
                 }
             break;
             case 'createdetalle':
-                $_POST = $productos->validateForm($_POST);
-                if (!$productos->setIdProducto($_POST['codigo'])) {
+                $_POST = $detalles->validateForm($_POST);
+                if (!$detalles->setIdProducto($_POST['codigo'])) {
                 $result['exception'] = 'id_producto incorrecto';
-                } elseif (!$productos->setnombre_com($_POST['nombre_com'])) {
+                } elseif (!$detalles->setnombre_com($_POST['nombre_com'])) {
                     $result['exception'] = 'nombre no valido';
-                } elseif (!$productos->setPrecioU($_POST['precioU'])) {
+                } elseif (!$detalles->setPrecioU($_POST['precioU'])) {
                 $result['exception'] = 'precio unidad no valido';
-                }elseif (!$productos->setPrecioTotal($_POST['total'])) {
+                }elseif (!$detalles->setPrecioTotal($_POST['total'])) {
                 $result['exception'] = 'precio no valido';
-                }elseif (!$productos-> setCantidadCom($_POST['cantidad'])) {
+                }elseif (!$detalles-> setCantidadCom($_POST['cantidad'])) {
                 $result['exception'] = 'cantidad no valida';
-                }elseif (!$productos->setfact_nor($_POST['codigo2'])) {
+                }elseif (!$detalles->setfact_nor($_POST['codigo2'])) {
                     $result['exception'] = 'codigo factura no valido';
-                }elseif ($productos->createDetalle()) {
+                }elseif ($detalles->createDetalle()) {
                 $result['status'] = 1;
                 $result['message'] = 'detalle creado' ;     
                 } else {

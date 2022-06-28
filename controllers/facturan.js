@@ -1,5 +1,5 @@
 const API_FACTURA = SERVER + 'Actions/facturanormal.php?action=';
-const API_DETALLE= SERVER + 'Actions/productos.php?action=';
+const API_DETALLES= SERVER + 'Actions/productos.php?action=';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
@@ -14,7 +14,7 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
     saveRowFac(API_FACTURA , actionfactu,'save-form');
     saveRowclien(API_FACTURA , action,'save-form');
-    saveRowdetalle(API_DETALLE , actiondetalle,'save-form');
+    saveRowdetalle(API_DETALLES , actiondetalle,'save-form');
 });
 function saveRowFac(api, actionfactu, form) {
     fetch(api + actionfactu , {

@@ -129,15 +129,15 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = $usuario->validateForm($_POST);
-                if (!$usuario->setId($_POST['id'])) {
+                if (!$usuario->setId($_POST['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$usuario->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif (!$usuario->setNombres($_POST['nombres'])) {
+                } elseif (!$usuario->setNombres($_POST['nombre_usuario'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+                } elseif (!$usuario->setApellidos($_POST['apellido_usuario'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
+                } elseif (!$usuario->setCorreo($_POST['correo_usuario'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } elseif ($usuario->updateRow()) {
                     $result['status'] = 1;
