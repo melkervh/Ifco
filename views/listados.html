@@ -115,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA" onclick="openCreate()">
                     agregar usuario
                 </button>
 
@@ -130,31 +130,53 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="row">
-                                    <input class="hidden" style="visibility:hidden;" type="number" id="idtip" name="id_usuario">
-                                    <div class="col-lg-4">
-                                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="First name" name="nombre_usuario" id="nombre_usuario">
+                                <form method="post" id="save-form">
+                                    <div class="row">
+                                        <input class="hidden" style="visibility:hidden;" type="number" id="id_usuario"
+                                            name="id_usuario">
+                                        <div class="col-lg-6">
+                                            <label for="nombre_usuario" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" placeholder=""
+                                                aria-label="First name" name="nombre_usuario" id="nombre_usuario">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="apellido_usuario" class="form-label">Apellido</label>
+                                            <input type="text" class="form-control" placeholder=""
+                                                aria-label="Last name" name="apellido_usuario" id="apellido_usuario">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label for="correo_usuario" class="form-label">Correo</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="Last name" name="correo_usuario" id="correo_usuario">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="clave_usuario" class="form-label">clave</label>
+                                                <input type="password" class="form-control" placeholder=""
+                                                    aria-label="First name" name="clave_usuario" id="clave_usuario">
+                                            </div>
+                                             <div class="col-lg-6">
+                                                <label for="confirmar" class="form-label">clave</label>
+                                             <input type="password" class="form-control" placeholder=""
+                                                    aria-label="First name" name="confirmar" id="confirmar">
+                                            </div>
+                    
+                                        </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <label for="formGroupExampleInput" class="form-label">Apellido</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name" name="apellido_usuarios" id="apellido_usuario">
+                                    <div class="modal-footer">
+                                        <button type="reset" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary" data-tooltip="Guardar" id="save-modal">guardar </button>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <label for="formGroupExampleInput" class="form-label">Correo</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name" name="correo_usuario" id="correo_usuario">
-                                    </div>
-                                </div>
+                                </form>
+
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary">guardar </button>
-                            </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <div class="separa">
         <main class="container-xl">
@@ -183,15 +205,17 @@
                             <div class="Listas">
                                 <nav class="navbar ">
                                     <div class="container-fluid">
-                                      <form class="d-flex" role="search">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                                      </form>
+                                        <form class="d-flex" role="search" method="post" id="search-form" >
+                                            <input class="form-control me-2" type="search" placeholder="Search"
+                                                aria-label="Search" name="search" id="search">
+                                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                                        </form>
                                     </div>
-                                  </nav>
+                                </nav>
                                 <table class="table table-borderless">
                                     <thead class="table-dark">
                                         <tr>
+                                            <th scope="col">ID</th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Apellido</th>
                                             <th scope="col">Correo</th>
@@ -200,7 +224,7 @@
                                     </thead>
                                     <!--Relleno cada columna con datos temporales con el siguiente orden-->
                                     <tbody id="usuarios-tabla">
-                                
+
                                     </tbody>
                                 </table>
                             </div>
@@ -210,12 +234,13 @@
                             <div class="Listas">
                                 <nav class="navbar ">
                                     <div class="container-fluid">
-                                      <form class="d-flex" role="search" method="post" id="search-form">
-                                        <input class="form-control me-2" type="search" name="search" id="search" placeholder="Buscar por nombre del cliente ..." aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                                      </form>
+                                        <form class="d-flex" role="search" method="post" id="search-form">
+                                            <input class="form-control me-2" type="search" name="search" id="search"
+                                                placeholder="Buscar por nombre del cliente ..." aria-label="Search">
+                                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                                        </form>
                                     </div>
-                                  </nav>
+                                </nav>
                                 <table class="table table-borderless">
                                     <thead class="table-dark">
                                         <tr>
@@ -253,12 +278,13 @@
                             <div class="Listas">
                                 <nav class="navbar ">
                                     <div class="container-fluid">
-                                      <form class="d-flex" role="search">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                                      </form>
+                                        <form class="d-flex" role="search">
+                                            <input class="form-control me-2" type="search" placeholder="Search"
+                                                aria-label="Search">
+                                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                                        </form>
                                     </div>
-                                  </nav>
+                                </nav>
                                 <table class="table table-borderless">
                                     <thead class="table-dark">
                                         <tr>

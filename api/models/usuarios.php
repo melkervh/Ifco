@@ -163,10 +163,10 @@ class Usuarios extends Validator
      //Buscar un Usuarios//
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario , clave_usuario
                 FROM usuario
                 WHERE id_usuario = ?';
-        $params = array($this->id);
+        $params = array($this->id_usuario);
         return Database::getRow($sql, $params);
     }
 

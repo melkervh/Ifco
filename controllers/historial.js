@@ -33,7 +33,6 @@ function fillTable(dataset) {
     // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
     document.getElementById('historial-tabla').innerHTML = content;
 }
-
 // Buscador.
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
 document.getElementById('search-form').addEventListener('submit', function (event) {
