@@ -44,7 +44,17 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
             break;
-
+            case 'readAlld':
+                if (!$historial->setidPedido($_POST['id'])) {
+                    $result['exception'] = 'Pedido incorrecto';
+                } elseif ($result['dataset'] = $historial->readAlld()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Pedido inexistente';
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }

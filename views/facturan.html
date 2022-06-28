@@ -72,8 +72,10 @@
                                 <tr>
                                     <th class="text-center"> # </th>
                                     <th class="text-center"> codigo del producto </th>
+                                    <th class="text-center"> nombre producto </th>
                                     <th class="text-center"> cantidad</th>
                                     <th class="text-center"> precio</th>
+                                    <th class="text-center"> codigo factura </th>
                                     <th class="text-center"> Total </th>
                                 </tr>
                             </thead>
@@ -81,7 +83,10 @@
                                 <tr id='addr0'>
                                     <td>1</td>
                                     <td><input type="text"  placeholder='codigo del producto'
-                                        for="codigo"  class="form-control" id="codigo" name="codigo" />
+                                        for="id_producto"  class="form-control" id="id_producto" name="id_producto" />
+                                    </td>
+                                    <td><input type="text"  placeholder='codigo del producto'
+                                        for="nombre_com"  class="form-control" id="nombre_com" name="nombre_com" />
                                     </td>
                                     <td><input type="number"  placeholder='cantidad'
                                         for="cantidad"  class="form-control qty" step="0" min="0" id="cantidad" name="cantidad" />
@@ -89,6 +94,9 @@
                                     <td><input type="number"  placeholder='Precio unidad'
                                         for="precioU"   class="form-control price" step="0.01" min="0.01" id="precioU"
                                             name="precioU" /></td>
+                                            <td><input type="number"  placeholder='Precio unidad'
+                                                for="codigo2"   class="form-control" id="codigo2"
+                                                    name="codigo2" /></td>
                                     <td><input type="number" placeholder='0.00'
                                         for="total"   class="form-control total" id="total" name="total"  />
                                     </td>

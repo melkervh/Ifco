@@ -14,9 +14,29 @@ class createfactura extends Validator{
     private $venta= null;
     private $fecha= null;
     private $Numero= null;
+    private $nombre_com= null;
+    private $id_fact_nor= null;
         /*
     *   Métodos para validar y asignar valores de los atributos.
     */
+    public function setnombre_com($value)
+    {
+        if ($this->validateString($value, 1, 50)) {
+            $this->nombre_com= $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setfact_nor($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->id_fact_nor= $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function setIdCliente($value)
     {
         if ($this->validateNaturalNumber($value)) {
@@ -156,9 +176,9 @@ class createfactura extends Validator{
     public function createDetalle()
     {
     $sql = 'INSERT INTO detalle_factura(
-    id_producto, precio_u, precio_total,cantidad_com)
-    VALUES ( ?, ?, ?, ?)';
-    $params = array($this->id_producto, $this->precio_u, $this->precio_total, $this->cantidad_com);
+        id_producto, nombre_com, precio_u, precio_total, cantidad_com, id_fact_nor)
+       VALUES ( ?, ?, ?, ?, ?, ?)';
+    $params = array($this->id_producto,$this->nombre_com ,$this->precio_u, $this->precio_total, $this->cantidad_com,$this->id_fact_nor);
     return Database::executeRow($sql, $params);
     }
 
