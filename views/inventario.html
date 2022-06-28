@@ -36,46 +36,46 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row">
+                                    <input class="hidden" style="visibility:hidden;" type="number" id="id_usuario" name="id_usuario">
                                     <div class="col-lg-6">
-                                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input id="nombre" type="text" name="nombre" class="form-control" placeholder="" aria-label="">
                                     </div>
                                     <div class="col-lg-6">
-                                        <label for="formGroupExampleInput" class="form-label">Cantidad</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
+                                        <label for="cantidad" class="form-label">Cantidad</label>
+                                        <input id="cantidad" type="number" name="cantidad" min="1" max="99" class="form-control" placeholder="" aria-label="">
                                     </div>
                                 </div>
                                 <div class="clave">
                                     <div class="row ">
                                         <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">Descripcion</label>
-                                            <input type="password" class="form-control" placeholder=""
+                                            <label for="descripcion" class="form-label">Descripcion</label>
+                                            <input id="descripcion" type="text" name="descripcion"class="form-control" placeholder=""
                                                 aria-label="First name">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">Marca</label>
-                                            <select class="form-select" id="floatingSelect"
+                                            <label for="categoria" class="form-label">Marca</label>
+                                            <select class="form-select" id="marca" name="marca"
                                                 aria-label="Floating label select example">
-                                                <option selected></option>
-                                                <option value="1"></option>
-                                                <option value="2"></option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row ">
                                         <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">Estado</label>
-                                            <select class="form-select" id="floatingSelect"
-                                                aria-label="Floating label select example">
-                                                <option selected></option>
-                                                <option value="1"></option>
-                                                <option value="2"></option>
-                                            </select>
+                                            <label for="precio" class="form-label">Precio (US$)</label>
+                                            <input id="precio" type="number" name="precio" step="0.01" class="form-control" placeholder=""
+                                                aria-label="First name">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">Precio Unitario</label>
-                                            <input type="password" class="form-control" placeholder=""
-                                                aria-label="First name">
+                                            <p>
+                                                <div class="switch">
+                                                    <span>Estado:</span>
+                                                    <label>
+                                                        <input id="estado" type="checkbox" name="estado" checked>
+                                                        <span class="lever"></span>
+                                                    </label>
+                                                </div>
+                                                </p>
                                         </div>
                                     </div>
                                 </div>
