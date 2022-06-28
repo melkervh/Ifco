@@ -40,7 +40,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados recientemente';
                 }
             break;
-
+            case 'createdetalle':
+                $_POST = $productos->validateForm($_POST);
+                if (!$productos->setIdProducto($_POST['codigo'])) {
+                $result['exception'] = 'id_producto incorrecto';
+                } elseif (!$productos->setnombre_com($_POST['nombre_com'])) {
+                    $result['exception'] = 'nombre no valido';
+                } elseif (!$productos->setPrecioU($_POST['precioU'])) {
+                $result['exception'] = 'precio unidad no valido';
+                }elseif (!$productos->setPrecioTotal($_POST['total'])) {
+                $result['exception'] = 'precio no valido';
+                }elseif (!$productos-> setCantidadCom($_POST['cantidad'])) {
+                $result['exception'] = 'cantidad no valida';
+                }elseif (!$productos->setfact_nor($_POST['codigo2'])) {
+                    $result['exception'] = 'codigo factura no valido';
+                }elseif ($productos->createDetalle()) {
+                $result['status'] = 1;
+                $result['message'] = 'detalle creado' ;     
+                } else {
+                $result['exception'] = Database::getException();;
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }

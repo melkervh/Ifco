@@ -48,28 +48,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = Database::getException();;
                 }
                 break;
-                case 'createdetalle':
-                $_POST = $crearfactu->validateForm($_POST);
-                if (!$crearfactu->setIdProducto($_POST['id_producto'])) {
-                $result['exception'] = 'id_producto incorrecto';
-                } elseif (!$crearfactu->setnombre_com($_POST['nombre_com'])) {
-                $result['exception'] = 'nombre no valido';
-                } elseif (!$crearfactu->setPrecioU($_POST['precioU'])) {
-                $result['exception'] = 'precio unidad no valido';
-                }elseif (!$crearfactu->setPrecioTotal($_POST['total'])) {
-                $result['exception'] = 'precio no valido';
-                }elseif (!$crearfactu-> setCantidadCom($_POST['cantidad'])) {
-                $result['exception'] = 'cantidad no valida';
-                }elseif (!$crearfactu->setfact_nor($_POST['codigo2'])) {
-                $result['exception'] = 'codigo factura no valido';
-                }elseif ($crearfactu->createDetalle()) {
-                $result['status'] = 1;
-                $result['message'] = 'detalle creado' ;     
-                } else {
-                $result['exception'] = Database::getException();;
-                $result['message'] = 'no se logro crear la factura completa' ; 
-                }
-                break;
+               
             default:
             $result['exception'] = 'Acción no disponible dentro de la sesión';
         }        
