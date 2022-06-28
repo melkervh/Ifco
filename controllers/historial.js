@@ -66,7 +66,7 @@ function openDetalle(id) {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                             <tr> 
-                                <td class="text-center">${row.nombre_producto}</td>
+                                <td class="text-center">${row.nombre_prodroducto}</td>
                                 <td class="text-center">${row.descripcion_producto}</td>
                                 <td class="text-center">${row.precio_u}</td>
                                 <td class="text-center">${row.cantidad_com}</td>
