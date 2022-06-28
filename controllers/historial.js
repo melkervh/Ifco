@@ -17,7 +17,7 @@ function fillTable(dataset) {
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `
             <tr>
-                <td scope="row" class="texto2">${row.id_factura}</td>
+                <td scope="row" class="texto2">${row.id_fact_nor}</td>
                 <td class="texto3">pdf</td>
                 <td class="texto3">${row.nombre_cli}</td>
                 <td class="texto3">${row.fecha_fn}</td>

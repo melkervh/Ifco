@@ -17,14 +17,12 @@ class Historial extends Validator{
     }
 
     /* Método para buscar en el historial .................................................... */
-    public function searchRows()
+    public function searchRows($value)
     {
-        $sql = 'SELECT id_factura, nombre_cli, fecha_fn
-                FROM factura f
-                INNER JOIN factura_normal fn
-                ON f.id_fact_nor = fn.id_fact_nor
+        $sql = 'SELECT id_fact_nor , nombre_cli, fecha_fn
+                FROM id_fact_nor
                 INNER JOIN cliente c
-                ON f.id_cliente = c.id_cliente
+                ON id_cliente = c.id_cliente
                 WHERE nombre_cli ILIKE ?';
         $params = array("%$value%");
         Database::getRows($sql, $params);
