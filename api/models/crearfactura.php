@@ -176,8 +176,8 @@ class createfactura extends Validator{
     public function createDetalle()
     {
     $sql = 'INSERT INTO detalle_factura(
-        id_producto, nombre_com, precio_u, precio_total, cantidad_com, id_fact_nor)
-       VALUES ( ?, ?, ?, ?, ?, ?)';
+        id_producto, nombre_com, precio_u, precio_total, cantidad_com,id_fact_nor)
+       VALUES (?, ?, ?, ?, ?,?)';
     $params = array($this->id_producto,$this->nombre_com ,$this->precio_u, $this->precio_total, $this->cantidad_com,$this->id_fact_nor);
     return Database::executeRow($sql, $params);
     }
