@@ -102,12 +102,12 @@
                             <div class="modal-body">
                                 <form method="post" id="save-form">
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <label for="nombre_pvr" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" placeholder=""
                                                 aria-label="First name" id="nombre_pvr" name="nombre_pvr">
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <label for="formGroupExampleInput" class="form-label">Contacto</label>
                                             <input type="text" class="form-control" placeholder=""
                                                 aria-label="Last name" id="contacto" name="contacto">
@@ -239,9 +239,9 @@
                             <div class="Listas">
                                 <nav class="navbar ">
                                     <div class="container-fluid">
-                                        <form class="d-flex" role="search" method="post" id="search-form">
-                                            <input class="form-control me-2" type="search" name="search" id="search"
-                                                placeholder="Buscar por nombre del cliente ..." aria-label="Search">
+                                        <form class="d-flex" role="search" method="post" id="searchP-form">
+                                            <input class="form-control me-2" type="search" placeholder="Search"
+                                                aria-label="Search" name="searchP" id="searchP">
                                             <button class="btn btn-outline-primary" type="submit">Search</button>
                                         </form>
                                     </div>
@@ -249,31 +249,15 @@
                                 <table class="table table-borderless">
                                     <thead class="table-dark">
                                         <tr>
+                                            <th scope="col">ID</th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Contacto</th>
-                                            <th scope="col">Marca</th>
+                                            <th scope="col">Acciones</th>
                                         </tr>
                                     </thead>
                                     <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                                    <tbody>
-                                        <tr>
-                                            <td>San Francisco</td>
-                                            <!--Primera columna-->
-                                            <td>sanfrancisco@gmail.com</td>
-                                            <!--Segunda columna-->
-                                            <td>San Francisco</td>
-                                            <!--Tercera columna-->
-                                        </tr>
-                                        <tr>
-                                            <td>Diana</td>
-                                            <td>dianaq@gmail.com</td>
-                                            <td>Diana</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Coca-Cola</td>
-                                            <td>coca_cola@gmail.com</td>
-                                            <td>Coca-Cola</td>
-                                        </tr>
+                                    <tbody id="proveedor-tabla">
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -341,6 +325,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/usuarios.js"></script>
+    <script src="../controllers/proveedor.js"></script>
     <script src="../controllers/acounst.js"></script>
 </body>
 
