@@ -60,14 +60,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$listas->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif (!$listas->setNombres($_POST['nombre_usuario'])) {
+                } elseif (!$listas->setNombreUsuario($_POST['nombre_usuario'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$listas->setApellidos($_POST['apellido_usuario'])) {
+                } elseif (!$listas->setApellidoUsuario($_POST['apellido_usuario'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$listas->setCorreo($_POST['correo_usuario'])) {
+                } elseif (!$listas->setCorreoUsuario($_POST['correo_usuario'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif (!$listas->setClave($_POST['clave_usuario'])) {
-                    $result['exception'] = 'clave incorrecto';
+                } elseif ($_POST['clave_usuario'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Claves diferentes';
+                }elseif (!$listas->setClaveUsuario($_POST['clave_usuario'])) {
+                    $result['exception'] = $listas->getPasswordError();
                 }elseif ($listas->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario modificado correctamente';

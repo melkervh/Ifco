@@ -33,7 +33,7 @@ if (isset($_GET['action'])) {
                 $_POST = $proveedor ->validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $proveedor ->searchRows2($_POST['search'])) {
+                } elseif ($result['dataset'] = $proveedor ->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Valor encontrado';
                 } elseif (Database::getException()) {
@@ -53,15 +53,28 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
+                case 'create':
+                    $_POST = $proveedor->validateForm($_POST);
+                    if (!$proveedor->setNombrePrv($_POST['marca'])) {
+                        $result['exception'] = 'Nombre incorrecto';
+                    } elseif (!$proveedor->setcontacto($_POST['correo_pro'])) {
+                        $result['exception'] = 'contacto incorrecto';
+                    } elseif ($proveedor->createRow()) {  
+                    $result['status'] = 1;
+                    }
+                    else {
+                    $result['exception'] = Database::getException();
+                    }
+                    break;
             case 'update':
                 $_POST = $proveedor ->validateForm($_POST);
                 if (!$proveedor ->setIdProveedor($_POST['id_proveedor'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$proveedor ->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif (!$proveedor ->setNombrePrv($_POST['nombre_usuario'])) {
+                } elseif (!$proveedor ->setNombrePrv($_POST['marca'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$proveedor ->setContacto($_POST['apellido_usuario'])) {
+                } elseif (!$proveedor ->setContacto($_POST['correo_pro'])) {
                     $result['exception'] = 'contacto incorrectos';
                 } elseif ($proveedor ->updateRow()) {
                     $result['status'] = 1;
@@ -84,19 +97,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'create':
-                    $_POST = $proveedor ->validateForm($_POST);
-                    if (!$proveedor ->setNombrePrv($_POST['marca'])) {
-                        $result['exception'] = 'marca incorrecto';
-                    } elseif (!$proveedor->setcontacto($_POST['contacto'])) {
-                        $result['exception'] = 'contacto no vslido';
-                    }elseif ($proveedor->createRow()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'cliente creado' ;
-                    } else {
-                        $result['exception'] = Database::getException();;
-                    }
-                    break;
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }

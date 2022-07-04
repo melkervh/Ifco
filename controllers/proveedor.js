@@ -65,9 +65,9 @@ function openUpdate(id_proveedor) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se inicializan los campos del formulario con los datos del registro seleccionado.
-                    document.getElementById('id_proveedor').value = response.dataset.id_usuario;
+                    document.getElementById('id_proveedor').value = response.dataset.id_proveedor;
                     document.getElementById('marca').value = response.dataset.nombre_prv;
-                    document.getElementById('contacto').value = response.dataset.contacto;
+                    document.getElementById('correo_pro').value = response.dataset.contacto;
                     // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
 
                 } else {

@@ -1,12 +1,10 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_LISTA = SERVER + 'Actions/lista.php?action=';
-const API_PROVEEDOR = SERVER + 'Actions/proveedor.php?action=';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
 
     // Se llama a la función que muestra el historial
     readRows(API_LISTA);
-    openreadAllPro();
 });
 document.getElementById('search-form').addEventListener('submit', function (event) {
 
@@ -42,55 +40,6 @@ function fillTable(dataset) {
 
     // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
     document.getElementById('usuarios-tabla').innerHTML = content;
-}
-function openreadAllPro() {
-
-    // Petición para obtener los datos del registro solicitado.
-    fetch(API_PROVEEDOR + 'readAllPro', {
-        method: 'get'
-    }).then(function (request) {
-
-        // Se verifica si la petición es correcta.
-        if (request.ok) {
-            request.json().then(function (response) {
-
-                let data = [];
-                // Se comprueba si la respuesta es satisfactoria.
-                if (response.status) {
-
-                    data = response.dataset;
-                    let content = '';
-                    data.map(function (row) {
-
-                        // Se crean y concatenan las filas de la tabla con los datos de cada registro.
-                        content += `
-                        <tr>
-                        <td>${row.id_proveedor}</td>
-                        <td>${row.nombre_prv}</td>
-                        <td>${row.contacto}</td>
-                        <td>
-                        <a onclick="openUpdate(${row.id_proveedor})" data-bs-toggle="modal" data-bs-target="#modalproveedor">
-                            <i class="fa-solid fa-pen"></i>
-                        </a>
-                        <a onclick="openDelete(${row.id_proveedor})">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </a>
-                    </td>
-                        </tr>
-                        `
-                    });
-
-                    // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
-                    document.getElementById('proveedor-tabla').innerHTML = content;
-
-                } else {
-                    sweetAlert(2, response.exception, null);
-                }
-            });
-        } else {
-            console.log(request.status + ' ' + request.statusText);
-        }
-    });
 }
 function openCreate() {
     // Se restauran los elementos del formulario.

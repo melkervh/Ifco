@@ -49,12 +49,12 @@ class Proveedores extends Validator
         $sql = 'INSERT INTO proveedor(
             nombre_prv, contacto)
            VALUES ( ?, ?)';
-        $params = array($this->nombre_prv, $this->contacto);
+        $params = array($this->nombre_prv, $this->contacto,);
         return Database::executeRow($sql, $params);
     }
 
     //Busqueda de Usuario//
-    public function searchRows2($value)
+    public function searchRows($value)
     {
         $sql = 'SELECT id_proveedor, nombre_prv, contacto
         FROM proveedor
@@ -77,7 +77,7 @@ class Proveedores extends Validator
         $sql = 'UPDATE proveedor
                 SET  nombre_prv=?, contacto=?
                 WHERE id_proveedor = ?';
-        $params = array($this->nombre_prv, $this->contacto);
+        $params = array($this->nombre_prv, $this->contacto,);
         return Database::executeRow($sql, $params);
     }
 
