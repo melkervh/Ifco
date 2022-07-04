@@ -26,7 +26,7 @@ class Proveedores extends Validator
         }
     }
 
-    public function setContacto($value)
+    public function setcontacto($value)
     {
         if ($this->validateAlphabetic($value, 1, 50)) {
             $this->contacto = $value;

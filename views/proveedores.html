@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listados</title>
+    <!--CSS bootstrap-->
+    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
+</head>
+
+<body>
+    <!--Se agrega esa clase extraida de Boostrap5 para fijar el navbar-->
+    <header>
+    </header>
+    <h1 class="titul">Lista de usuarios</h1>
+    <section class="container-xl tamaño">
+        <div class="row">
+            <div class="col">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalproveedor"
+                    onclick="openCreate()">
+                    agregar proveedor
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalproveedor" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">agregar Proveedor</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" id="save-form">
+                                    <div class="row">
+                                        <input class="hidden" style="visibility:hidden;" type="number" id="id_proveedor"
+                                            name="id_proveedor">
+                                            <div class="col-lg-6">
+                                                <label for="marca" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="First name" name="marca" id="marca">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="contacto" class="form-label">contacto</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="Last name" name="contacto" id="contacto">
+                                            </div>
+                                    <div class="modal-footer">
+                                        <button type="reset" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">cerrar</button>
+                                        <button type="submit" class="btn btn-primary" data-tooltip="Guardar"
+                                            id="save-modal">guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <div class="separa">
+        <main class="container-xl">
+            <section class="container-xl">
+                <div class="contenedortbad">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab">
+                            <div class="Listas">
+                                <nav class="navbar ">
+                                    <div class="container-fluid">
+                                        <form class="d-flex" role="search" method="post" id="search-form">
+                                            <input class="form-control me-2" type="search" placeholder="Search"
+                                                aria-label="Search" name="search" id="search">
+                                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                                        </form>
+                                    </div>
+                                </nav>
+                                <table class="table table-borderless">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Contacto</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                                    <tbody id="proveedor-tabla">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+        </main>
+
+        <footer></footer>
+        <!--JS bootstrap-->
+        <script src="../resources/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="../controllers/components.js"></script>
+        <script src="../controllers/proveedor.js"></script>
+        <script src="../controllers/acounst.js"></script>
+</body>
+
+</html>

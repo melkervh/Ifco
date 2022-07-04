@@ -85,45 +85,11 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalproveedor">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalproveedor" onclick="openCreate()">
                     agregar proveedor
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="modalproveedor" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">agregar Proveedor</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="post" id="save-form">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <label for="nombre_pvr" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" placeholder=""
-                                                aria-label="First name" id="nombre_pvr" name="nombre_pvr">
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">Contacto</label>
-                                            <input type="text" class="form-control" placeholder=""
-                                                aria-label="Last name" id="contacto" name="contacto">
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="reset" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">cerrar</button>
-                                        <button type="submit" class="btn btn-primary"  data-tooltip="Guardar"
-                                        id="save-modal" >guardar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modalusuario"
                     style="visibility:hidden;">
                     agregar cliente
@@ -187,23 +153,6 @@
         <main class="container-xl">
             <section class="container-xl">
                 <div class="contenedortbad">
-                    <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                aria-selected="true">usuarios</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                aria-selected="false">proveedores</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                aria-selected="false">Cliente</button>
-                        </li>
-                    </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
@@ -230,34 +179,6 @@
                                     <!--Relleno cada columna con datos temporales con el siguiente orden-->
                                     <tbody id="usuarios-tabla">
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                            aria-labelledby="pills-profile-tab">
-                            <div class="Listas">
-                                <nav class="navbar ">
-                                    <div class="container-fluid">
-                                        <form class="d-flex" role="search" method="post" id="searchP-form">
-                                            <input class="form-control me-2" type="search" placeholder="Search"
-                                                aria-label="Search" name="searchP" id="searchP">
-                                            <button class="btn btn-outline-primary" type="submit">Search</button>
-                                        </form>
-                                    </div>
-                                </nav>
-                                <table class="table table-borderless">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Nombre</th>
-                                            <th scope="col">Contacto</th>
-                                            <th scope="col">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                                    <tbody id="proveedor-tabla">
-                                        
                                     </tbody>
                                 </table>
                             </div>

@@ -20,7 +20,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
 
             // Evalua y consulta los registros para cargar la tabla.
-            case 'readAllPro':
+            case 'readAll':
                 if ($result['dataset'] = $proveedor ->readAll()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
@@ -31,9 +31,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'search':
                 $_POST = $proveedor ->validateForm($_POST);
-                if ($_POST['searchP'] == '') {
+                if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $proveedor ->searchRows2($_POST['searchP'])) {
+                } elseif ($result['dataset'] = $proveedor ->searchRows2($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Valor encontrado';
                 } elseif (Database::getException()) {
@@ -43,7 +43,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$proveedor ->setIdUsuario($_POST['id_usuario'])) {
+                if (!$proveedor ->setIdProveedor($_POST['id_proveedor'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif ($result['dataset'] = $proveedor ->readOne()) {
                     $result['status'] = 1;
@@ -55,19 +55,15 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = $proveedor ->validateForm($_POST);
-                if (!$proveedor ->setIdUsuario($_POST['id_usuario'])) {
+                if (!$proveedor ->setIdProveedor($_POST['id_proveedor'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$proveedor ->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif (!$proveedor ->setNombres($_POST['nombre_usuario'])) {
+                } elseif (!$proveedor ->setNombrePrv($_POST['nombre_usuario'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$proveedor ->setApellidos($_POST['apellido_usuario'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$proveedor ->setCorreo($_POST['correo_usuario'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$proveedor ->setClave($_POST['clave_usuario'])) {
-                    $result['exception'] = 'clave incorrecto';
-                }elseif ($proveedor ->updateRow()) {
+                } elseif (!$proveedor ->setContacto($_POST['apellido_usuario'])) {
+                    $result['exception'] = 'contacto incorrectos';
+                } elseif ($proveedor ->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario modificado correctamente';
                 } else {
@@ -75,9 +71,9 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
+                if ($_POST['id_proveedor'] == $_SESSION['id_usuario']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
-                } elseif (!$proveedor ->setIdUsuario($_POST['id_usuario'])) {
+                } elseif (!$proveedor ->setIdProveedor($_POST['id_proveedor'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$proveedor ->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
@@ -90,41 +86,17 @@ if (isset($_GET['action'])) {
                 break;
                 case 'create':
                     $_POST = $proveedor ->validateForm($_POST);
-                    if (!$proveedor ->setNombreUsuario($_POST['nombre_usuario'])) {
-                        $result['exception'] = 'Nombres incorrectos';
-                    } elseif (!$proveedor ->setApellidoUsuario($_POST['apellido_usuario'])) {
-                        $result['exception'] = 'Apellidos incorrectos';
-                    } elseif (!$proveedor ->setCorreoUsuario($_POST['correo_usuario'])) {
-                        $result['exception'] = 'Correo incorrecto';
-                    } elseif ($_POST['clave_usuario'] != $_POST['confirmar']) {
-                        $result['exception'] = 'Claves diferentes';
-                    } elseif (!$proveedor ->setClaveUsuario($_POST['clave_usuario'])) {
-                        $result['exception'] = $proveedor ->getPasswordError();
-                    } elseif ($proveedor ->createRow()) {
+                    if (!$proveedor ->setNombrePrv($_POST['marca'])) {
+                        $result['exception'] = 'marca incorrecto';
+                    } elseif (!$proveedor->setcontacto($_POST['contacto'])) {
+                        $result['exception'] = 'contacto no vslido';
+                    }elseif ($proveedor->createRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Usuario registrado correctamente';
+                        $result['message'] = 'cliente creado' ;
                     } else {
-                        $result['exception'] = Database::getException();
+                        $result['exception'] = Database::getException();;
                     }
                     break;
-                    case 'changePassword':
-                        $_POST = $proveedor ->validateForm($_POST);
-                        if (!$proveedor ->setId($_SESSION['id_usuario'])) {
-                            $result['exception'] = 'Usuario incorrecto';
-                        } elseif (!$proveedor ->checkPassword($_POST['actual'])) {
-                            $result['exception'] = 'Clave actual incorrecta';
-                        } elseif ($_POST['nueva'] != $_POST['confirmar']) {
-                            $result['exception'] = 'Claves nuevas diferentes';
-                        } elseif (!$proveedor ->setClave($_POST['nueva'])) {
-                            $result['exception'] = $proveedor ->getPasswordError();
-                        } elseif ($proveedor ->changePassword()) {
-                            $result['status'] = 1;
-                            $result['message'] = 'Contraseña cambiada correctamente';
-                        } else {
-                            $result['exception'] = Database::getException();
-                        }
-                        break;
-
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }
