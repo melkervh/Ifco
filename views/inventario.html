@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario</title>
     <!--CSS bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
 </head>
@@ -19,142 +22,162 @@
         <div class="row">
             <div class="col">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    agregar producto
+                <button onclick="openCreateProductos()" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#productos-modal">
+                    Agregar producto
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="productos-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label for="formGroupExampleInput" class="form-label">cantidad</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
-                                    </div>
+                        <form method="post" id="productos-form">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal-title"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <div class="clave">
-                                    <div class="row ">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <input class="hidden" type="number" id="idp" name="idp">
                                         <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">descripcion</label>
-                                            <input type="password" class="form-control" placeholder=""
-                                                aria-label="First name">
+                                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                            <input type="text" id="producto" name="producto" class="form-control"
+                                                placeholder="" aria-label="Last name">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">Marca</label>
-                                            <select class="form-select" id="floatingSelect"
-                                                aria-label="Floating label select example">
-                                                <option selected></option>
-                                                <option value="1"></option>
-                                                <option value="2"></option>
-                                            </select>
+                                            <label for="formGroupExampleInput" class="form-label">Cantidad</label>
+                                            <input type="text" id="cantidad" name="cantidad" class="form-control"
+                                                placeholder="" aria-label="Last name">
+                                        </div>
+                                    </div>
+                                    <div class="clave">
+                                        <div class="row ">
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput"
+                                                    class="form-label">Descripción</label>
+                                                <input type="text" id="descripcion" name="descripcion"
+                                                    class="form-control" placeholder="" aria-label="First name">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput" class="form-label">Precio</label>
+                                                <input type="text" id="precio" name="precio" class="form-control"
+                                                    placeholder="" aria-label="First name">
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput" class="form-label">Marca</label>
+                                                <select class="form-select" id="marca_sel" name="marca_sel"
+                                                    aria-label="Floating label select example"></select>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <label for="formGroupExampleInput" class="form-label">Estado</label>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" id="estado" name="estado"
+                                                        type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="modal-footer">
+                                        <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <button onclick="openCreateMarcas()" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#marcas-modal">
+                    Agregar marca
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="marcas-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form method="post" id="marcas-form">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal-title"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <input class="hidden" type="number" id="idm" name="idm">
+                                        <div class="col-lg-10">
+                                            <label for="formGroupExampleInput" class="form-label">Nombre de la
+                                                marca</label>
+                                            <input type="text" class="form-control" id="marca_nom" name="marca_nom"
+                                                placeholder="" aria-label="Last name">
                                         </div>
                                     </div>
                                     <div class="row ">
                                         <div class="col-lg-5">
-                                            <label for="formGroupExampleInput" class="form-label">estado</label>
-                                            <select class="form-select" id="floatingSelect"
-                                                aria-label="Floating label select example">
-                                                <option selected></option>
-                                                <option value="1"></option>
-                                                <option value="2"></option>
-                                            </select>
+                                            <label for="formGroupExampleInput" class="form-label">Proveedor</label>
+                                            <select class="form-select" id="proveedor_sel" name="proveedor_sel"
+                                                aria-label="Floating label select example"></select>
                                         </div>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <div class="row ">
+                                        <div class="col-lg-5">
+                                            <label for="formGroupExampleInput" class="form-label">Tipo de
+                                                producto</label>
+                                            <select class="form-select" id="tipo_sel" name="tipo_sel"
+                                                aria-label="Floating label select example"></select>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="modal-footer">
+                                        <a type="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#marca">
-                    agregar marca
+                <button onclick="openCreateTipo()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tipopro-modal">
+                    Agregar tipo de producto
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="marca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">agregar marca</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-10">
-                                        <label for="formGroupExampleInput" class="form-label">Nombre de la marca</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col-lg-5">
-                                        <label for="formGroupExampleInput" class="form-label">tipo de producto</label>
-                                        <select class="form-select" id="floatingSelect"
-                                            aria-label="Floating label select example">
-                                            <option selected></option>
-                                            <option value="1"></option>
-                                            <option value="2"></option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tipopro">
-                    agregar marca
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="tipopro" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="tipopro-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">agregar marca</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-10">
-                                        <label for="formGroupExampleInput" class="form-label">tipo de producto</label>
-                                        <input type="text" class="form-control" placeholder="" aria-label="Last name">
-                                    </div>
+                    <form method="post" id="tipo-form">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal-title"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <br>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <input class="hidden" type="number" id="idt" name="idt">
+                                        <div class="col-lg-10">
+                                            <label for="formGroupExampleInput" class="form-label">Tipo de
+                                                producto</label>
+                                            <input type="text" name="tipo_nom" id="tipo_nom" class="form-control"
+                                                placeholder="" aria-label="Last name">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="modal-footer">
+                                        <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
     </section>
     <main class="container-xl">
@@ -162,19 +185,19 @@
             <div class="contenedortbad">
                 <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                            aria-selected="true">productos</button>
+                        <button onclick="openShowProductos()" class="nav-link active" id="pills-home-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab"
+                            aria-controls="pills-home" aria-selected="true">Productos</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                        <button onclick="openShowMarcas()" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                            aria-selected="false">marcas</button>
+                            aria-selected="false">Marcas</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                        <button onclick="openShowTipo()" class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                            aria-selected="false">tipos de producto</button>
+                            aria-selected="false">Tipos de producto</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
@@ -183,27 +206,28 @@
                         <div class="Listas">
                             <nav class="navbar ">
                                 <div class="container-fluid">
-                                  <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                                  </form>
+                                    <form class="d-flex" method="post" id="buscarproductos-form" role="search">
+                                        <input class="form-control me-2" type="search" name="search" id="search"
+                                            placeholder="Buscar por nombre del producto ..." aria-label="Search">
+                                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                                    </form>
                                 </div>
-                              </nav>
+                            </nav>
                             <table class="table table-borderless">
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">nombre</th>
-                                        <th scope="col">cantidad</th>
-                                        <th scope="col">descripcion</th>
-                                        <th scope="col">estado</th>
-                                        <th scope="col">marca</th>
-                                        <th scope="col">tipo</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Marca</th>
+                                        <th scope="col">Tipo</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                                <tbody>
-                                </tbody>
+                                <tbody id="tabla-productos"></tbody>
                             </table>
                         </div>
                     </div>
@@ -211,24 +235,25 @@
                         <div class="Listas">
                             <nav class="navbar ">
                                 <div class="container-fluid">
-                                  <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                                  </form>
+                                    <form class="d-flex" role="search" method="post" id="buscarmarcas-form">
+                                        <input class="form-control me-2" type="search" id="search" name="search"
+                                            placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-primary" type="submit">Buscar por nombre de marca
+                                            ...</button>
+                                    </form>
                                 </div>
-                              </nav>
+                            </nav>
                             <table class="table table-borderless">
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Nombre</th>
-                                        <th scope="col">tipo</th>
-                                        <th scope="col">proveedor</th>
+                                        <th scope="col">Tipo de producto</th>
+                                        <th scope="col">Proveedor</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
-                                <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                                <tbody>
-                                </tbody>
+                                <tbody id="tabla-marcas"></tbody>
                             </table>
                         </div>
                     </div>
@@ -237,35 +262,43 @@
                         <div class="Listas">
                             <nav class="navbar ">
                                 <div class="container-fluid">
-                                  <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                                  </form>
+                                    <form class="d-flex" role="search" method="post" id="buscartipo-form">
+                                        <input class="form-control me-2" type="search" placeholder="Buscar por nombre del tipo
+                                        de producto ..." id="search"
+                                            name="search" aria-label="Search">
+                                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                                    </form>
                                 </div>
-                              </nav>
+                            </nav>
                             <table class="table table-borderless">
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Nombre del tipo</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                                <tbody>
-                                </tbody>
+                                <tbody id="tipo-tabla"></tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-destab">...
             </div>
-<footer></footer>
+            <footer></footer>
             <!--JS bootstrap-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
             <script src="../resources/js/bootstrap.min.js"></script>
+            <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script src="../controllers/components.js"></script>
             <script src="../controllers/acounst.js"></script>
+            <script src="../controllers/inventario.js"></script>
+
 </body>
 
 </html>

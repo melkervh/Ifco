@@ -1,14 +1,14 @@
 <?php
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
-require_once('../models/productos.php');
+require_once('../models/marcas.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $productos = new Productos;
+    $marcas = new Marcas;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -20,7 +20,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
 
             case 'readAll':
-                if ($result['dataset'] = $productos->readAll()) {
+                if ($result['dataset'] = $marcas->readAll()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -30,10 +30,10 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'search':
-                $_POST = $productos->validateForm($_POST);
+                $_POST = $marcas->validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $productos->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $marcas->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Valor encontrado';
                 } elseif (Database::getException()) {
@@ -44,75 +44,65 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'readOne':
-                if (!$productos->setId($_POST['idp'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif ($result['dataset'] = $productos->readOne()) {
+                if (!$marcas->setId($_POST['idm'])) {
+                    $result['exception'] = 'Marca incorrecta';
+                } elseif ($result['dataset'] = $marcas->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Producto inexistente';
+                    $result['exception'] = 'Marca inexistente';
                 }
                 break;
 
             case 'update':
-                $_POST = $productos->validateForm($_POST);
-                if (!$productos->setId($_POST['idp'])) {
+                $_POST = $marcas->validateForm($_POST);
+                if (!$marcas->setId($_POST['idm'])) {
                     $result['exception'] = 'Marca incorrecta';
-                } elseif (!$data = $productos->readOne()) {
+                } elseif (!$data = $marcas->readOne()) {
                     $result['exception'] = 'Marca inexistente';
-                } elseif (!$productos->setNombre($_POST['producto'])) {
-                    $result['exception'] = 'Nombre del producto incorrecto';
-                } elseif (!$productos->setCantidad($_POST['cantidad'])) {
-                    $result['exception'] = 'Cantidad incorrecta';
-                } elseif (!$productos->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripcion incorrecta';
-                } elseif (!$productos->setPrecio($_POST['precio'])) {
-                    $result['exception'] = 'Precio incorrecta'; 
-                } elseif (!$productos->setMarca($_POST['marca_sel'])) {
+                } elseif (!$marcas->setMarcas($_POST['marca_nom'])) {
                     $result['exception'] = 'Marca incorrecta';
-                } elseif (!$productos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Estado incorrecto'; 
-                } elseif ($productos->updateRow()) {
+                } elseif (!$marcas->setProveedor($_POST['proveedor_sel'])) {
+                    $result['exception'] = 'Proveedor incorrecto';
+                } elseif (!$marcas->setTipo($_POST['tipo_sel'])) {
+                    $result['exception'] = 'Tipo de producto incorrecto';
+                } elseif ($marcas->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto modificado correctamente';
+                    $result['message'] = 'Marca modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
 
                 case 'create':
-                    $_POST = $productos->validateForm($_POST);
-                    if (!$productos->setNombre($_POST['producto'])) {
-                        $result['exception'] = 'Producto incorrecto';
-                    } elseif (!$productos->setCantidad($_POST['cantidad'])) {
-                        $result['exception'] = 'Cantidad incorrecta';
-                    } elseif (!$productos->setDescripcion($_POST['descripcion'])) {
-                        $result['exception'] = 'Descripción incorrecta';
-                    } elseif (!$productos->setPrecio($_POST['precio'])) {
-                        $result['exception'] = 'Precio incorrecta';  
-                    } elseif (!isset($_POST['marca_sel'])) {
-                        $result['exception'] = 'Seleccione una marca';
-                    } elseif (!$productos->setMarca($_POST['marca_sel'])) {
+                    $_POST = $marcas->validateForm($_POST);
+                    if (!$marcas->setMarcas($_POST['marca_nom'])) {
                         $result['exception'] = 'Marca incorrecta';
-                    } elseif (!$productos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                        $result['exception'] = 'Estado incorrecto';
-                    } elseif ($productos->createRow()) {
+                    } elseif (!isset($_POST['proveedor_sel'])) {
+                        $result['exception'] = 'Seleccione una proveedor';
+                    } elseif (!$marcas->setProveedor($_POST['proveedor_sel'])) {
+                        $result['exception'] = 'Proveedor incorrecto';
+                    } elseif (!isset($_POST['tipo_sel'])) {
+                        $result['exception'] = 'Seleccione un tipo de producto';
+                    } elseif (!$marcas->setTipo($_POST['tipo_sel'])) {
+                        $result['exception'] = 'Tipo de producto incorrecto';
+                    } elseif ($marcas->createRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Producto creado correctamente';
+                        $result['message'] = 'Marca creada correctamente';
                     } else {
                         $result['exception'] = Database::getException();
                     }
                     break;
 
             case 'delete':
-                if (!$productos->setId($_POST['iddp'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif (!$data = $productos->readOne()) {
-                    $result['exception'] = 'Producto inexistente';
-                } elseif ($productos->deleteRow()) {
+                if (!$marcas->setId($_POST['iddm'])) {
+                    $result['exception'] = 'Marca incorrecta';
+                } elseif (!$data = $marcas->readOne()) {
+                    $result['exception'] = 'Marca inexistente';
+                } elseif ($marcas->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto eliminado correctamente';
+                    $result['message'] = 'Marca eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

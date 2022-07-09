@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <!--CSS bootstrap-->
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
+</head>
+
+<body>
+    <header>
+    </header>
+    <main>
+        <div class="courses-container">
+            <div class="course">
+                <div class="course-preview">
+                    <i class="fa-solid fa-users cajita"></i>
+                    <h2><a href="listados.html">Usuarios<i class="fas fa-chevron-right"></i></a></h2>
+                </div>
+                <div class="course-info">
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                        <span class="progress-text">
+                            6/9 Challenges
+                        </span>
+                    </div>
+                    <button class="btn2"><a href="listados.html">continuar</a></button>
+                </div>
+            </div>
+            <div class="course">
+                <div class="course-preview">
+                    <i class="fa-solid fa-cart-shopping cajita"></i>
+                    <h2> <a href="#">ingresar productos<i class="fas fa-chevron-right"></i></a></h2>
+                </div>
+                <div class="course-info">
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                        <span class="progress-text">
+                            6/9 Challenges
+                        </span>
+                    </div>
+                    <button class="btn2"><a href="agregar_producto.html">continuar</a></button>
+                </div>
+            </div>
+            <div class="course">
+                <div class="course-preview">
+                    <i class="fa-solid fa-file-circle-plus cajita"></i>
+                    <h2> <a href="facturan.html">Facturas<i class="fas fa-chevron-right"></i></a></h2>
+                </div>
+                <div class="course-info">
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                        <span class="progress-text">
+                            6/9 Challenges
+                        </span>
+                    </div>
+                    <button class="btn2"><a href="facturan.html">continuar</a></button>
+                </div>
+            </div>
+            <div class="course">
+                <div class="course-preview">
+                    <i class="fa-solid fa-box cajita"></i>
+                    <h2> <a href="#">inventario<i class="fas fa-chevron-right"></i></a></h2>
+                </div>
+                <div class="course-info">
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                        <span class="progress-text">
+                            6/9 Challenges
+                        </span>
+                    </div>
+                    <button class="btn2"><a href="inventario.html">continuar</a></button>
+                </div>
+            </div>
+            <div class="course">
+                <div class="course-preview">
+                    <i class="fa-solid fa-file cajita"></i>
+                    <h2> <a href="historial.html">revision de factura<i class="fas fa-chevron-right"></i></a></h2>
+                </div>
+                <div class="course-info">
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                        <span class="progress-text">
+                            6/9 Challenges
+                        </span>
+                    </div>
+                    <button class="btn2"><a href="historial.html">continuar</a></button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section class="container-lg">
+        <div class="contenedortbad">
+            <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button onclick="openShowFechas()" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                        aria-selected="true">productos recientes</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button onclick="openShowFechasc()" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false">productos antiguos</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="Listas">
+                        <table class="table table-borderless ">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">cantidad</th>
+                                    <th scope="col">cantidad</th>
+                                    <th scope="col">precio</th>
+                                </tr>
+                            </thead>
+                            <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                            <tbody id="productos-tabla"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="Listas">
+                        <table class="table table-borderless">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">cantidad</th>
+                                    <th scope="col">cantidad</th>
+                                    <th scope="col">precio</th>
+                                </tr>
+                            </thead>
+                            <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                            <tbody id="productosrec-tabla"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer></footer>
+    <!--JS bootstrap-->
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
+    <script src="../controllers/acounst.js"></script>
+    <script src="../controllers/index.js"></script> 
+    
+</body>
+
+</html>

@@ -38,12 +38,40 @@
                     </thead>
                     <tbody id="historial-tabla"></tbody>
                 </table>
+                <div class="modal fade " id="detalle" tabindex="-1" aria-labelledby="detalleLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Detalle pedido</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table border table-bordered">
+                                    <!--Cabeza de la tabla para mostrar los títulos de las columnas-->
+                                    <thead class="table-dark" >
+                                        <tr>
+                                            <th class="text-center">NOMBRE</th>
+                                            <th class="text-center">DESCRIPCION</th>
+                                            <th class="text-center">PRECIO</th>
+                                            <th class="text-center">CANTIDAD</th>
+                                            <th class="text-center">SUB-TOTAL</th>
+                                        </tr>
+                                    </thead>
+                                    <!--Cuerpo de la tabla para mostrar un registro por fila -->
+                                    <tbody id="tbody-rows-detalle"></tbody>
+                                </table>
+                                <div class="d-flex justify-content-end">Total (US$) <b id="total"></b></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             </section>
     </main>
     <section></section>
     <footer></footer>
     <!--JS bootstrap-->
+    <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
     <script src="../resources/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>

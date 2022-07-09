@@ -32,13 +32,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="login.html">login</a>
+                                    <a class="nav-link active" aria-current="page" href="menu.html">Menu</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="index.html">Menu</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="listados.html">Usuario</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                       usuarios
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="listados.html">Usuario</a></li>
+                                        <li><a class="dropdown-item" href="proveedores.html">proveedores</a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="historial.html">Historial de
@@ -75,16 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="login.html">login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="signup.html">resistrarse</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </nav>
                     `;
@@ -94,45 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
                 // Se establece el pie del encabezado.
                 const footer = `
-                <div class="row justify-content-center mb-0 pt-5 pb-0 row-2 px-3">
-                <div class="col-12">
-                    <div class="row row-2">
-                        <div class="col-sm-3 text-md-center">
-                            <h5><span> <i class="fa fa-firefox text-light" aria-hidden="true"></i></span><b> Ifco</b></h5>
-                        </div>
-                        <div class="col-sm-3  my-sm-0 mt-5">
-                            <ul class="list-unstyled">
-                                <li class="mt-0">HTML</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-3  my-sm-0 mt-5">
-                            <ul class="list-unstyled">
-                                <li class="mt-0"></li>
-                                <li>Bootstrap</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-3  my-sm-0 mt-5">
-                        <ul class="list-unstyled">
-                            <li class="mt-0"></li>
-                            <li>JavaScript</li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center mt-0 pt-0 row-1 mb-0  px-sm-3 px-2">
-                <div class="col-12">
-                    <div class="row my-4 row-1 no-gutters">
-                        <div class="col-sm-3 col-auto text-center"><small>&#9400; ifco</small></div>
-                        <div class="col-md-3 col-auto "></div>
-                        <div class="col-md-3 col-auto"></div>
-                        <div class="col  my-auto text-md-left  text-right "> <small><span><img
-                                        src="https://i.imgur.com/TtB6MDc.png" class="img-fluid " width="25"></span>
-                                <span><img src="https://i.imgur.com/N90KDYM.png" class="img-fluid "
-                                        width="25"></span></small> </div>
-                    </div>
-                </div>
-            </div>
+                
                 `;
                 // Se asigna a la página web el contenido del pie.
                 document.querySelector('footer').innerHTML = footer;

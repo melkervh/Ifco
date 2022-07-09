@@ -1,5 +1,5 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_PRODUCTOS = SERVER + 'Actions/productos.php?action=';
+const API_DETALLES = SERVER + 'Actions/detalles.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function openShowFechas() {
 
     // Petición para obtener los datos del registro solicitado.
-    fetch(API_PRODUCTOS + 'showFechas', {
+    fetch(API_DETALLES  + 'showFechas', {
         method: 'get'
     }).then(function (request) {
 
@@ -30,12 +30,12 @@ function openShowFechas() {
 
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
-                            <tr>
-                            <td>${row.nombre_prodroducto}</td>
-                            <td>${row.cantidad_com}</td>
-                            <td>$${row.precio_u}</td>
-                            <td>${fecha_fn}</td>
-                            </tr>
+                        <tr>
+                        <td>${row.nombre_prodroducto}</td>
+                        <td>${row.descripcion_producto}</td>
+                        <td>$${row.cantidad_prodroducto}</td>
+                        <td>${row.precio_unidad}</td>
+                        </tr>
                         `
                     });
 
@@ -56,7 +56,7 @@ function openShowFechas() {
 function openShowFechasc() {
 
     // Petición para obtener los datos del registro solicitado.
-    fetch(API_PRODUCTOS + 'showFechasc', {
+    fetch(API_DETALLES  + 'showFechasc', {
         method: 'get'
     }).then(function (request) {
 
@@ -76,9 +76,9 @@ function openShowFechasc() {
                         content += `
                             <tr>
                             <td>${row.nombre_prodroducto}</td>
-                            <td>${row.cantidad_com}</td>
-                            <td>$${row.precio_u}</td>
-                            <td>${fecha_fn}</td>
+                            <td>${row.descripcion_producto}</td>
+                            <td>$${row.cantidad_prodroducto}</td>
+                            <td>${row.precio_unidad}</td>
                             </tr>
                         `
                     });

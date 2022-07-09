@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
             request.json().then(function (response) {
                 // Se comprueba si existe una sesión, de lo contrario se revisa si la respuesta es satisfactoria.
                 if (response.session) {
-                    location.href = 'menu.html';
+                    location.href = 'index.html';
                 } else if (response.status) {
-                    sweetAlert(4, 'Debe autenticarse para ingresar', null);
+                    sweetAlert(3, response.message, 'login.html');
                 } else {
-                    sweetAlert(3, response.exception, 'signup.html');
+                    sweetAlert(4, 'Debe crear un usuario para comenzar', null);
                 }
             });
         } else {
@@ -25,21 +25,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Método manejador de eventos que se ejecuta cuando se envía el formulario de iniciar sesión.
-document.getElementById('session-form').addEventListener('submit', function (event) {
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de registrar.
+document.getElementById('register-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Petición para revisar si el administrador se encuentra registrado.
-    fetch(API_USUARIOS + 'logIn', {
+    // Petición para registrar el primer usuario del sitio privado.
+    fetch(API_USUARIOS + 'register', {
         method: 'post',
-        body: new FormData(document.getElementById('session-form'))
+        body: new FormData(document.getElementById('register-form'))
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
         if (request.ok) {
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
-                    sweetAlert(1, response.message, 'index.html');
+                    sweetAlert(1, response.message, 'login.html');
                 } else {
                     sweetAlert(2, response.exception, null);
                 }

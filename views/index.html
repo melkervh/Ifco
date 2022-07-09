@@ -1,160 +1,78 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-    <!--CSS bootstrap-->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
+    <title>IFCO - Inició de sesión</title>
 </head>
-
 <body>
+    <!-- Nav de la página web -->
     <header>
+        <nav class="navbar navbar-expand-lg navbar-light navbar-dark">
+            <div class="container-fluid">
+                <img src="../resources/img/logo.jpeg" height="80">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="login.html">login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
+    <!-- Cuerpo de la página web -->
     <main>
-        <div class="courses-container">
-            <div class="course">
-                <div class="course-preview">
-                    <i class="fa-solid fa-users cajita"></i>
-                    <h2><a href="listados.html">Usuarios<i class="fas fa-chevron-right"></i></a></h2>
-                </div>
-                <div class="course-info">
-                    <div class="progress-container">
-                        <div class="progress"></div>
-                        <span class="progress-text">
-                            6/9 Challenges
-                        </span>
+        <!-- Contenedor principal -->
+        <form method="post" id="session-form">
+            <div class="container-lg cuerpo">
+                <div class="row ">
+                    <div class="col-12">
+                        <h5 class="letrat">Iniciar Sesión</h5>
                     </div>
-                    <button class="btn2"><a href="listados.html">continuar</a></button>
+                    <div class="col-md-6 col-sm-12">
+                        <img src="../resources/img/logologin.jpeg" class="logoc">
+                    </div>
+                    <div class="col-md-6 col-sm-12 campos">
+                        <h5 class="letrac">Correo</h5>
+                        <div class="input-group">
+                            <input id="correo" type="email" name="correo" class="form-control espacioc" required>
+                        </div>
+                        <h5 class="letrac">Contraseña</h5>
+                        <div class="input-group">
+                            <input id="clave" type="password" name="clave" class="form-control" required>
+                        </div>
+                        <div class="recuperart"><a class="recuperar" href="recuperar_contrasena.html">Olvidaste tu
+                                contraseña</a></div>
+                        <button type="submit" class="btn botondise" data-tooltip="Registrar">Registrar</button>
                 </div>
             </div>
-            <div class="course">
-                <div class="course-preview">
-                    <i class="fa-solid fa-cart-shopping cajita"></i>
-                    <h2> <a href="#">ingresar productos<i class="fas fa-chevron-right"></i></a></h2>
-                </div>
-                <div class="course-info">
-                    <div class="progress-container">
-                        <div class="progress"></div>
-                        <span class="progress-text">
-                            6/9 Challenges
-                        </span>
-                    </div>
-                    <button class="btn2"><a href="agregar_producto.html">continuar</a></button>
-                </div>
-            </div>
-            <div class="course">
-                <div class="course-preview">
-                    <i class="fa-solid fa-file-circle-plus cajita"></i>
-                    <h2> <a href="facturan.html">Facturas<i class="fas fa-chevron-right"></i></a></h2>
-                </div>
-                <div class="course-info">
-                    <div class="progress-container">
-                        <div class="progress"></div>
-                        <span class="progress-text">
-                            6/9 Challenges
-                        </span>
-                    </div>
-                    <button class="btn2"><a href="facturan.html">continuar</a></button>
-                </div>
-            </div>
-            <div class="course">
-                <div class="course-preview">
-                    <i class="fa-solid fa-box cajita"></i>
-                    <h2> <a href="#">inventario<i class="fas fa-chevron-right"></i></a></h2>
-                </div>
-                <div class="course-info">
-                    <div class="progress-container">
-                        <div class="progress"></div>
-                        <span class="progress-text">
-                            6/9 Challenges
-                        </span>
-                    </div>
-                    <button class="btn2"><a href="inventario.html">continuar</a></button>
-                </div>
-            </div>
-            <div class="course">
-                <div class="course-preview">
-                    <i class="fa-solid fa-file cajita"></i>
-                    <h2> <a href="historial.html">revision de factura<i class="fas fa-chevron-right"></i></a></h2>
-                </div>
-                <div class="course-info">
-                    <div class="progress-container">
-                        <div class="progress"></div>
-                        <span class="progress-text">
-                            6/9 Challenges
-                        </span>
-                    </div>
-                    <button class="btn2"><a href="historial.html">continuar</a></button>
-                </div>
-            </div>
-        </div>
+        </form>
     </main>
-    <section class="container-lg">
-        <div class="contenedortbad">
-            <ul class="nav nav-pills mb-3 tabs" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button onclick="openShowFechas()" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true">productos recientes</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button onclick="openShowFechasc()" class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                        aria-selected="false">Fecha corta</button>
-                </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div class="Listas">
-                        <table class="table table-borderless ">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">cantidad</th>
-                                    <th scope="col">costo</th>
-                                    <th scope="col">fecha</th>
-                                </tr>
-                            </thead>
-                            <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                            <tbody id="productos-tabla"></tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <div class="Listas">
-                        <table class="table table-borderless">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">cantidad</th>
-                                    <th scope="col">unidad</th>
-                                    <th scope="col">fecha</th>
-                                </tr>
-                            </thead>
-                            <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                            <tbody id="productosrec-tabla"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...
-            </div>
+    <!-- Footer de la página web -->
+    <footer>
+        <div class="container-fluid footerc">
+            <p class="letraf2">
+                @2022 Mockup. Todos los derechos reservados
+            </p>
         </div>
-        </div>
-    </section>
-    <footer></footer>
-    <!--JS bootstrap-->
+    </footer>
     <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/acounst.js"></script>
-    <script src="../controllers/index.js"></script> 
-    
+    <script src="../controllers/login.js"></script>
 </body>
 
 </html>
