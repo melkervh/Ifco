@@ -204,7 +204,7 @@ class createcredito extends Validator
     {
     $sql = 'INSERT INTO cliente(
     nombre_cli, apellido_cli, "DUI", departamento)
-    VALUES ( ?, ?, ?, ?, ?);';
+    VALUES ( ?, ?, ?, ?)';
     $params = array($this->nombre_cliente, $this->apellido_cliente, $this->DUI_cli,$this->Departamento_clien);
     return Database::executeRow($sql, $params);
     }
@@ -214,7 +214,7 @@ class createcredito extends Validator
     {
     $sql = 'INSERT INTO credito_fiscal(
         nota_mision, condicion_pago, giro, via_a_cta_de, fecha_credito)
-       VALUES ( ?, ?, ?, ?,?);';
+       VALUES ( ?, ?, ?, ?,?)';
     $params = array($this->nota_mision,$this->condicion_pago,$this->giro,$this->via_a_cta_de,$this->fecha_credito);
     return Database::executeRow($sql, $params);
     }
@@ -223,7 +223,7 @@ class createcredito extends Validator
     {
     $sql = 'INSERT INTO detalle_credito(
         id_producto, nombre_cre, cantidad_cre, precio_u, total)
-        VALUES ( ?, ?, ?, ?, ?);';
+        VALUES ( ?, ?, ?, ?, ?)';
     $params = array($this->id_producto,$this->nombre_cre,$this->cantidad_cre,$this->precio_u,$this->total);
     return Database::executeRow($sql, $params);
     }
