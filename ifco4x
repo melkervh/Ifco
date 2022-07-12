@@ -1,0 +1,1405 @@
+--
+-- PostgreSQL database dump
+--e
+
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
+
+-- Started on 2022-06-26 21:33:16
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 237 (class 1255 OID 114991)
+-- Name: actualizardrop(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.actualizardrop() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+declare
+begin
+update producto set cantidad = cantidad-old.cantidad
+where id_producto=old.id_producto;
+end;
+$$;
+
+
+ALTER FUNCTION public.actualizardrop() OWNER TO postgres;
+
+--
+-- TOC entry 238 (class 1255 OID 114992)
+-- Name: actualizarpordu(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.actualizarpordu() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+declare
+begin
+update producto set cantidad = cantidad+ new.cantidad
+where id_producto=new.id_producto;
+return new;
+end;
+$$;
+
+
+ALTER FUNCTION public.actualizarpordu() OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 209 (class 1259 OID 114993)
+-- Name: categoria; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.categoria (
+    id_categoria integer NOT NULL,
+    categoria character varying(100) NOT NULL,
+    id_tipo_prod integer NOT NULL
+);
+
+
+ALTER TABLE public.categoria OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 114996)
+-- Name: categoria_id_categoria_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.categoria_id_categoria_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.categoria_id_categoria_seq OWNER TO postgres;
+
+--
+-- TOC entry 3454 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: categoria_id_categoria_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.categoria_id_categoria_seq OWNED BY public.categoria.id_categoria;
+
+
+--
+-- TOC entry 211 (class 1259 OID 114997)
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cliente (
+    id_cliente integer NOT NULL,
+    nombre_cli character varying(100) NOT NULL,
+    apellido_cli character varying(100) NOT NULL,
+    "DUI" character varying(10) NOT NULL,
+    telefono numeric(8,0),
+    departamento character varying(100),
+    municipio character varying(100)
+);
+
+
+ALTER TABLE public.cliente OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 115000)
+-- Name: cliente_id_cliente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.cliente_id_cliente_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cliente_id_cliente_seq OWNER TO postgres;
+
+--
+-- TOC entry 3455 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: cliente_id_cliente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.cliente_id_cliente_seq OWNED BY public.cliente.id_cliente;
+
+
+--
+-- TOC entry 213 (class 1259 OID 115001)
+-- Name: credito_fiscal; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.credito_fiscal (
+    id_fiscal integer NOT NULL,
+    nota_mision character varying(100),
+    condicion_pago character varying(100),
+    giro character varying(100),
+    via_a_cta_de character varying(100),
+    fecha_credito date NOT NULL,
+    numero_credi integer NOT NULL
+);
+
+
+ALTER TABLE public.credito_fiscal OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 115004)
+-- Name: credito_fiscal_id_fiscal_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.credito_fiscal_id_fiscal_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.credito_fiscal_id_fiscal_seq OWNER TO postgres;
+
+--
+-- TOC entry 3456 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: credito_fiscal_id_fiscal_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.credito_fiscal_id_fiscal_seq OWNED BY public.credito_fiscal.id_fiscal;
+
+
+--
+-- TOC entry 236 (class 1259 OID 115167)
+-- Name: credito_fiscal_numero_credi_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.credito_fiscal_numero_credi_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.credito_fiscal_numero_credi_seq OWNER TO postgres;
+
+--
+-- TOC entry 3457 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: credito_fiscal_numero_credi_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.credito_fiscal_numero_credi_seq OWNED BY public.credito_fiscal.numero_credi;
+
+
+--
+-- TOC entry 235 (class 1259 OID 115156)
+-- Name: detalle_credito; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.detalle_credito (
+    id_detallecre integer NOT NULL,
+    id_producto integer NOT NULL,
+    nombre_cre character varying(100) NOT NULL,
+    cantidad_cre integer NOT NULL,
+    precio_u numeric(4,2) NOT NULL,
+    total numeric(4,2) NOT NULL
+);
+
+
+ALTER TABLE public.detalle_credito OWNER TO postgres;
+
+--
+-- TOC entry 234 (class 1259 OID 115155)
+-- Name: detalle_credito_id_detallecre_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.detalle_credito_id_detallecre_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.detalle_credito_id_detallecre_seq OWNER TO postgres;
+
+--
+-- TOC entry 3458 (class 0 OID 0)
+-- Dependencies: 234
+-- Name: detalle_credito_id_detallecre_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.detalle_credito_id_detallecre_seq OWNED BY public.detalle_credito.id_detallecre;
+
+
+--
+-- TOC entry 215 (class 1259 OID 115005)
+-- Name: detalle_factura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.detalle_factura (
+    id_detalle_fac integer NOT NULL,
+    id_producto integer NOT NULL,
+    precio_u numeric(4,2) NOT NULL,
+    precio_total numeric(4,2) NOT NULL,
+    cantidad_com numeric(4,0) NOT NULL
+);
+
+
+ALTER TABLE public.detalle_factura OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 115008)
+-- Name: detalle_factura_id_detalle_fac_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.detalle_factura_id_detalle_fac_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.detalle_factura_id_detalle_fac_seq OWNER TO postgres;
+
+--
+-- TOC entry 3459 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: detalle_factura_id_detalle_fac_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.detalle_factura_id_detalle_fac_seq OWNED BY public.detalle_factura.id_detalle_fac;
+
+
+--
+-- TOC entry 217 (class 1259 OID 115009)
+-- Name: entrada_producto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.entrada_producto (
+    id_entrada integer NOT NULL,
+    cantidad_ent numeric(4,0) NOT NULL,
+    id_producto integer NOT NULL
+);
+
+
+ALTER TABLE public.entrada_producto OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 115012)
+-- Name: estrada_producto_id_entrada_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.estrada_producto_id_entrada_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.estrada_producto_id_entrada_seq OWNER TO postgres;
+
+--
+-- TOC entry 3460 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: estrada_producto_id_entrada_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.estrada_producto_id_entrada_seq OWNED BY public.entrada_producto.id_entrada;
+
+
+--
+-- TOC entry 219 (class 1259 OID 115013)
+-- Name: factura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.factura (
+    id_factura integer NOT NULL,
+    id_fact_nor integer NOT NULL,
+    id_fiscal integer,
+    id_cliente integer NOT NULL,
+    id_detalle_fac integer NOT NULL
+);
+
+
+ALTER TABLE public.factura OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 115016)
+-- Name: factura_id_factura_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.factura_id_factura_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.factura_id_factura_seq OWNER TO postgres;
+
+--
+-- TOC entry 3461 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: factura_id_factura_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.factura_id_factura_seq OWNED BY public.factura.id_factura;
+
+
+--
+-- TOC entry 221 (class 1259 OID 115017)
+-- Name: factura_normal; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.factura_normal (
+    id_fact_nor integer NOT NULL,
+    vnta_dt character varying(100) NOT NULL,
+    fecha_fn date NOT NULL,
+    numero_fact integer NOT NULL
+);
+
+
+ALTER TABLE public.factura_normal OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 115020)
+-- Name: factura_normal_id_fact_nor_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.factura_normal_id_fact_nor_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.factura_normal_id_fact_nor_seq OWNER TO postgres;
+
+--
+-- TOC entry 3462 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: factura_normal_id_fact_nor_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.factura_normal_id_fact_nor_seq OWNED BY public.factura_normal.id_fact_nor;
+
+
+--
+-- TOC entry 233 (class 1259 OID 115148)
+-- Name: factura_normal_numero_fact_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.factura_normal_numero_fact_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.factura_normal_numero_fact_seq OWNER TO postgres;
+
+--
+-- TOC entry 3463 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: factura_normal_numero_fact_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.factura_normal_numero_fact_seq OWNED BY public.factura_normal.numero_fact;
+
+
+--
+-- TOC entry 223 (class 1259 OID 115021)
+-- Name: marca; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.marca (
+    id_marca integer NOT NULL,
+    marca character varying(100) NOT NULL,
+    id_proveedor integer NOT NULL,
+    id_tipo_prod integer NOT NULL
+);
+
+
+ALTER TABLE public.marca OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 115024)
+-- Name: marca_id_marca_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.marca_id_marca_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.marca_id_marca_seq OWNER TO postgres;
+
+--
+-- TOC entry 3464 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: marca_id_marca_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.marca_id_marca_seq OWNED BY public.marca.id_marca;
+
+
+--
+-- TOC entry 225 (class 1259 OID 115029)
+-- Name: producto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.producto (
+    id_producto integer NOT NULL,
+    nombre_prodroducto character varying(100) NOT NULL,
+    cantidad_prodroducto character varying(100) NOT NULL,
+    descripcion_producto character varying(600) NOT NULL,
+    estado_producto boolean NOT NULL,
+    precio_unidad numeric(4,2) NOT NULL,
+    id_marca integer NOT NULL,
+    id_usuario integer NOT NULL
+);
+
+
+ALTER TABLE public.producto OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1259 OID 115034)
+-- Name: producto_id_producto_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.producto_id_producto_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.producto_id_producto_seq OWNER TO postgres;
+
+--
+-- TOC entry 3465 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: producto_id_producto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.producto_id_producto_seq OWNED BY public.producto.id_producto;
+
+
+--
+-- TOC entry 227 (class 1259 OID 115035)
+-- Name: proveedor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.proveedor (
+    id_proveedor integer NOT NULL,
+    nombre_prv character varying(100) NOT NULL,
+    contacto character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.proveedor OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1259 OID 115038)
+-- Name: proveedor_id_proveedor_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.proveedor_id_proveedor_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.proveedor_id_proveedor_seq OWNER TO postgres;
+
+--
+-- TOC entry 3466 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: proveedor_id_proveedor_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.proveedor_id_proveedor_seq OWNED BY public.proveedor.id_proveedor;
+
+
+--
+-- TOC entry 229 (class 1259 OID 115039)
+-- Name: tipo_producto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_producto (
+    id_tipo_prod integer NOT NULL,
+    tipo_producto character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.tipo_producto OWNER TO postgres;
+
+--
+-- TOC entry 230 (class 1259 OID 115042)
+-- Name: tipo_producto_id_tipo_prod_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tipo_producto_id_tipo_prod_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tipo_producto_id_tipo_prod_seq OWNER TO postgres;
+
+--
+-- TOC entry 3467 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: tipo_producto_id_tipo_prod_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tipo_producto_id_tipo_prod_seq OWNED BY public.tipo_producto.id_tipo_prod;
+
+
+--
+-- TOC entry 231 (class 1259 OID 115043)
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuario (
+    id_usuario integer NOT NULL,
+    nombre_usuario character varying(100) NOT NULL,
+    apellido_usuario character varying(100) NOT NULL,
+    clave_usuario character varying(60) NOT NULL,
+    correo_usuario character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.usuario OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 1259 OID 115046)
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.usuario_id_usuario_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.usuario_id_usuario_seq OWNER TO postgres;
+
+--
+-- TOC entry 3468 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.usuario_id_usuario_seq OWNED BY public.usuario.id_usuario;
+
+
+--
+-- TOC entry 3228 (class 2604 OID 115047)
+-- Name: categoria id_categoria; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categoria ALTER COLUMN id_categoria SET DEFAULT nextval('public.categoria_id_categoria_seq'::regclass);
+
+
+--
+-- TOC entry 3229 (class 2604 OID 115048)
+-- Name: cliente id_cliente; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente ALTER COLUMN id_cliente SET DEFAULT nextval('public.cliente_id_cliente_seq'::regclass);
+
+
+--
+-- TOC entry 3230 (class 2604 OID 115049)
+-- Name: credito_fiscal id_fiscal; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.credito_fiscal ALTER COLUMN id_fiscal SET DEFAULT nextval('public.credito_fiscal_id_fiscal_seq'::regclass);
+
+
+--
+-- TOC entry 3231 (class 2604 OID 115168)
+-- Name: credito_fiscal numero_credi; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.credito_fiscal ALTER COLUMN numero_credi SET DEFAULT nextval('public.credito_fiscal_numero_credi_seq'::regclass);
+
+
+--
+-- TOC entry 3242 (class 2604 OID 115159)
+-- Name: detalle_credito id_detallecre; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_credito ALTER COLUMN id_detallecre SET DEFAULT nextval('public.detalle_credito_id_detallecre_seq'::regclass);
+
+
+--
+-- TOC entry 3232 (class 2604 OID 115050)
+-- Name: detalle_factura id_detalle_fac; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_factura ALTER COLUMN id_detalle_fac SET DEFAULT nextval('public.detalle_factura_id_detalle_fac_seq'::regclass);
+
+
+--
+-- TOC entry 3233 (class 2604 OID 115051)
+-- Name: entrada_producto id_entrada; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.entrada_producto ALTER COLUMN id_entrada SET DEFAULT nextval('public.estrada_producto_id_entrada_seq'::regclass);
+
+
+--
+-- TOC entry 3234 (class 2604 OID 115052)
+-- Name: factura id_factura; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura ALTER COLUMN id_factura SET DEFAULT nextval('public.factura_id_factura_seq'::regclass);
+
+
+--
+-- TOC entry 3235 (class 2604 OID 115053)
+-- Name: factura_normal id_fact_nor; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura_normal ALTER COLUMN id_fact_nor SET DEFAULT nextval('public.factura_normal_id_fact_nor_seq'::regclass);
+
+
+--
+-- TOC entry 3236 (class 2604 OID 115149)
+-- Name: factura_normal numero_fact; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura_normal ALTER COLUMN numero_fact SET DEFAULT nextval('public.factura_normal_numero_fact_seq'::regclass);
+
+
+--
+-- TOC entry 3237 (class 2604 OID 115054)
+-- Name: marca id_marca; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marca ALTER COLUMN id_marca SET DEFAULT nextval('public.marca_id_marca_seq'::regclass);
+
+
+--
+-- TOC entry 3238 (class 2604 OID 115056)
+-- Name: producto id_producto; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto ALTER COLUMN id_producto SET DEFAULT nextval('public.producto_id_producto_seq'::regclass);
+
+
+--
+-- TOC entry 3239 (class 2604 OID 115057)
+-- Name: proveedor id_proveedor; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.proveedor ALTER COLUMN id_proveedor SET DEFAULT nextval('public.proveedor_id_proveedor_seq'::regclass);
+
+
+--
+-- TOC entry 3240 (class 2604 OID 115058)
+-- Name: tipo_producto id_tipo_prod; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_producto ALTER COLUMN id_tipo_prod SET DEFAULT nextval('public.tipo_producto_id_tipo_prod_seq'::regclass);
+
+
+--
+-- TOC entry 3241 (class 2604 OID 115059)
+-- Name: usuario id_usuario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario ALTER COLUMN id_usuario SET DEFAULT nextval('public.usuario_id_usuario_seq'::regclass);
+
+
+--
+-- TOC entry 3421 (class 0 OID 114993)
+-- Dependencies: 209
+-- Data for Name: categoria; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.categoria (id_categoria, categoria, id_tipo_prod) FROM stdin;
+1	Jugo	1
+2	Energisate	1
+3	Gaseosa	1
+4	Churro	2
+5	Galleta	2
+6	Granos de atol	3
+7	Arrozes	3
+8	Azucares	3
+9	Para pan	4
+10	Para tortilla	4
+\.
+
+
+--
+-- TOC entry 3423 (class 0 OID 114997)
+-- Dependencies: 211
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cliente (id_cliente, nombre_cli, apellido_cli, "DUI", telefono, departamento, municipio) FROM stdin;
+1	Miguel	Hernandez	06655821-5	79234820	San Salvador	Mejicanos
+2	Paco	Polanco	06775821-7	78945612	San Salvador	Apopa
+3	Fernando	Solis	09655871-5	69874123	San Miguel	San Miguel
+4	Samanta	Cardona	06775855-3	89562341	San Salvador	Soyapango
+5	Edwin	Beltran	03775903-1	78451203	Morazan	Jocoro
+6	Patricia	Mejia	55028493-5	55756241	Cuscatlan	El Rosario
+7	Diego	Cruz	06527755-7	75951462	La Libertad	Colon
+8	Daniela	Paz	06965755-2	96374102	Cabanas	Dolores
+9	Moises	Luna	96374185-2	74103568	Ahuachapan	Turin
+10	Lisseth	Rivas	01534795-9	85296647	Usulutan	Berlin
+11	jorge	polanco	61234578-9	\N	san salvador	\N
+12	moi	alessandro	62314567-9	\N	cabañas	\N
+13	moi	alessandro	62314567-9	\N	cabañas	\N
+14	karlos	solis	62714567-9	\N	cabañas	\N
+15	karlos	solis	62714567-9	\N	cabañas	\N
+16	miguel	sadadasd	53145678-9	\N	cabañas	\N
+17	miguel	sadadasd	53145678-9	\N	cabañas	\N
+18	miguel	polanco	62314567-9	\N	san salvador	\N
+19	miguel	polanco	62314567-9	\N	san salvador	\N
+20	jorge	alessandro	62315678-9	\N	san salvador	\N
+21	jorge	alessandro	62315678-9	\N	san salvador	\N
+22	rodri	alessandro	62145678-9	\N	san salvador	\N
+23	jorge	polanco	62314568-9	\N	san salvador	\N
+24	miguel	alessandro	62345678-9	\N	san salvador	\N
+25	miguel	alessandro	62345678-9	\N	san salvador	\N
+26	miguel	alessandro	62345678-9	\N	san salvador	\N
+27	miguel	alessandro	62345678-9	\N	san salvador	\N
+28	miguel	alessandro	62345678-9	\N	san salvador	\N
+29	miguel	alessandro	62345678-9	\N	san salvador	\N
+30	rodri	alessandro	62315678-9	\N	cabañas	\N
+31	jorge	polanco	62315678-9	\N	san salvador	\N
+32	jorge	polanco	62315678-9	\N	san salvador	\N
+49	siu	abarca	12345669	\N	san salvador	mejicanos
+53	jorge	polanco	62314567-9	\N	san salvador	\N
+54	jorge	polanco	62314678-9	\N	san salvador	\N
+\.
+
+
+--
+-- TOC entry 3425 (class 0 OID 115001)
+-- Dependencies: 213
+-- Data for Name: credito_fiscal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.credito_fiscal (id_fiscal, nota_mision, condicion_pago, giro, via_a_cta_de, fecha_credito, numero_credi) FROM stdin;
+85	sdssadasd	efectivo	1	daddasd	2022-06-25	2
+91	sdssadasd	efectivo	1	daddasd	2022-06-25	8
+95	sdssadasd	efectivo	1	daddasd	2022-06-25	12
+99	sdssadasd	efectivo	1	daddasd	2022-06-25	16
+103	sdssadasd	efectivo	1	daddasd	2022-06-25	20
+\.
+
+
+--
+-- TOC entry 3447 (class 0 OID 115156)
+-- Dependencies: 235
+-- Data for Name: detalle_credito; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.detalle_credito (id_detallecre, id_producto, nombre_cre, cantidad_cre, precio_u, total) FROM stdin;
+3	1	jabon	2	2.00	4.00
+4	1	jabon	4	1.00	4.00
+5	1	jabon	5	1.00	5.00
+6	1	jabon	5	2.00	10.00
+7	1	jabon	5	2.00	10.00
+8	1	jabon	4	2.00	8.00
+9	1	jabon	4	2.00	8.00
+10	1	jabon	3	22.00	66.00
+11	1	jabon	3	22.00	66.00
+12	1	jabon	2	3.00	6.00
+13	1	jabon	3	12.00	36.00
+14	1	jabon	3	12.00	36.00
+15	1	jabon	3	12.00	36.00
+16	1	jabon	3	12.00	36.00
+17	1	jabon	2	2.00	4.00
+18	1	jabon	2	2.00	4.00
+19	1	jabon	2	2.00	4.00
+20	1	jabon	2	2.00	4.00
+25	1	cafe	4	2.00	8.00
+26	1	cafe	4	2.00	8.00
+27	1	jabon	3	2.00	6.00
+28	1	jabon	3	2.00	6.00
+29	1	jabon	3	2.00	6.00
+30	1	cafe	2	2.00	4.00
+31	1	cafe	2	2.00	4.00
+32	1	jabon	2	2.00	4.00
+33	1	jabon	2	2.00	4.00
+34	1	jabon	2	2.00	4.00
+35	1	jabon	2	2.00	4.00
+\.
+
+
+--
+-- TOC entry 3427 (class 0 OID 115005)
+-- Dependencies: 215
+-- Data for Name: detalle_factura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.detalle_factura (id_detalle_fac, id_producto, precio_u, precio_total, cantidad_com) FROM stdin;
+1	1	-8.00	4.20	2
+2	1	2.00	8.00	4
+3	1	2.00	8.00	4
+4	1	2.00	10.00	5
+5	1	2.00	4.00	2
+6	1	32.00	64.00	2
+7	1	32.00	64.00	2
+8	1	2.00	4.00	2
+9	1	1.00	4.00	4
+10	1	1.00	5.00	5
+11	1	2.00	6.00	3
+12	1	2.00	4.00	2
+\.
+
+
+--
+-- TOC entry 3429 (class 0 OID 115009)
+-- Dependencies: 217
+-- Data for Name: entrada_producto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.entrada_producto (id_entrada, cantidad_ent, id_producto) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3431 (class 0 OID 115013)
+-- Dependencies: 219
+-- Data for Name: factura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.factura (id_factura, id_fact_nor, id_fiscal, id_cliente, id_detalle_fac) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3433 (class 0 OID 115017)
+-- Dependencies: 221
+-- Data for Name: factura_normal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.factura_normal (id_fact_nor, vnta_dt, fecha_fn, numero_fact) FROM stdin;
+9	comercial obed	2022-06-23	9
+11	comercial obed	2022-06-23	11
+13	comercial obed	2022-06-23	13
+15	comercial obed	2022-06-23	15
+17	comercial obed	2022-07-09	17
+19	comercial obed	2022-07-01	19
+21	comercial obed	2022-07-01	21
+23	comercial obed	2022-06-30	23
+25	comercial obed	2022-06-30	25
+27	comercial obed	2022-06-30	27
+29	comercial obed	2022-06-30	29
+31	comercial obed	2022-06-30	31
+40	comercial obed	2022-07-02	40
+42	comercial obed	2022-07-02	42
+47	comercial obed	2022-06-24	47
+50	comercial obed	2022-06-24	50
+52	comercial obed	2022-06-24	52
+95	comercial obed	2022-06-24	95
+98	comercial obed	2022-06-09	98
+102	comercial obed	2022-06-09	102
+106	comercial obed	2022-06-09	106
+110	comercial obed	2022-06-09	110
+114	comercial obed	2022-06-09	114
+119	comercial obed	2022-06-09	119
+122	comercial obed	2022-06-09	122
+126	comercial obed	2022-06-09	126
+131	comercial obed	2022-06-23	131
+134	comercial obed	2022-06-09	134
+139	comercial obed	2022-06-25	139
+143	comercial obed	2022-06-25	143
+146	comercial obed	2022-06-25	146
+150	comercial obed	2022-06-26	150
+\.
+
+
+--
+-- TOC entry 3435 (class 0 OID 115021)
+-- Dependencies: 223
+-- Data for Name: marca; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.marca (id_marca, marca, id_proveedor, id_tipo_prod) FROM stdin;
+1	Picni	1	2
+2	del valle	2	1
+3	Sabritas	4	2
+4	Quaker	4	3
+5	Power	1	1
+6	Diana	1	2
+7	San Francisco	3	3
+\.
+
+
+--
+-- TOC entry 3437 (class 0 OID 115029)
+-- Dependencies: 225
+-- Data for Name: producto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.producto (id_producto, nombre_prodroducto, cantidad_prodroducto, descripcion_producto, estado_producto, precio_unidad, id_marca, id_usuario) FROM stdin;
+1	sadsd	33	asdadasd	t	2.10	1	1
+\.
+
+
+--
+-- TOC entry 3439 (class 0 OID 115035)
+-- Dependencies: 227
+-- Data for Name: proveedor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.proveedor (id_proveedor, nombre_prv, contacto) FROM stdin;
+1	Diana	diana@gmail.com
+2	CocaCola	coca_cola@gmail.com
+3	San Francisco	sanfrancisco@gmail.com
+4	Pepsip	79527514
+5	Señorial	94257896
+\.
+
+
+--
+-- TOC entry 3441 (class 0 OID 115039)
+-- Dependencies: 229
+-- Data for Name: tipo_producto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_producto (id_tipo_prod, tipo_producto) FROM stdin;
+1	Bebidas
+2	Boquitas
+3	Granos Basicos
+4	Harinas
+\.
+
+
+--
+-- TOC entry 3443 (class 0 OID 115043)
+-- Dependencies: 231
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.usuario (id_usuario, nombre_usuario, apellido_usuario, clave_usuario, correo_usuario) FROM stdin;
+1	Miguel	Hernandez	$2y$10$BRuT1tJkwV8zO2t4A2jnROGYOunJ60Jxl949H04LLKEjW4T5jbnke	miguel@gmail.com
+\.
+
+
+--
+-- TOC entry 3469 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: categoria_id_categoria_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.categoria_id_categoria_seq', 1, false);
+
+
+--
+-- TOC entry 3470 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: cliente_id_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cliente_id_cliente_seq', 54, true);
+
+
+--
+-- TOC entry 3471 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: credito_fiscal_id_fiscal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.credito_fiscal_id_fiscal_seq', 105, true);
+
+
+--
+-- TOC entry 3472 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: credito_fiscal_numero_credi_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.credito_fiscal_numero_credi_seq', 22, true);
+
+
+--
+-- TOC entry 3473 (class 0 OID 0)
+-- Dependencies: 234
+-- Name: detalle_credito_id_detallecre_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.detalle_credito_id_detallecre_seq', 35, true);
+
+
+--
+-- TOC entry 3474 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: detalle_factura_id_detalle_fac_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.detalle_factura_id_detalle_fac_seq', 12, true);
+
+
+--
+-- TOC entry 3475 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: estrada_producto_id_entrada_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.estrada_producto_id_entrada_seq', 1, false);
+
+
+--
+-- TOC entry 3476 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: factura_id_factura_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.factura_id_factura_seq', 1, false);
+
+
+--
+-- TOC entry 3477 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: factura_normal_id_fact_nor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.factura_normal_id_fact_nor_seq', 152, true);
+
+
+--
+-- TOC entry 3478 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: factura_normal_numero_fact_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.factura_normal_numero_fact_seq', 152, true);
+
+
+--
+-- TOC entry 3479 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.marca_id_marca_seq', 1, false);
+
+
+--
+-- TOC entry 3480 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: producto_id_producto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.producto_id_producto_seq', 1, false);
+
+
+--
+-- TOC entry 3481 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: proveedor_id_proveedor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.proveedor_id_proveedor_seq', 1, false);
+
+
+--
+-- TOC entry 3482 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: tipo_producto_id_tipo_prod_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_producto_id_tipo_prod_seq', 1, false);
+
+
+--
+-- TOC entry 3483 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.usuario_id_usuario_seq', 1, false);
+
+
+--
+-- TOC entry 3244 (class 2606 OID 115061)
+-- Name: categoria categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categoria
+    ADD CONSTRAINT categoria_pkey PRIMARY KEY (id_categoria);
+
+
+--
+-- TOC entry 3246 (class 2606 OID 115063)
+-- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (id_cliente);
+
+
+--
+-- TOC entry 3248 (class 2606 OID 115065)
+-- Name: credito_fiscal credito_fiscal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.credito_fiscal
+    ADD CONSTRAINT credito_fiscal_pkey PRIMARY KEY (id_fiscal);
+
+
+--
+-- TOC entry 3268 (class 2606 OID 115161)
+-- Name: detalle_credito detalle_credito_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_credito
+    ADD CONSTRAINT detalle_credito_pkey PRIMARY KEY (id_detallecre);
+
+
+--
+-- TOC entry 3250 (class 2606 OID 115067)
+-- Name: detalle_factura detalle_factura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_factura
+    ADD CONSTRAINT detalle_factura_pkey PRIMARY KEY (id_detalle_fac);
+
+
+--
+-- TOC entry 3252 (class 2606 OID 115069)
+-- Name: entrada_producto estrada_producto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.entrada_producto
+    ADD CONSTRAINT estrada_producto_pkey PRIMARY KEY (id_entrada);
+
+
+--
+-- TOC entry 3256 (class 2606 OID 115071)
+-- Name: factura_normal factura_normal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura_normal
+    ADD CONSTRAINT factura_normal_pkey PRIMARY KEY (id_fact_nor);
+
+
+--
+-- TOC entry 3254 (class 2606 OID 115073)
+-- Name: factura factura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura
+    ADD CONSTRAINT factura_pkey PRIMARY KEY (id_fact_nor);
+
+
+--
+-- TOC entry 3258 (class 2606 OID 115075)
+-- Name: marca marca_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marca
+    ADD CONSTRAINT marca_pkey PRIMARY KEY (id_marca);
+
+
+--
+-- TOC entry 3260 (class 2606 OID 115079)
+-- Name: producto producto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT producto_pkey PRIMARY KEY (id_producto);
+
+
+--
+-- TOC entry 3262 (class 2606 OID 115081)
+-- Name: proveedor proveedor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.proveedor
+    ADD CONSTRAINT proveedor_pkey PRIMARY KEY (id_proveedor);
+
+
+--
+-- TOC entry 3264 (class 2606 OID 115083)
+-- Name: tipo_producto tipo_producto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_producto
+    ADD CONSTRAINT tipo_producto_pkey PRIMARY KEY (id_tipo_prod);
+
+
+--
+-- TOC entry 3266 (class 2606 OID 115085)
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario);
+
+
+--
+-- TOC entry 3280 (class 2620 OID 115086)
+-- Name: detalle_factura actualizardrop; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER actualizardrop AFTER DELETE ON public.detalle_factura FOR EACH ROW EXECUTE FUNCTION public.actualizardrop();
+
+
+--
+-- TOC entry 3281 (class 2620 OID 115087)
+-- Name: entrada_producto actualizarpordu; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER actualizarpordu AFTER INSERT ON public.entrada_producto FOR EACH ROW EXECUTE FUNCTION public.actualizarpordu();
+
+
+--
+-- TOC entry 3269 (class 2606 OID 115088)
+-- Name: categoria ca_tpr; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categoria
+    ADD CONSTRAINT ca_tpr FOREIGN KEY (id_tipo_prod) REFERENCES public.tipo_producto(id_tipo_prod) NOT VALID;
+
+
+--
+-- TOC entry 3279 (class 2606 OID 115162)
+-- Name: detalle_credito credi_produ; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_credito
+    ADD CONSTRAINT credi_produ FOREIGN KEY (id_producto) REFERENCES public.producto(id_producto);
+
+
+--
+-- TOC entry 3270 (class 2606 OID 115093)
+-- Name: detalle_factura dtf_pro; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_factura
+    ADD CONSTRAINT dtf_pro FOREIGN KEY (id_producto) REFERENCES public.producto(id_producto) NOT VALID;
+
+
+--
+-- TOC entry 3271 (class 2606 OID 115098)
+-- Name: entrada_producto etp_pro; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.entrada_producto
+    ADD CONSTRAINT etp_pro FOREIGN KEY (id_producto) REFERENCES public.producto(id_producto) NOT VALID;
+
+
+--
+-- TOC entry 3272 (class 2606 OID 115103)
+-- Name: factura fac_cli; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura
+    ADD CONSTRAINT fac_cli FOREIGN KEY (id_cliente) REFERENCES public.cliente(id_cliente) NOT VALID;
+
+
+--
+-- TOC entry 3273 (class 2606 OID 115108)
+-- Name: factura fac_dtf; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura
+    ADD CONSTRAINT fac_dtf FOREIGN KEY (id_detalle_fac) REFERENCES public.detalle_factura(id_detalle_fac) NOT VALID;
+
+
+--
+-- TOC entry 3274 (class 2606 OID 115113)
+-- Name: factura fac_fis; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura
+    ADD CONSTRAINT fac_fis FOREIGN KEY (id_fiscal) REFERENCES public.credito_fiscal(id_fiscal) NOT VALID;
+
+
+--
+-- TOC entry 3275 (class 2606 OID 115118)
+-- Name: factura fac_fnm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.factura
+    ADD CONSTRAINT fac_fnm FOREIGN KEY (id_fact_nor) REFERENCES public.factura_normal(id_fact_nor) NOT VALID;
+
+
+--
+-- TOC entry 3278 (class 2606 OID 115143)
+-- Name: producto id_usuarios; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT id_usuarios FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario) NOT VALID;
+
+
+--
+-- TOC entry 3277 (class 2606 OID 115138)
+-- Name: producto marcap; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT marcap FOREIGN KEY (id_marca) REFERENCES public.marca(id_marca) NOT VALID;
+
+
+--
+-- TOC entry 3276 (class 2606 OID 115128)
+-- Name: marca mr_tpd; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marca
+    ADD CONSTRAINT mr_tpd FOREIGN KEY (id_tipo_prod) REFERENCES public.tipo_producto(id_tipo_prod) NOT VALID;
+
+
+-- Completed on 2022-06-26 21:33:17
+
+--
+-- PostgreSQL database dump complete
+--
+

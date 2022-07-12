@@ -119,7 +119,7 @@ if (isset($_GET['action'])) {
                 break;
                 case 'createdetalle':
                     $_POST = $productos->validateForm($_POST);
-                    if (!$productos->setId($_POST['codigo'])) {
+                    if (!$productos->setIdProducto($_POST['codigo'])) {
                     $result['exception'] = 'id_producto incorrecto';
                     } elseif (!$productos->setnombre_com($_POST['nombre_com'])) {
                         $result['exception'] = 'nombre no valido';
