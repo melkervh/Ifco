@@ -56,14 +56,14 @@ if (isset($_GET['action'])) {
                 case 'create':
                     $_POST = $proveedor->validateForm($_POST);
                     if (!$proveedor->setNombrePrv($_POST['marca'])) {
-                        $result['exception'] = 'Nombre incorrecto';
+                        $result['exception'] = 'proveedor incorrecto';
                     } elseif (!$proveedor->setcontacto($_POST['correo_pro'])) {
-                        $result['exception'] = 'contacto incorrecto';
-                    } elseif ($proveedor->createRow()) {  
-                    $result['status'] = 1;
-                    }
-                    else {
-                    $result['exception'] = Database::getException();
+                        $result['exception'] = 'correo incorrecto';
+                    }elseif ($proveedor->createRow()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'proveedor agregado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
                     }
                     break;
             case 'update':

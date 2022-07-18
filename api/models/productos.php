@@ -58,7 +58,7 @@ class Productos extends Validator{
            return false;
        }
    }
-    public function setnombre_com($value)
+    public function setnombrecom($value)
     {
         if ($this->validateString($value, 1, 50)) {
             $this->nombre_com= $value;
@@ -80,9 +80,9 @@ class Productos extends Validator{
     public function createdetalle()
     {
     $sql = 'INSERT INTO detalle_factura(
-        id_producto, nombre_com, precio_u, precio_total, cantidad_com, id_fact_nor)
-       VALUES (?, ?, ?, ?, ?,?)';
-    $params = array($this->id_producto, $this->nombre_com, $this->precio_u, $this->precio_total, $this->cantidad_com, $this->id_fact_nor);
+        id_producto, precio_u, precio_total, cantidad_com, nombre_com)
+       VALUES (?, ?, ?, ?, ?)';
+    $params = array($this->id, $this->precio_u, $this->precio_total, $this->cantidad_com,$this->nombre_com);
     return Database::executeRow($sql, $params);
     }
     public function setId($value){

@@ -28,7 +28,7 @@ class Proveedores extends Validator
 
     public function setcontacto($value)
     {
-        if ($this->validateAlphabetic($value, 1, 50)) {
+        if ($this->validateEmail($value)) {
             $this->contacto = $value;
             return true;
         } else {
@@ -49,7 +49,7 @@ class Proveedores extends Validator
         $sql = 'INSERT INTO proveedor(
             nombre_prv, contacto)
            VALUES ( ?, ?)';
-        $params = array($this->nombre_prv, $this->contacto,);
+        $params = array($this->nombre_prv, $this->contacto);
         return Database::executeRow($sql, $params);
     }
 

@@ -6,10 +6,13 @@ class createfactura extends Validator{
     private $DUI  = null;
     private $Departamento  = null;
     private $id_detalle= null;
+    /*detalle*/
     private $id_produto= null;
     private $precio_u= null;
     private $precio_total= null;
     private $cantidad_com= null;
+    private $nombre_com= null;
+    /*factura*/
     private $id_factura= null;
     private $venta= null;
     private $fecha= null;
@@ -39,6 +42,15 @@ class createfactura extends Validator{
     {
         if ($this->validateString($value, 1, 50)) {
             $this->apellido_cli = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setNombreProducto($value)
+    {
+        if ($this->validateString($value, 1, 50)) {
+            $this->nombre_com= $value;
             return true;
         } else {
             return false;
@@ -153,14 +165,6 @@ class createfactura extends Validator{
     }
    
      /*funcion para insertar los datos en las tabla de detalle */
-    public function createDetalle()
-    {
-    $sql = 'INSERT INTO detalle_factura(
-    id_producto, precio_u, precio_total,cantidad_com)
-    VALUES ( ?, ?, ?, ?)';
-    $params = array($this->id_producto, $this->precio_u, $this->precio_total, $this->cantidad_com);
-    return Database::executeRow($sql, $params);
-    }
 
      /*c funcion para agregar un cliente */
     public function createCliente()
