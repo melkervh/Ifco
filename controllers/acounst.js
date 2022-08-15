@@ -44,10 +44,16 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <li><a class="dropdown-item" href="proveedores.html">proveedores</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="historial.html">Historial de
-                                        facturas</a>
-                                </li>
+                                <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                   Historial
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="historial.html">factura</a></li>
+                                    <li><a class="dropdown-item" href="historialcre.html">credito</a></li>
+                                </ul>
+                            </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="inventario.html">Inventario </a>
                                 </li>
