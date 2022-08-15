@@ -68,8 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <li><a class="dropdown-item" href="credito.html">Factura credito</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="estadisticas.html">Estadisticas</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                   Estadisticas
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="estadisticas.html">Reportes</a></li>
+                                    <li><a class="dropdown-item" href="graficas.html">Graficas</a></li>
+                                </ul>
                             </li>
                                 <li class="nav-item">
                                         <a onclick="logOut()" class="nav-link">Cerrar sesión</a>
