@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                     </ul>
                                 </li>
                                 <li class="nav-item">
+                                <a class="nav-link" href="estadisticas.html">Estadisticas</a>
+                            </li>
+                                <li class="nav-item">
                                         <a onclick="logOut()" class="nav-link">Cerrar sesión</a>
                                     </li>
                             </ul>
