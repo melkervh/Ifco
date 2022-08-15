@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="listados.html">Usuario</a></li>
                                         <li><a class="dropdown-item" href="proveedores.html">proveedores</a></li>
+                                        <li><a class="dropdown-item" href="clientes.html">clientes</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
