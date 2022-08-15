@@ -259,7 +259,8 @@ class Productos extends Validator{
                 WHERE id_producto = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
-    }   
+    }  
+
 
 
 }
