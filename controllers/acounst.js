@@ -32,17 +32,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="menu.html">Menu</a>
+                                    <a class="nav-link active" aria-current="page" href="Menu.html">Menu</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                       usuarios
+                                       Usuarios
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="listados.html">Usuario</a></li>
-                                        <li><a class="dropdown-item" href="proveedores.html">proveedores</a></li>
-                                        <li><a class="dropdown-item" href="clientes.html">clientes</a></li>
+                                        <li><a class="dropdown-item" href="Listados.html">Usuario</a></li>
+                                        <li><a class="dropdown-item" href="Proveedores.html">proveedores</a></li>
+                                        <li><a class="dropdown-item" href="Clientes.html">clientes</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                    Historial
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="historial.html">factura</a></li>
-                                    <li><a class="dropdown-item" href="historialcre.html">credito</a></li>
+                                    <li><a class="dropdown-item" href="historial.html">Factura</a></li>
+                                    <li><a class="dropdown-item" href="historialcre.html">Credito</a></li>
                                 </ul>
                             </li>
                                 <li class="nav-item">
