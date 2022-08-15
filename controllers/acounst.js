@@ -32,18 +32,29 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="login.html">login</a>
+                                    <a class="nav-link active" aria-current="page" href="Menu.html">Menu</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="index.html">Menu</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                       Usuarios
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="Listados.html">Usuario</a></li>
+                                        <li><a class="dropdown-item" href="Proveedores.html">proveedores</a></li>
+                                        <li><a class="dropdown-item" href="Clientes.html">clientes</a></li>
+                                    </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="listados.html">Usuario</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="historial.html">Historial de
-                                        facturas</a>
-                                </li>
+                                <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                   Historial
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="historial.html">Factura</a></li>
+                                    <li><a class="dropdown-item" href="historialcre.html">Credito</a></li>
+                                </ul>
+                            </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="inventario.html">Inventario </a>
                                 </li>
@@ -57,6 +68,16 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <li><a class="dropdown-item" href="credito.html">Factura credito</a></li>
                                     </ul>
                                 </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                   Estadisticas
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="estadisticas.html">Reportes</a></li>
+                                    <li><a class="dropdown-item" href="graficas.html">Graficas</a></li>
+                                </ul>
+                            </li>
                                 <li class="nav-item">
                                         <a onclick="logOut()" class="nav-link">Cerrar sesión</a>
                                     </li>

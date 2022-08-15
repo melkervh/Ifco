@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listados</title>
+    <!--CSS bootstrap-->
+    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
+</head>
+
+<body>
+    <!--Se agrega esa clase extraida de Boostrap5 para fijar el navbar-->
+    <header>
+    </header>
+    <h1 class="titul">Lista de clientes</h1>
+    <section class="container-xl tamaño">
+        <div class="row">
+            <div class="col">
+                <!-- Modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modalusuario"
+                    style="visibility:hidden;">
+                    agregar cliente
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="Modalusuario" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar cliente</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" id="save-form">
+                                    <div class="row">
+                                        <input class="hidden" style="visibility:hidden;" type="number" id="cliente"
+                                            name="id_cliente">
+                                        <div class="col-lg-6">
+                                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" placeholder=""
+                                                aria-label="First name">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="formGroupExampleInput" class="form-label">Apellido</label>
+                                            <input type="text" class="form-control" placeholder=""
+                                                aria-label="Last name">
+                                        </div>
+                                    </div>
+                                    <div class="clave">
+                                        <div class="row ">
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput" class="form-label">Dui</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="Last name">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput" class="form-label">Telefono</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="Last name">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput"
+                                                    class="form-label">Departamento</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="Last name">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput" class="form-label">Municipio</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="Last name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <div class="separa">
+        <main class="container-xl">
+            <section class="container-xl">
+                <div class="contenedortbad">
+                    <div class="Listas">
+                        <nav class="navbar ">
+                            <div class="container-fluid">
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search"
+                                        aria-label="Search">
+                                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </nav>
+                        <table class="table table-borderless">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">DUI</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <!--Relleno cada columna con datos temporales con el siguiente orden-->
+                            <tbody id="clientes-tabla">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    </div>
+    </div>
+    </section>
+    </main>
+    </div>
+    <footer></footer>
+    <!--JS bootstrap-->
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
+    <script src="../controllers/clientes.js"></script>
+    <script src="../controllers/acounst.js"></script>
+</body>
+
+</html>

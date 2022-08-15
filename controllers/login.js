@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             request.json().then(function (response) {
                 // Se comprueba si existe una sesión, de lo contrario se revisa si la respuesta es satisfactoria.
                 if (response.session) {
-                    location.href = 'index.html';
+                    location.href = 'menu.html';
                 } else if (response.status) {
                     sweetAlert(4, 'Debe autenticarse para ingresar', null);
                 } else {
