@@ -29,7 +29,7 @@ function graficoBarrasProducto() {
                         cantidades.push(row.cantidad_prodroducto);
                     });
                     // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-                    barGraph('chart1', categoria, cantidades, 'Cantidad de productos', 'top 10 productos con mas existencias');
+                    barGraph('chart1', categoria, cantidades, 'Cantidad de productos', 'Top 10 productos con mas existencias');
                 } else {
                     document.getElementById('chart1').remove();
                     console.log(response.exception);
