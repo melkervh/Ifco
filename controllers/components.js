@@ -378,6 +378,56 @@ function lineGraph(canvas, xAxis, yAxis, legend, title) {
         }
     });
 }
+let graft;
+function lineGraph1(canvas, xAxis, yAxis, legend, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    for (i = 0; i < xAxis.length; i++) {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    }
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    var context = document.getElementById(canvas).getContext('2d');
+    if(graft){
+        graft.destroy();
+    }
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    graft = new Chart(context, {
+        type: 'line',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                borderColor: '#000000',
+                borderWidth: 1,
+                backgroundColor: colors,
+                barPercentage: 1
+            }]
+        },
+        options: {
+            aspectRatio: 1,
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
 // Función para mostrar un mensaje de confirmación al momento de cerrar sesión.
 function logOut() {
     swal({

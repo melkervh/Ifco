@@ -26,13 +26,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
-            case 'porcentajeProductosCategoria':
-                if ($result['dataset'] = $graficas->porcentajeProductosCategoria()) {
+            case 'ventaspormesfac':
+                if ($result['dataset'] = $graficas->ventapormesfac()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
+                case 'ventaspormescre':
+                    if ($result['dataset'] = $graficas->ventapormescre()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
