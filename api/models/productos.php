@@ -261,5 +261,13 @@ class Productos extends Validator{
         return Database::executeRow($sql, $params);
     }   
 
-
+    /*Método que se usara para el reporte de productos y sus marcas .............................................................. */
+    public function reporProduc(){
+        $sql = 'SELECT id_producto, nombre_prodroducto, producto.id_marca, marca
+        FROM producto
+        INNER JOIN marca
+        ON producto.id_marca = marca.id_marca';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }
