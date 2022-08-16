@@ -32,6 +32,9 @@ function fillTable(dataset) {
         <a onclick="openDelete(${row.id_usuario})">
             <i class="fa-solid fa-trash-can"></i>
         </a>
+        <a onclick="openDelete(${row.id_usuario})">
+        <i class="fa-regular fa-file-pdf"></i>
+    </a>
     </td>
         </tr>
         `;
