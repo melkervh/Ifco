@@ -33,13 +33,16 @@ class Graficos extends Validator{
         $params = null;
         return Database::getRows($sql, $params);
     }
-    public function readProductosCategoria()
+     public function estadoproducto()
     {
-        $sql = 'SELECT idproducto, img_producto, nombre_producto, descripcion_producto, precio_produc
-        FROM producto INNER JOIN tipo_produc USING(idtip)
-        WHERE idtip = ? AND estado_producto = true
-        ORDER BY nombre_producto';
-        $params = array($this->idproducto);
+        $sql = "SELECT count(id_producto) as cantidad, CASE estado_producto 
+        WHEN true THEN 'Disponible'
+        WHEN false THEN 'Agotado'
+        END AS estado
+        FROM producto 
+        GROUP BY estado_producto 
+        ORDER BY estado_producto DESC";
+        $params = null;
         return Database::getRows($sql, $params);
     }
    

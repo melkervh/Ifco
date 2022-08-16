@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Se define un objeto con la fecha y hora actual.
     graficoBarrasProducto();
     ventaspormes();
+    estadoproducto();
 });
 
 // Función para mostrar la cantidad de productos por categoría en un gráfico de barras.
@@ -28,7 +29,7 @@ function graficoBarrasProducto() {
                         cantidades.push(row.cantidad_prodroducto);
                     });
                     // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-                    barGraph('chart1', categoria, cantidades, 'Cantidad de productos', 'top 10 productos con mas stok');
+                    barGraph('chart1', categoria, cantidades, 'Cantidad de productos', 'top 10 productos con mas existencias');
                 } else {
                     document.getElementById('chart1').remove();
                     console.log(response.exception);
@@ -106,3 +107,35 @@ function ventaspormes() {
   }
 }
 // Función para mostrar el porcentaje de productos por categoría en un gráfico de pastel.
+// Función para mostrar la cantidad de productos por categoría en un gráfico de barras.
+function estadoproducto() {
+    // Petición para obtener los datos del gráfico.
+    fetch(API_GRAFICA +'estadoproducto', {
+        method: 'get'
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+                if (response.status) {
+                    // Se declaran los arreglos para guardar los datos a graficar.
+                    let categoria = [];
+                    let cantidades = [];
+                    // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
+                    response.dataset.map(function (row) {
+                        // Se agregan los datos a los arreglos.
+                        categoria.push(row.estado);
+                        cantidades.push(row.cantidad);
+                    });
+                    // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+                    pieGraph('chart3', categoria, cantidades, 'Lista de estado productos');
+                } else {
+                    document.getElementById('chart3').remove();
+                    console.log(response.exception);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+}
