@@ -267,10 +267,11 @@ function barGraph(canvas, xAxis, yAxis, legend, title) {
             labels: xAxis,
             datasets: [{
                 label: legend,
-                data: yAxis,
-                borderColor: '#000000',
+                data: yAxis, 
+                borderColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
+                color:'#284B63',
                 borderWidth: 1,
-                backgroundColor: colors,
+                backgroundColor:['rgb (40,75,99)', 'rgb(40,75,99)'],
                 barPercentage: 1
             }]
         },
@@ -358,6 +359,8 @@ function lineGraph(canvas, xAxis, yAxis, legend, title) {
         },
         options: {
             aspectRatio: 1,
+            radius: 4,
+            pointStyle:'rectRounded',
             plugins: {
                 title: {
                     display: true,
