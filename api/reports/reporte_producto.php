@@ -7,7 +7,7 @@ require('../models/productos.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Reporte de productos por marcas', 'Reporte de productos');
+$pdf->startReport('Reporte de Productos por Marcas', 'Reporte de Productos');
 
 // Se instancia el módelo Productos para obtener los datos.
 $producto = new Productos;
