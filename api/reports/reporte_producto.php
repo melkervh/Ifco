@@ -49,4 +49,3 @@ if ($dataproducto = $producto->reporProduc()) {
 
 // Se envía el documento al navegador y se llama al método footer()
 $pdf->output('I', 'productos.pdf');
-

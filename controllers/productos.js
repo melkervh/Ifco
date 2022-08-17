@@ -105,8 +105,6 @@ function openUpdate(id) {
                     } else {
                         document.getElementById('estado').checked = false;
                     }
-                    // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-                    M.updateTextFields();
                 } else {
                     sweetAlert(2, response.exception, null);
                 }

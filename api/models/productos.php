@@ -270,11 +270,4 @@ class Productos extends Validator{
         $params = null;
         return Database::getRows($sql, $params);
     }
-
-    public function reporEstado(){
-        $sql = 'SELECT id_producto, nombre_prodroducto, descripcion_producto
-                FROM producto';
-        $params = null;
-        return Database::getRows($sql, $params);
-    }
 }
