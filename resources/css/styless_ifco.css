@@ -202,6 +202,7 @@ table th {
     justify-content: center;
 }
 
+
 .course {
 	background-color: #fff;
 	border-radius: 10px;
@@ -211,6 +212,16 @@ table th {
 	margin: 20px;
 	overflow: hidden;
 	width: 350px;
+}
+.course2 {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 80%;
 }
 
 .course h2 {
@@ -224,7 +235,16 @@ table th {
 	padding: 10px;
     width: 50%;
 }
+.course-preview2 {
+	background-color: #284B63;
+	color: #fff;
+	padding: 10px;
+    width: 25%;
+}
 .course-preview > h2{
+	text-align: center;
+}
+.course-preview2 > h2{
 	text-align: center;
 }
 
@@ -236,8 +256,20 @@ table th {
 	margin-top: 30px;
 	text-decoration: none;
 }
-
+.course-preview2 a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 20px;
+	text-decoration: none;
+}
 .course-info {
+	padding: 30px;
+	position: relative;
+	width: 90%;
+}
+.course-info2 {
 	padding: 30px;
 	position: relative;
 	width: 90%;
@@ -290,6 +322,12 @@ table th {
     width: 50px;
 }
 .cajita{
+    font-size: 60px;
+    width: 100%;
+    text-align: center;
+}
+.cajita2{
+    padding-top: 4%;
     font-size: 60px;
     width: 100%;
     text-align: center;
@@ -528,3 +566,4 @@ table th {
       
       background-color: #28323C ;
   }
+  

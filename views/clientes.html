@@ -16,7 +16,7 @@
     <!--Se agrega esa clase extraida de Boostrap5 para fijar el navbar-->
     <header>
     </header>
-    <h1 class="titul">Lista de usuarios</h1>
+    <h1 class="titul">Lista de clientes</h1>
     <section class="container-xl tamaño">
         <div class="row">
             <div class="col">
@@ -106,12 +106,13 @@
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Apellido</th>
-                                    <th scope="col">Telefono</th>
                                     <th scope="col">DUI</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <!--Relleno cada columna con datos temporales con el siguiente orden-->
-                            <tbody>
+                            <tbody id="clientes-tabla">
                             </tbody>
                         </table>
                     </div>
@@ -127,7 +128,7 @@
     <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
-    <script src="../controllers/usuarios.js"></script>
+    <script src="../controllers/clientes.js"></script>
     <script src="../controllers/acounst.js"></script>
 </body>
 

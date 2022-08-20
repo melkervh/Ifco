@@ -10,7 +10,8 @@ const ENDPOINT_PROVEEDOR = SERVER + 'Actions/proveedor.php?action=readAll';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
-    openShowProductos();
+    openShowProductos();  
+
 });
 
 //
@@ -215,7 +216,7 @@ document.getElementById('productos-form').addEventListener('submit', function (e
     // Se comprueba si el campo oculto del formulario esta seteado para actualizar, de lo contrario será para crear.
     (document.getElementById('idp').value) ? action = 'update' : action = 'create';
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
-    saveRowInv(API_PRODUCTOS, action, 'productos-form', 'productos-modal');
+    saveRow(API_PRODUCTOS, action, 'productos-form', 'productos-modal');
     openShowProductos();
 });
 
@@ -404,7 +405,7 @@ document.getElementById('marcas-form').addEventListener('submit', function (even
     // Se comprueba si el campo oculto del formulario esta seteado para actualizar, de lo contrario será para crear.
     (document.getElementById('idm').value) ? action = 'update' : action = 'create';
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
-    saveRowInv(API_MARCAS, action, 'marcas-form', 'marcas-modal');
+    saveRow(API_MARCAS, action, 'marcas-form', 'marcas-modal');
     openShowMarcas();
 });
 
@@ -584,7 +585,7 @@ document.getElementById('tipo-form').addEventListener('submit', function (event)
     // Se comprueba si el campo oculto del formulario esta seteado para actualizar, de lo contrario será para crear.
     (document.getElementById('idt').value) ? action = 'update' : action = 'create';
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
-    saveRowInv(API_TIPO, action, 'tipo-form', 'tipopro-modal');
+    saveRow(API_TIPO, action, 'tipo-form', 'tipopro-modal');
     openShowTipo();
 });
 

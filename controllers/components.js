@@ -6,7 +6,6 @@
 *   Constante para establecer la ruta del servidor.
 */
 const SERVER = 'http://localhost/ifco-main/api/';
-
 /*
 *   Función para obtener todos los registros disponibles en los mantenimientos de tablas (operación read).
 *
@@ -102,28 +101,6 @@ function saveRow(api, action, form, modal) {
     });
 }
 
-function saveRowInv(api, action, form, modal) {
-    fetch(api + action, {
-        method: 'post',
-        body: new FormData(document.getElementById(form))
-    }).then(function (request) {
-        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-        if (request.ok) {
-            // Se obtiene la respuesta en formato JSON.
-            request.json().then(function (response) {
-                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-                if (response.status) {
-                    sweetAlert(1, response.message, null);
-                } else {
-                    sweetAlert(2, response.exception, null);
-                }
-            });
-        } else {
-            console.log(request.status + ' ' + request.statusText);
-        }
-    });
-}
-
 /*
 *   Función para eliminar un registro seleccionado en los mantenimientos de tablas (operación delete). Requiere el archivo sweetalert.min.js para funcionar.
 *
@@ -154,40 +131,6 @@ function confirmDelete(api, data) {
                         if (response.status) {
                             // Se cargan nuevamente las filas en la tabla de la vista después de borrar un registro y se muestra un mensaje de éxito.
                             readRows(api);
-                            sweetAlert(1, response.message, null);
-                        } else {
-                            sweetAlert(2, response.exception, null);
-                        }
-                    });
-                } else {
-                    console.log(request.status + ' ' + request.statusText);
-                }
-            });
-        }
-    });
-}
-
-function confirmDeleteInv(api, data) {
-    swal({
-        title: 'Advertencia',
-        text: '¿Desea eliminar el registro?',
-        icon: 'warning',
-        buttons: ['No', 'Sí'],
-        closeOnClickOutside: false,
-        closeOnEsc: false
-    }).then(function (value) {
-        // Se comprueba si fue cliqueado el botón Sí para hacer la petición de borrado, de lo contrario no se hace nada.
-        if (value) {
-            fetch(api + 'delete', {
-                method: 'post',
-                body: data
-            }).then(function (request) {
-                // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-                if (request.ok) {
-                    // Se obtiene la respuesta en formato JSON.
-                    request.json().then(function (response) {
-                        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-                        if (response.status) {
                             sweetAlert(1, response.message, null);
                         } else {
                             sweetAlert(2, response.exception, null);
@@ -291,6 +234,8 @@ function fillSelect(endpoint, select, selected) {
                 }
                 // Se agregan las opciones a la etiqueta select mediante su id.
                 document.getElementById(select).innerHTML = content;
+                // Se inicializa el componente Select del formulario para que muestre las opciones.
+                M.FormSelect.init(document.querySelectorAll('select'));
             });
         } else {
             console.log(request.status + ' ' + request.statusText);
@@ -387,7 +332,51 @@ function pieGraph(canvas, legends, values, title) {
         }
     });
 }
-
+function lineGraph(canvas, xAxis, yAxis, legend, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    for (i = 0; i < xAxis.length; i++) {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    }
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    const chart = new Chart(context, {
+        type: 'line',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                borderColor: '#000000',
+                borderWidth: 1,
+                backgroundColor: colors,
+                barPercentage: 1
+            }]
+        },
+        options: {
+            aspectRatio: 1,
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
 // Función para mostrar un mensaje de confirmación al momento de cerrar sesión.
 function logOut() {
     swal({

@@ -15,7 +15,76 @@ class Productos extends Validator{
     private $usuario = null;
 
     /* Métodos para validar y asignar valores de los atributos. */
+    private $id_produto= null;
+    private $precio_u= null;
+    private $precio_total= null;
+    private $cantidad_com= null;
+    private $nombre_com= null;
+    private $id_fact_nor= null;
 
+    public function setIdProducto($value)
+   {
+       if ($this->validateNaturalNumber($value)) {
+           $this->id_producto= $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
+   public function setPrecioU($value)
+   {
+       if ($this->validateAlphanumeric($value, 1, 50)) {
+           $this->precio_u = $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
+   public function setPrecioTotal($value)
+   {
+       if ($this->validateAlphanumeric($value, 1, 50)) {
+           $this->precio_total = $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
+   public function setCantidadCom($value)
+   {
+       if ($this->validateAlphanumeric($value, 1, 50)) {
+           $this->cantidad_com = $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
+    public function setnombrecom($value)
+    {
+        if ($this->validateString($value, 1, 50)) {
+            $this->nombre_com= $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setfact_nor($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->id_fact_nor= $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function createdetalle()
+    {
+    $sql = 'INSERT INTO detalle_factura(
+        id_producto, precio_u, precio_total, cantidad_com, nombre_com)
+       VALUES (?, ?, ?, ?, ?)';
+    $params = array($this->id, $this->precio_u, $this->precio_total, $this->cantidad_com,$this->nombre_com);
+    return Database::executeRow($sql, $params);
+    }
     public function setId($value){
 
         if($this->validateNaturalNumber($value)){
@@ -190,7 +259,8 @@ class Productos extends Validator{
                 WHERE id_producto = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
-    }   
+    }  
+
 
 
 }

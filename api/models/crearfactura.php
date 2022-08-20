@@ -1,12 +1,19 @@
 <?php
 class createfactura extends Validator{
-    /* valores para el cliente*/
     private $id_cliente  = null;
     private $nombre_cli  = null;
     private $apellido_cli  = null;
     private $DUI  = null;
     private $Departamento  = null;
-  /* valores para la factura*/
+    private $id_detalle= null;
+    /*detalle*/
+    private $id_produto= null;
+    private $precio_u= null;
+    private $precio_total= null;
+    private $cantidad_com= null;
+    private $nombre_com= null;
+    /*factura*/
+    private $id_factura= null;
     private $venta= null;
     private $fecha= null;
     private $Numero= null;
@@ -40,6 +47,15 @@ class createfactura extends Validator{
             return false;
         }
     }
+    public function setNombreProducto($value)
+    {
+        if ($this->validateString($value, 1, 50)) {
+            $this->nombre_com= $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function setdui($value)
     {
         if ($this->validateDUI($value)) {
@@ -58,6 +74,52 @@ class createfactura extends Validator{
             return false;
         }
     }
+   /**/ 
+   public function setIdDetalle($value)
+   {
+       if ($this->validateNaturalNumber($value)) {
+           $this->id_detalle= $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
+   public function setIdProducto($value)
+   {
+       if ($this->validateNaturalNumber($value)) {
+           $this->id_producto= $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
+   public function setPrecioU($value)
+   {
+       if ($this->validateAlphanumeric($value, 1, 50)) {
+           $this->precio_u = $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
+   public function setPrecioTotal($value)
+   {
+       if ($this->validateAlphanumeric($value, 1, 50)) {
+           $this->precio_total = $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
+   public function setCantidadCom($value)
+   {
+       if ($this->validateAlphanumeric($value, 1, 50)) {
+           $this->cantidad_com = $value;
+           return true;
+       } else {
+           return false;
+       }
+   }
    /**/
    public function setIdFactura($value)
     {
@@ -91,6 +153,15 @@ class createfactura extends Validator{
 
         }
 
+    }
+    public function setnumero($value)
+    {
+        if ($this->validateAlphabetic($value, 1, 50)) {
+            $this->numero= $value;
+            return true;
+        } else {
+            return false;
+        }
     }
    
      /*funcion para insertar los datos en las tabla de detalle */

@@ -1,7 +1,7 @@
 <?php
-require('../../helpers/database.php');
-require('../../helpers/validator.php');
-require('../../libraries/fpdf182/fpdf.php');
+require('../helpers/database.php');
+require('../helpers/validator.php');
+require('../libraries/fpdf182/fpdf.php');
 
 /**
 *   Clase para definir las plantillas de los reportes del sitio privado. Para más información http://www.fpdf.org/
@@ -29,7 +29,7 @@ class Report extends FPDF
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
             // Se establece el título del documento (true = utf-8).
-            $this->setTitle('Dashboard - Reporte', true);
+            $this->setTitle('IFCO - Reportes', true);
             // Se establecen los margenes del documento (izquierdo, superior y derecho).
             $this->setMargins(15, 15, 15);
             // Se añade una nueva página al documento (orientación vertical y formato carta) y se llama al método header()
@@ -37,7 +37,7 @@ class Report extends FPDF
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
             $this->aliasNbPages();
         } else {
-            header('location: ../../../views/dashboard/index.php');
+            header('location: ../../views/dashboard/index.php');
         }
     }
 
@@ -48,7 +48,7 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
-        $this->image('../../images/logo.png', 15, 15, 20);
+        $this->image('../../resources/img/logo.jpeg', 15, 15, 20);
         // Se ubica el título.
         $this->cell(20);
         $this->setFont('Arial', 'B', 15);
