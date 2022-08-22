@@ -14,4 +14,14 @@ class Clientes extends Validator
         return Database::getRows($sql, $params);
     }
     
+    /*Metodo para el llenado de la tabla para el reporte del departamento y municipio*/
+    public function reporDepart()
+    {
+        $sql = 'SELECT nombre_cli, apellido_cli, departamento, municipio
+        FROM cliente
+        ORDER BY nombre_cli';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+    
 }
