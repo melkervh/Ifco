@@ -21,10 +21,8 @@ function fillTable(dataset) {
                 <td class="texto3">pdf</td>
                 <td class="texto3">${row.nombre_cli}</td>
                 <td class="texto3">${row.fecha_fn}</td>
-                <td class="texto3  justify-content-center"> <a onclick="openDetalle(${row.id_fact_nor})" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#detalle">
-                <i class="fa-solid fa-circle-info cart_nav1"></i>
-        </a>
-                </td>
+                <td class="texto3  justify-content-center"> <a onclick="openFactura(${row.id_fact_nor})" class="btn btn-dark">
+                <i class="fa-solid fa-circle-info cart_nav1"></i></a></td>
             </tr>
         `;
 
@@ -84,4 +82,12 @@ function openDetalle(id) {
             console.log(request.status + ' ' + request.statusText);
         }
     });
+    // Reporte para generar factura
+function openFactura(id){
+
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/factura_normal.php?id=' + id ;
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
+}
 }
