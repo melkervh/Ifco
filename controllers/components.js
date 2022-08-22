@@ -345,7 +345,7 @@ function pieGraph2(canvas, legends, values, title) {
     const context = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos.
     const chart = new Chart(context, {
-        type: 'pie',
+        type: 'doughnut',
         data: {
             labels: legends,
             datasets: [{

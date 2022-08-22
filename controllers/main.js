@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     graficoBarrasProducto();
     ventaspormes();
     estadoproducto();
+    graficoPastelCategorias();
 });
 
 // Función para mostrar la cantidad de productos por categoría en un gráfico de barras.
@@ -141,7 +142,7 @@ function estadoproducto() {
 }
 function graficoPastelCategorias() {
     // Petición para obtener los datos del gráfico.
-    fetch(API_PRODUCTOS + 'porcentajeProductosCategoria', {
+    fetch(API_GRAFICA + 'porcentajeProductosCategoria', {
         method: 'get'
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
@@ -155,13 +156,13 @@ function graficoPastelCategorias() {
                     // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {
                         // Se agregan los datos a los arreglos.
-                        categorias.push(row.tipo_nombre);
+                        categorias.push(row.marca);
                         porcentajes.push(row.porcentaje);
                     });
                     // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                    pieGraph2('chart6', categorias, porcentajes, 'Porcentaje de productos por categoría');
+                    pieGraph2('chart4', categorias, porcentajes, 'Porcentaje de productos por categoría');
                 } else {
-                    document.getElementById('chart2').remove();
+                    document.getElementById('chart4').remove();
                     console.log(response.exception);
                 }
             });

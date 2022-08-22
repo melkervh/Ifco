@@ -47,4 +47,12 @@ class Graficos extends Validator{
     }
    
 
+    public function porcentajeProductosCategoria()
+    {
+        $sql = 'SELECT marca, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM producto)), 2) porcentaje
+        FROM producto INNER JOIN marca USING(id_marca)
+        GROUP BY marca ORDER BY porcentaje DESC';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }
