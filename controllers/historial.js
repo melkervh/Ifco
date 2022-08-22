@@ -82,12 +82,12 @@ function openDetalle(id) {
             console.log(request.status + ' ' + request.statusText);
         }
     });
+}
     // Reporte para generar factura
-function openFactura(id){
+    function openFactura(id){
 
-    // Se establece la ruta del reporte en el servidor.
-    let url = SERVER + 'reports/factura_normal.php?id=' + id ;
-    // Se abre el reporte en una nueva pestaña del navegador web.
-    window.open(url);
-}
-}
+        // Se establece la ruta del reporte en el servidor.
+        let url = SERVER + 'reports/factura_normal.php?id=' + id ;
+        // Se abre el reporte en una nueva pestaña del navegador web.
+        window.open(url);
+    }

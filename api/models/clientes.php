@@ -13,5 +13,13 @@ class Clientes extends Validator
         $params = null;
         return Database::getRows($sql, $params);
     }
+    public function ReporteCliente()
+    {
+        $sql = 'SELECT nombre_cli, apellido_cli, "DUI",telefono,departamento
+        FROM cliente
+        ORDER BY nombre_cli';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
     
 }
