@@ -19,11 +19,11 @@ $inventario = new Productos;
         $pdf->SetTextColor(255,255,255);
 
         // Se imprimen las celdas con los encabezados.
-        $pdf->cell(45, 10, utf8_decode('Nombre'), 1, 0, 'C', 1);
+        $pdf->cell(40, 10, utf8_decode('Nombre'), 1, 0, 'C', 1);
         $pdf->cell(35, 10, utf8_decode('Cantidad'), 1, 0, 'C', 1);
         $pdf->cell(35, 10, utf8_decode('Categoria'), 1, 0, 'C', 1);
         $pdf->cell(35, 10, utf8_decode('Marca'), 1, 0, 'C', 1);
-        $pdf->cell(20, 10, utf8_decode('Estado'), 1, 0, 'C', 1);
+        $pdf->cell(25, 10, utf8_decode('Estado'), 1, 0, 'C', 1);
         $pdf->cell(20, 10, utf8_decode('precio'), 1, 1, 'C', 1);
 
         // Se establece la fuente para los datos de los clientes.
@@ -32,11 +32,11 @@ $inventario = new Productos;
 
         // Se recorren los registros ($dataProductos) fila por fila ($rowProducto).
         foreach ($datainventario as $rowInventario) {
-            $pdf->cell(45, 10, utf8_decode($rowInventario['nombre_prodroducto']), 1, 0, 'C');
+            $pdf->cell(40, 10, utf8_decode($rowInventario['nombre_prodroducto']), 1, 0, 'C');
             $pdf->cell(35, 10, utf8_decode($rowInventario['cantidad_prodroducto']), 1, 0, 'C');
             $pdf->cell(35, 10, utf8_decode($rowInventario['tipo_producto']), 1, 0, 'C');
             $pdf->cell(35, 10, utf8_decode($rowInventario['marca']), 1, 0, 'C');
-            $pdf->cell(20, 10, utf8_decode($rowInventario['estado_producto']), 1, 0, 'C');
+            $pdf->cell(25, 10, utf8_decode($rowInventario['estado_producto']), 1, 0, 'C');
             $pdf->cell(20, 10, utf8_decode($rowInventario['precio_unidad']), 1, 1, 'C');
         }
     } else {
