@@ -94,5 +94,12 @@ class TipoProducto extends Validator{
         return Database::executeRow($sql, $params);
     }   
 
-
+    public function porcentajeProductosCategoria()
+    {
+        $sql = 'SELECT tipo_nombre, ROUND((COUNT(idproducto) * 100.0 / (SELECT COUNT(idproducto) FROM producto)), 2) porcentaje
+                FROM producto INNER JOIN tipo_produc USING(idtip)
+                GROUP BY tipo_nombre ORDER BY porcentaje DESC';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }
