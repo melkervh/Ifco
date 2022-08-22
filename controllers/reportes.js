@@ -26,3 +26,11 @@ function reportProveedores(){
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(url);
 }
+
+function reportInvent(){
+
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/report_invent.php' ;
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
+}

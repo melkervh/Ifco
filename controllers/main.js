@@ -129,7 +129,7 @@ function estadoproducto() {
                         cantidades.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-                    pieGraph('chart3', categoria, cantidades, 'Lista de estado productos');
+                    pieGraph2 ('chart3', categoria, cantidades, 'Lista de estado productos');
                 } else {
                     document.getElementById('chart3').remove();
                     console.log(response.exception);
@@ -160,7 +160,7 @@ function graficoPastelCategorias() {
                         porcentajes.push(row.porcentaje);
                     });
                     // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                    pieGraph2('chart4', categorias, porcentajes, 'Porcentaje de productos por categoría');
+                polarArea('chart4', categorias, porcentajes,'Porcentaje de productos por categoría');
                 } else {
                     document.getElementById('chart4').remove();
                     console.log(response.exception);

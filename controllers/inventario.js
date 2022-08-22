@@ -53,7 +53,7 @@ function openShowProductos() {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_producto}</td>
+                       
                         <td>${row.nombre_prodroducto}</td>
                         <td>${row.cantidad_prodroducto}</td>
                         <td>${row.descripcion_producto}</td>
@@ -116,7 +116,7 @@ function BuscadorProductos(form) {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_producto}</td>
+               
                         <td>${row.nombre_prodroducto}</td>
                         <td>${row.cantidad_prodroducto}</td>
                         <td>${row.descripcion_producto}</td>
@@ -261,7 +261,7 @@ function openShowMarcas() {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_marca}</td>
+                
                         <td>${row.marca}</td>
                         <td>${row.nombre_prv}</td>
                         <td>${row.tipo_producto}</td>
@@ -314,7 +314,7 @@ function BuscadorMarcas(form) {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_marca}</td>
+                    
                         <td>${row.marca}</td>
                         <td>${row.nombre_prv}</td>
                         <td>${row.tipo_producto}</td>
@@ -450,7 +450,6 @@ function openShowTipo() {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_tipo_prod}</td>
                         <td>${row.tipo_producto}</td>
                         <td>
                             <a onclick="openUpdateTipo(${row.id_tipo_prod})" data-bs-toggle="modal" data-bs-target="#tipopro-modal">

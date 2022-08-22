@@ -305,7 +305,7 @@ function barGraph(canvas, xAxis, yAxis, legend, title) {
 *
 *   Retorno: ninguno.
 */
-function pieGraph(canvas, legends, values, title) {
+function polarArea(canvas, legends, values, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
@@ -316,22 +316,26 @@ function pieGraph(canvas, legends, values, title) {
     const context = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos.
     const chart = new Chart(context, {
-        type: 'pie',
+        type: 'polarArea',
         data: {
             labels: legends,
             datasets: [{
                 data: values,
                 backgroundColor: colors
-            }]
-        },
+            }],
         options: {
+            responsive: true,
             plugins: {
+                legend: {
+                    position: 'top',
+                  },
                 title: {
                     display: true,
                     text: title
                 }
             }
         }
+    },
     });
 }
 function pieGraph2(canvas, legends, values, title) {
