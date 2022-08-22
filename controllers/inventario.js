@@ -148,6 +148,8 @@ function BuscadorProductos(form) {
     });
 }
 
+
+
 // Buscador para productos.
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
 document.getElementById('buscarproductos-form').addEventListener('submit', function (event) {
@@ -271,6 +273,9 @@ function openShowMarcas() {
                             </a>
                             <a onclick="openDeleteMarcas(${row.id_marca})">
                                 <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                            <a onclick="openReporteMarcas(${row.id_marca})">
+                                <i class="fa-solid fa-file-pdf"></i>
                             </a>
                         </td>
                         </tr>
@@ -598,6 +603,23 @@ function openDeleteTipo(id) {
     confirmDeleteInv(API_TIPO, data);
     openShowTipo();
 }
+//Se inicia el codigo para la funcion del reporte para los clientes y sus respectivos departamento.
+//Esta misma funcion nos permite hacer funcionar el boton para abrir el reporte.
+function openReporteMarcas() {
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/reporte_marcas.php';
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
+}
+
+// Función para abrir el reporte de productos.
+function openReporteMarcas(marcaa) {
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/reporte_marcas.php?idmarcas=' + marcaa;
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
+}
+
 
 
 
