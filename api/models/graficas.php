@@ -55,4 +55,22 @@ class Graficos extends Validator{
         $params = null;
         return Database::getRows($sql, $params);
     }
+
+    public function clienteDepartamento()
+    {
+        $sql = 'SELECT id_cliente, departamento
+        FROM cliente 
+        ORDER BY departamento DESC';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
+    public function productosMasVendidos()
+    {
+        $sql = 'SELECT id_producto, sum(id_producto) AS vendidos
+        FROM detalle_factura JOIN producto USING (id_producto)
+        GROUP BY id_producto';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }

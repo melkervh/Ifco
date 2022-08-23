@@ -171,3 +171,68 @@ function graficoPastelCategorias() {
         }
     });
 }
+
+function clienteDepartamento() {
+    // Petición para obtener los datos del gráfico.
+    fetch(API_GRAFICA + 'clienteDepartamento', {
+        method: 'get'
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo +contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+                if (response.status) {
+                    // Se declaran los arreglos para guardar los datos a gráficar.
+                    let departamentos = [];
+                    let clientes = [];
+                    // Se recorre el conjunto de registro devuelto por la API (dataset) fila por fila a través del objeto row.
+                    response.dataset.map(function (row) {+
+                        // Se agregan los datos a los arreglos.
+                        departamentos.push(row.departamentos);
+                        clientes.push(row.cliente);
+                    });
+                    // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
+                polarArea('chart5', departamentos, 'Porcentaje de clientes por departamento');
+                } else {
+                    document.getElementById('chart5').remove();
+                    console.log(response.exception);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+}
+
+function productosMasVendidos() {
+    // Petición para obtener los datos del gráfico.
+    fetch(API_GRAFICA + 'productosMasVendidos', {
+        method: 'get'
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo +contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+                if (response.status) {
+                    // Se declaran los arreglos para guardar los datos a gráficar.
+                    let producto = [];
+                    let ventas = [];
+                    // Se recorre el conjunto de registro devuelto por la API (dataset) fila por fila a través del objeto row.
+                    response.dataset.map(function (row) {+
+                        // Se agregan los datos a los arreglos.
+                        producto.push(row.producto);
+                        ventas.push(row.detalle_factura);
+                    });
+                    // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
+                polarArea('chart6', producto, ventas, 'Productos más vendidos');
+                } else {
+                    document.getElementById('chart6').remove();
+                    console.log(response.exception);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+}
+
