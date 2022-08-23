@@ -525,6 +525,7 @@ function lineGraph(canvas, xAxis, yAxis, legend, title) {
         }
     });
 }
+// funcion con la que se destruye y crea la siguiente grafica
 let graft;
 function lineGraph1(canvas, xAxis, yAxis, legend, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
@@ -535,6 +536,7 @@ function lineGraph1(canvas, xAxis, yAxis, legend, title) {
     }
     // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
     var context = document.getElementById(canvas).getContext('2d');
+    // aqui se hacae el cambio entre grafica y grafica 
     if(graft){
         graft.destroy();
     }
@@ -574,6 +576,8 @@ function lineGraph1(canvas, xAxis, yAxis, legend, title) {
         }
     });
 }
+// funcion con la que se destruye y crea la siguiente grafica
+// segunda grafica con la funcion let graft 
 let graft2;
 function barGraph3 (canvas, xAxis, yAxis, legend, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.

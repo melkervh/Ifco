@@ -2,17 +2,29 @@
 const API_GRAFICA = SERVER + 'Actions/graficos.php?action=';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
-    // Se define un objeto con la fecha y hora actual.
+
+    // se de declaran las variables con las que se muestran las graficas 
+
+    // grafica de productos disponibles 
     graficoBarrasProducto();
+
+    // grrafica de ventas  por mes sobre factura y credito 
     ventaspormes();
+
+    // grafico de estados de productos 
     estadoproducto();
+
+    //grafico de porcentaje de productos por categoria 
     graficoPastelCategorias();
-    clienteDepartamento();
+
+    // grafica de productos mas vendidos 
     productosMasVendidos();
+
+    // grafica de clientes con mas compras 
     clientesConmasCompras();
 });
 
-// Función para mostrar la cantidad de productos por categoría en un gráfico de barras.
+// grafica que muestra el top con los 10 productos con mas existencias 
 function graficoBarrasProducto() {
     // Petición para obtener los datos del gráfico.
     fetch(API_GRAFICA +'topstockproductos', {
@@ -44,6 +56,8 @@ function graficoBarrasProducto() {
         }
     });
 }
+
+// grafica que muestra las ventas por  mes 
 function ventaspormes() {
     // Petición para obtener los datos del gráfico.
     if(document.getElementById('factu').value == 1){
@@ -110,8 +124,8 @@ function ventaspormes() {
     document.getElementById('factu').value = 1 ;
   }
 }
-// Función para mostrar el porcentaje de productos por categoría en un gráfico de pastel.
-// Función para mostrar la cantidad de productos por categoría en un gráfico de barras.
+
+/// grafico con la cantidad de productos disponibles y agotados 
 function estadoproducto() {
     // Petición para obtener los datos del gráfico.
     fetch(API_GRAFICA +'estadoproducto', {
@@ -143,6 +157,8 @@ function estadoproducto() {
         }
     });
 }
+
+//grafico con la cantidad de productos por marca
 function graficoPastelCategorias() {
     // Petición para obtener los datos del gráfico.
     fetch(API_GRAFICA + 'porcentajeProductosCategoria', {
@@ -163,8 +179,7 @@ function graficoPastelCategorias() {
                         porcentajes.push(row.porcentaje);
                     });
                     // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                polarArea('chart4', categorias, porcentajes,
-                'Porcentaje de productos por categoría');
+                polarArea('chart4', categorias, porcentajes,'Porcentaje','Porcentaje de productos por categoría');
                 } else {
                     document.getElementById('chart4').remove();
                     console.log(response.exception);
@@ -176,38 +191,7 @@ function graficoPastelCategorias() {
     });
 }
 
-function clienteDepartamento() {
-    // Petición para obtener los datos del gráfico.
-    fetch(API_GRAFICA + 'clienteDepartamento', {
-        method: 'get'
-    }).then(function (request) {
-        // Se verifica si la petición es correcta, de lo +contrario se muestra un mensaje en la consola indicando el problema.
-        if (request.ok) {
-            request.json().then(function (response) {
-                // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
-                if (response.status) {
-                    // Se declaran los arreglos para guardar los datos a gráficar.
-                    let departamentos = [];
-                    let clientes = [];
-                    // Se recorre el conjunto de registro devuelto por la API (dataset) fila por fila a través del objeto row.
-                    response.dataset.map(function (row) {+
-                        // Se agregan los datos a los arreglos.
-                        departamentos.push(row.departamento);
-                        clientes.push(row.id_cliente);
-                    });
-                    // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                polarArea2('chart5', departamentos,clientes,'Porcentaje de clientes por departamento');
-                } else {
-                    document.getElementById('chart5').remove();
-                    console.log(response.exception);
-                }
-            });
-        } else {
-            console.log(request.status + ' ' + request.statusText);
-        }
-    });
-}
-
+// top con los productos mas vendidos 
 function productosMasVendidos() {
     // Petición para obtener los datos del gráfico.
     fetch(API_GRAFICA + 'productosMasVendidos', {
@@ -228,7 +212,7 @@ function productosMasVendidos() {
                         ventas.push(row.vendidos);
                     });
                     // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                    barGraph2('chart6', producto, ventas, 'Productos más vendidos');
+                    barGraph2('chart6', producto, ventas,'Productos más vendidos', 'Top 10 productos más vendidos');
                 } else {
                     document.getElementById('chart6').remove();
                     console.log(response.exception);
