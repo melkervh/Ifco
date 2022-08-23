@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     ventaspormes();
     estadoproducto();
     graficoPastelCategorias();
+    clienteDepartamento();
+    productosMasVendidos();
 });
 
 // Función para mostrar la cantidad de productos por categoría en un gráfico de barras.
@@ -160,7 +162,8 @@ function graficoPastelCategorias() {
                         porcentajes.push(row.porcentaje);
                     });
                     // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                polarArea('chart4', categorias, porcentajes,'Porcentaje de productos por categoría');
+                polarArea('chart4', categorias, porcentajes,
+                'Porcentaje de productos por categoría');
                 } else {
                     document.getElementById('chart4').remove();
                     console.log(response.exception);
@@ -188,11 +191,11 @@ function clienteDepartamento() {
                     // Se recorre el conjunto de registro devuelto por la API (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {+
                         // Se agregan los datos a los arreglos.
-                        departamentos.push(row.departamentos);
-                        clientes.push(row.cliente);
+                        departamentos.push(row.departamento);
+                        clientes.push(row.id_cliente);
                     });
                     // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                polarArea('chart5', departamentos, 'Porcentaje de clientes por departamento');
+                polarArea2('chart5', departamentos,clientes,'Porcentaje de clientes por departamento');
                 } else {
                     document.getElementById('chart5').remove();
                     console.log(response.exception);
@@ -220,11 +223,11 @@ function productosMasVendidos() {
                     // Se recorre el conjunto de registro devuelto por la API (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {+
                         // Se agregan los datos a los arreglos.
-                        producto.push(row.producto);
-                        ventas.push(row.detalle_factura);
+                        producto.push(row.nombre_prodroducto);
+                        ventas.push(row.vendidos);
                     });
                     // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                polarArea('chart6', producto, ventas, 'Productos más vendidos');
+                    barGraph2('chart6', producto, ventas, 'Productos más vendidos');
                 } else {
                     document.getElementById('chart6').remove();
                     console.log(response.exception);

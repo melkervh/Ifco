@@ -67,9 +67,9 @@ class Graficos extends Validator{
 
     public function productosMasVendidos()
     {
-        $sql = 'SELECT id_producto, sum(id_producto) AS vendidos
-        FROM detalle_factura JOIN producto USING (id_producto)
-        GROUP BY id_producto';
+        $sql = 'SELECT nombre_prodroducto, sum(id_producto) AS vendidos
+        FROM detalle_factura inner JOIN producto USING (id_producto)
+        GROUP BY nombre_prodroducto  order by  vendidos desc ';
         $params = null;
         return Database::getRows($sql, $params);
     }

@@ -24,9 +24,8 @@ class Historialcre extends Validator
     {
         $sql = 'SELECT id_fiscal, nombre_cli, fecha_credito
         FROM credito_fiscal
-        INNER JOIN cliente c
-        ON id_cliente = c.id_cliente
-        ORDER BY fecha_credito DESC';
+        INNER JOIN cliente USING (id_cliente)
+        ORDER BY id_fiscal ';
         $params = null;
         return Database::getRows($sql, $params);
     }
