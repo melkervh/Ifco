@@ -56,14 +56,6 @@ class Graficos extends Validator{
         return Database::getRows($sql, $params);
     }
 
-    public function clienteDepartamento()
-    {
-        $sql = 'SELECT id_cliente, departamento
-        FROM cliente 
-        ORDER BY departamento DESC';
-        $params = null;
-        return Database::getRows($sql, $params);
-    }
 
     public function productosMasVendidos()
     {
