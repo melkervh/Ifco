@@ -68,6 +68,20 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'No hay datos disponibles';
                     }
                 break;
+                case 'clientesconmascompras':
+                    if ($result['dataset'] = $graficas->clientesConmasCompras()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                break;
+                case 'clientesconmascomprasCre':
+                    if ($result['dataset'] = $graficas->clientesConmasComprasC()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

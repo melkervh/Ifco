@@ -73,4 +73,22 @@ class Graficos extends Validator{
         $params = null;
         return Database::getRows($sql, $params);
     }
+    public function clientesConmasCompras()
+    {
+        $sql = 'SELECT nombre_cli , sum(id_cliente) AS compras
+        FROM factura_normal inner JOIN cliente USING (id_cliente)
+        GROUP BY nombre_cli order by  compras desc
+		limit 5 ';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+    public function clientesConmasComprasC()
+    {
+        $sql = 'SELECT nombre_cli , sum(id_cliente) AS compras
+        FROM credito_fiscal inner JOIN cliente USING (id_cliente)
+        GROUP BY nombre_cli order by  compras desc
+		limit 5 ';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }

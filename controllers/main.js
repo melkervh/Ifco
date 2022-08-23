@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     graficoPastelCategorias();
     clienteDepartamento();
     productosMasVendidos();
+    clientesConmasCompras();
 });
 
 // Función para mostrar la cantidad de productos por categoría en un gráfico de barras.
@@ -131,9 +132,9 @@ function estadoproducto() {
                         cantidades.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-                    pieGraph2 ('chart3', categoria, cantidades, 'Lista de estado productos');
+                    pieGraph2 ('chart7', categoria, cantidades, 'Lista de estado productos');
                 } else {
-                    document.getElementById('chart3').remove();
+                    document.getElementById('chart7').remove();
                     console.log(response.exception);
                 }
             });
@@ -237,5 +238,71 @@ function productosMasVendidos() {
             console.log(request.status + ' ' + request.statusText);
         }
     });
+}
+function clientesConmasCompras() {
+    // Petición para obtener los datos del gráfico.
+    if(document.getElementById('ventas').value == 1){
+
+    fetch(API_GRAFICA +'clientesconmascompras', {
+        method: 'get'
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+                if (response.status) {
+                    // Se declaran los arreglos para guardar los datos a graficar.
+                    let id_fiscal = [];
+                    let fecha_credito = [];
+                    // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
+                    response.dataset.map(function (row) {
+                        // Se agregan los datos a los arreglos.
+                        id_fiscal.push(row.compras);
+                        fecha_credito.push(row.nombre_cli);
+                    });
+                    // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+                    barGraph3('chart3', fecha_credito, id_fiscal, 'ventas', 'top 5 clientes con mas compras');
+                } else {
+                    document.getElementById('chart3').remove();
+                    console.log(response.exception);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+    document.getElementById('ventas').value = 0 ;
+  }
+  else if (document.getElementById('ventas').value == 0){
+    fetch(API_GRAFICA +'clientesconmascomprasCre', {
+        method: 'get'
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+                if (response.status) {
+                    // Se declaran los arreglos para guardar los datos a graficar.
+                    let fecha_fn = [];
+                    let id_fact_nor = [];
+                    // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
+                    response.dataset.map(function (row) {
+                        // Se agregan los datos a los arreglos.
+                        id_fact_nor.push(row.compras);
+                        fecha_fn.push(row.nombre_cli);
+                    });
+                    // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+                    barGraph3('chart3',  fecha_fn , id_fact_nor, 'ventas', 'top 5 clientes con mas compras en credito fiscal');
+                } else {
+                    document.getElementById('chart3').remove();
+                    console.log(response.exception);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+    document.getElementById('ventas').value = 1 ;
+  }
 }
 
