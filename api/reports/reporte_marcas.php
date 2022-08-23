@@ -45,15 +45,15 @@ if (isset($_GET['id_marca'])) {
                 // Se envía el documento al navegador y se llama al método footer()
                 $pdf->output('I', 'cateoria.pdf');
             } else {
-                //header('location: ../../../views/dashboard/Categoria.html');
+                header('location: ../../views/inventario.html');
             }
         } else {
-            //header('location: ../../../views/dashboard/Categoria.html');
+            header('location: ../../views/inventario.html');
         }
     } else {
-        //header('location: ../../../views/dashboard/Categoria.html');
+        header('location: ../../views/inventario.html');
     }
 } else {
-    //header('location: ../../../views/dashboard/Categoria.html');
+    header('location: ../../views/inventario.html');
 }
 ?>
