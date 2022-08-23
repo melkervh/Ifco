@@ -30,7 +30,8 @@ if (isset($_GET['id'])) {
 
             // Se establece la fuente para los datos de la factura.
             $pdf->setFont('Arial', '', 11);
-            $pdf->SetTextColor(0, 0, 0);            
+            $pdf->SetTextColor(0, 0, 0);   
+                 
 
             // Celdas para la formación de la factura
             $pdf->cell(95, 10, $rowHistorialcre['nombre_cli'], 1, 0, 'C');
@@ -52,16 +53,16 @@ if (isset($_GET['id'])) {
                     $pdf->SetTextColor(255,255,255);
 
                     // Se imprimen las celdas con los encabezados.
-                    $pdf->cell(185, 10, utf8_decode('Productos'), 1, 1, 'C', 1);
+                    $pdf->cell(185, 10, utf8_decode('Articulos'), 1, 1, 'C', 1);
                     $pdf->cell(60, 10, utf8_decode('Producto'), 1, 0, 'C', 1);
                     $pdf->cell(35, 10, utf8_decode('Cantidad'), 1, 0, 'C', 1);
                     $pdf->cell(45, 10, utf8_decode('Precio unitario ($US)'), 1, 0, 'C', 1);
-                    $pdf->cell(45, 10, utf8_decode('Total ($US)'), 1, 1, 'C', 1);
+                    $pdf->cell(45, 10, utf8_decode('SubTotal ($US)'), 1, 1, 'C', 1);
 
                     // Se establece la fuente para los datos de la factura.
                     $pdf->setFont('Arial', '', 11);
                     $pdf->SetTextColor(0, 0, 0);    
-
+                    $total = 0;
                     // Se recorren los registros ($dataDetallePedido) fila por fila ($rowDetallePedido).
                     foreach ($dataHistorialcre as $rowHistorialcre) {
                         
@@ -70,7 +71,12 @@ if (isset($_GET['id'])) {
                         $pdf->cell(35, 10, $rowHistorialcre['cantidad_cre'], 1, 0, 'C');
                         $pdf->cell(45, 10, $rowHistorialcre['precio_u'], 1, 0, 'C');
                         $pdf->cell(45, 10, $rowHistorialcre['total'], 1, 1, 'C');
+                        $total += ($rowHistorialcre['precio_u'] * $rowHistorialcre['cantidad_cre']);
                     }
+                    $pdf->SetTextColor(255,255,255);
+                    $pdf->cell(140, 10, utf8_decode('Total: '), 1, 0, 'R', 1);
+                    $pdf->SetTextColor(0,0,0);
+                    $pdf->cell(45, 10, '$ '.$total, 1, 1, 'C',);
 
                 } else {
                     $pdf->cell(0, 10, utf8_decode('No hay productos registrados'), 1, 1);

@@ -270,12 +270,16 @@ class Productos extends Validator{
         return Database::getRows($sql, $params);
     }
     public function reporInvent(){
-        $sql = 'SELECT nombre_prodroducto, cantidad_prodroducto,  estado_producto, precio_unidad, marca,tipo_producto
-        FROM producto
-        INNER JOIN marca
-        ON producto.id_marca = marca.id_marca
-        INNER JOIN tipo_producto
-        ON tipo_producto.id_tipo_prod = marca.id_tipo_prod';
+        $sql = "SELECT nombre_prodroducto, cantidad_prodroducto, precio_unidad, marca,tipo_producto, CASE estado_producto
+		        WHEN true THEN 'Disponible'
+		        WHEN false THEN 'Agotado'
+		        ELSE 'NA'
+		        END estado_producto
+                FROM producto
+                INNER JOIN marca
+                ON producto.id_marca = marca.id_marca
+                INNER JOIN tipo_producto
+                ON tipo_producto.id_tipo_prod = marca.id_tipo_prod";
         $params = null;
         return Database::getRows($sql, $params);
     }

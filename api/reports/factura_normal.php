@@ -52,26 +52,30 @@ if (isset($_GET['id'])) {
                     $pdf->SetTextColor(255,255,255);
 
                     // Se imprimen las celdas con los encabezados.
-                    $pdf->cell(185, 10, utf8_decode('Productos'), 1, 1, 'C', 1);
+                    $pdf->cell(185, 10, utf8_decode('Articulos'), 1, 1, 'C', 1);
                     $pdf->cell(60, 10, utf8_decode('Producto'), 1, 0, 'C', 1);
                     $pdf->cell(35, 10, utf8_decode('Cantidad'), 1, 0, 'C', 1);
                     $pdf->cell(45, 10, utf8_decode('Precio unitario ($US)'), 1, 0, 'C', 1);
-                    $pdf->cell(45, 10, utf8_decode('Total ($US)'), 1, 1, 'C', 1);
+                    $pdf->cell(45, 10, utf8_decode('SubTotal ($US)'), 1, 1, 'C', 1);
 
                     // Se establece la fuente para los datos de la factura.
                     $pdf->setFont('Arial', '', 11);
                     $pdf->SetTextColor(0, 0, 0);    
-
+                    // Variable para el total 
+                    $total = 0;
                     // Se recorren los registros ($dataDetallePedido) fila por fila ($rowDetallePedido).
                     foreach ($dataHistorial as $rowHistorial) {
-                        
                         // Se imprimen las celdas con los datos de los productos.
                         $pdf->cell(60, 10, $rowHistorial['nombre_prodroducto'], 1, 0, 'C');
                         $pdf->cell(35, 10, $rowHistorial['cantidad_com'], 1, 0, 'C');
                         $pdf->cell(45, 10, $rowHistorial['precio_u'], 1, 0, 'C');
                         $pdf->cell(45, 10, $rowHistorial['precio_total'], 1, 1, 'C');
+                        $total += ($rowHistorial['precio_u'] * $rowHistorial['cantidad_com']);
                     }
-
+                    $pdf->SetTextColor(255,255,255);
+                    $pdf->cell(140, 10, utf8_decode('Total: '), 1, 0, 'R', 1);
+                    $pdf->SetTextColor(0,0,0);
+                    $pdf->cell(45, 10, '$ '.$total, 1, 1, 'C',);
                 } else {
                     $pdf->cell(0, 10, utf8_decode('No hay productos registrados'), 1, 1);
                 }        
@@ -79,7 +83,7 @@ if (isset($_GET['id'])) {
                 header('location: ../../../views/historial.html');
             }    
 
-             Se envía el documento al navegador y se llama al método footer()
+            // Se envía el documento al navegador y se llama al método footer()
             $pdf->output('I', 'Factura normal.pdf');
 
         } else {

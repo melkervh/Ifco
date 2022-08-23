@@ -267,11 +267,11 @@ function barGraph(canvas, xAxis, yAxis, legend, title) {
             labels: xAxis,
             datasets: [{
                 label: legend,
-                data: yAxis, 
+                data: yAxis,
                 borderColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
-                color:'#284B63',
+                color: '#284B63',
                 borderWidth: 1,
-                backgroundColor:['rgb (40,75,99)', 'rgb(40,75,99)'],
+                backgroundColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
                 barPercentage: 1
             }]
         },
@@ -368,19 +368,19 @@ function polarArea(canvas, legends, values, title) {
                 data: values,
                 backgroundColor: colors
             }],
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                  },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
                 title: {
                     display: true,
                     text: title
-                }
-            }
-        }
-    },
+                },
+            },
+        },
     });
 }
 function polarArea2(canvas, legends, values, title) {
@@ -401,19 +401,19 @@ function polarArea2(canvas, legends, values, title) {
                 data: values,
                 backgroundColor: colors
             }],
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                  },
-                title: {
-                    display: true,
-                    text: title
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: title
+                    }
                 }
             }
-        }
-    },
+        },
     });
 }
 function polarArea3(canvas, legends, values, title) {
@@ -434,19 +434,19 @@ function polarArea3(canvas, legends, values, title) {
                 data: values,
                 backgroundColor: colors
             }],
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                  },
-                title: {
-                    display: true,
-                    text: title
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: title
+                    }
                 }
             }
-        }
-    },
+        },
     });
 }
 function pieGraph2(canvas, legends, values, title) {
@@ -504,7 +504,7 @@ function lineGraph(canvas, xAxis, yAxis, legend, title) {
         options: {
             aspectRatio: 1,
             radius: 4,
-            pointStyle:'rectRounded',
+            pointStyle: 'rectRounded',
             plugins: {
                 title: {
                     display: true,
@@ -537,7 +537,7 @@ function lineGraph1(canvas, xAxis, yAxis, legend, title) {
     // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
     var context = document.getElementById(canvas).getContext('2d');
     // aqui se hacae el cambio entre grafica y grafica 
-    if(graft){
+    if (graft) {
         graft.destroy();
     }
     // Se crea una instancia para generar el gráfico con los datos recibidos.
@@ -579,7 +579,7 @@ function lineGraph1(canvas, xAxis, yAxis, legend, title) {
 // funcion con la que se destruye y crea la siguiente grafica
 // segunda grafica con la funcion let graft 
 let graft2;
-function barGraph3 (canvas, xAxis, yAxis, legend, title) {
+function barGraph3(canvas, xAxis, yAxis, legend, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
@@ -588,7 +588,7 @@ function barGraph3 (canvas, xAxis, yAxis, legend, title) {
     }
     // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
     var context = document.getElementById(canvas).getContext('2d');
-    if(graft2){
+    if (graft2) {
         graft2.destroy();
     }
     // Se crea una instancia para generar el gráfico con los datos recibidos.
@@ -598,11 +598,11 @@ function barGraph3 (canvas, xAxis, yAxis, legend, title) {
             labels: xAxis,
             datasets: [{
                 label: legend,
-                data: yAxis, 
+                data: yAxis,
                 borderColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
-                color:'#284B63',
+                color: '#284B63',
                 borderWidth: 1,
-                backgroundColor:['rgb (40,75,99)', 'rgb(40,75,99)'],
+                backgroundColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
                 barPercentage: 1
             }]
         },

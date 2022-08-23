@@ -179,7 +179,7 @@ function graficoPastelCategorias() {
                         porcentajes.push(row.porcentaje);
                     });
                     // Se llama a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
-                polarArea('chart4', categorias, porcentajes,'Porcentaje','Porcentaje de productos por categoría');
+                polarArea('chart4', categorias, porcentajes, 'Porcentaje de productos por categoría');
                 } else {
                     document.getElementById('chart4').remove();
                     console.log(response.exception);
