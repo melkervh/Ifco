@@ -272,6 +272,9 @@ function openShowMarcas() {
                             <a onclick="openDeleteMarcas(${row.id_marca})">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
+                            <a onclick="openReporteMarcas(${row.id_marca})">
+                                <i class="fa-solid fa-file-pdf"></i>
+                            </a>
                         </td>
                         </tr>
                         `
@@ -596,6 +599,13 @@ function openDeleteTipo(id) {
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
     confirmDeleteInv(API_TIPO, data);
     openShowTipo();
+}
+// Función para abrir el reporte de productos.
+function openReporteMarcas(marcaa) {
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/reporte_marcas.php?id_marca=' + marcaa;
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
 }
 
 

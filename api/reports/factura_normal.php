@@ -83,13 +83,13 @@ if (isset($_GET['id'])) {
             $pdf->output('I', 'Factura normal.pdf');
 
         } else {
-            header('location: ../../../views/historial.html');
+            header('location: ../../views/historial.html');
         }
     } else {
-        header('location: ../../../views/historial.html');
+        header('location: ../../views/historial.html');
     }
 } else {
-    header('location: ../../../views/historial.html');
+    header('location:   ../../views/historial.html');
 }
 
 
