@@ -16,7 +16,7 @@ class Database
     {
         // Credenciales para establecer la conexión con la base de datos.
         $server = 'localhost';
-        $database = 'ifco';
+        $database = 'IFCO';
         $username = 'postgres';
         $password = '1234';
 
@@ -137,7 +137,7 @@ class Database
                 self::$error = 'Existe un problema al conectar con el servidor';
                 break;
             case '42703':
-                self::$error = 'Nombre de campo desconocido';
+               // self::$error = 'Nombre de campo desconocido';
                 break;
             case '23505':
                 self::$error = 'Dato duplicado, no se puede guardar';

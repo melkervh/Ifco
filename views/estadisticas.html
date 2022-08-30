@@ -13,25 +13,25 @@
 </head>
 
 <body>
-    <header></header>
+    <header>
+    </header>
     <main>
         <!-- inicio primera viñeta-->
-        <!--Se hace la viñeta para el reporte de las marcas con los productos-->
         <div class="courses-container">
             <div class="course2">
                 <div class="course-preview2">
                     <i class="fa-solid fa-file-pdf cajita2"></i>
-                    <h2><a > Reporte de Productos por Marcas</a></h2>
+                    <h2><a >Reporte de Productos por Marcas</a></h2>
                 </div>
                 <div class="course-info2">
                     <div >
                        <P>En este reporte se mostrar los productos con sus respectivas marcas a las cuales pertenecen</P>
                     </div>
-                    <i class="fa-solid fa-circle-plus btn2 ico"  onclick="openReporteProduc()"></i>
+                    <button class="btn2" onclick="openReporteProduc()">Visualizar reporte</button>
                 </div>
             </div>
         </div>
-        <!-- final primer viñeta-->
+         <!-- final primera viñeta-->
          <!-- inicio segunda viñeta-->
         <!--Se hace la viñeta para el reporte de las marcas con los productos-->
         <div class="courses-container">
@@ -46,20 +46,62 @@
                         pero su fin sera poder mostrar el deparatamento y municipio de los clientes.
                        </P>
                     </div>
-                    <i class="fa-solid fa-circle-plus btn2 ico"  onclick="openReporteDepar()"></i>
+                    <button class="btn2" onclick="openReporteDepar()">Visualizar reporte</button>
                 </div>
             </div>
         </div>
            <!-- final segunda viñeta-->
-           
+        <div class="courses-container">
+            <div class="course2">
+                <div class="course-preview2">
+                    <i class="fa-solid fa-file-pdf cajita2"></i>
+                    <h2><a >Reporte de clientes</a></h2>
+                </div>
+                <div class="course-info2">
+                    <div >
+                       <P>Listado de clientes</P>
+                    </div>
+                    <button onclick="reportClientes()" class="btn2">Visualizar reporte</button>
+                </div>
+            </div>
+        </div>
+        <div class="courses-container">
+            <div class="course2">
+                <div class="course-preview2">
+                    <i class="fa-solid fa-file-pdf cajita2"></i>
+                    <h2><a > Reporte de proveedores</a></h2>
+                </div>
+                <div class="course-info2">
+                    <div >
+                       <P>Listado de proveedores</P>
+                    </div>
+                    <button onclick="reportProveedores()" class="btn2">Visualizar reporte</button>
+                </div>
+            </div>
+        </div>
+        <div class="courses-container">
+            <div class="course2">
+                <div class="course-preview2">
+                    <i class="fa-solid fa-file-pdf cajita2"></i>
+                    <h2><a > Reporte de inventario</a></h2>
+                </div>
+                <div class="course-info2">
+                    <div >
+                       <P>Se mostrara la informacion general de los productos lo cual abarca Nombre, cantidad,estado,marca y tipo</P>
+                    </div>
+                    <button onclick="reportInvent()" class="btn2">Visualizar reporte</button>
+                </div>
+            </div>
+        </div>
+           <!-- final primer viñeta-->
     <footer></footer>
     <!--JS bootstrap-->
     <script src="../resources/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
-    <script src="../controllers/estadisticas.js"></script>
     <script src="../controllers/acounst.js"></script>
+    <script src="../controllers/reportes.js"></script>
     
 </body>
 

@@ -16,13 +16,11 @@ function fillTable(dataset) {
     dataset.map(function (row) {
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `
-            <tr>
-                <td scope="row" class="texto2">${row.id_fact_nor}</td>
-                <td class="texto3">pdf</td>
+
                 <td class="texto3">${row.nombre_cli}</td>
-                <td class="texto3">${row.fecha_fn}</td>
-                <td class="texto3  justify-content-center"> <a onclick="openDetalle(${row.id_fact_nor})" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#detalle">
-                <i class="fa-solid fa-circle-info cart_nav1"></i>
+                <td class="texto3">${row.fecha_credito}</td>
+                <td class="texto3  justify-content-center"> <a onclick="openCredito(${row.id_fiscal})" class="btn btn-dark">
+                <i class="fa-solid fa-circle-info cart_nav1"></i></a></td>
         </a>
                 </td>
             </tr>
@@ -84,4 +82,11 @@ function openDetalle(id) {
             console.log(request.status + ' ' + request.statusText);
         }
     });
+}
+function openCredito(id){
+
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/lista_credito.php?id=' + id ;
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
 }

@@ -1,3 +1,8 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
 body {
     background-color: #D9D9D9;
 }
@@ -566,3 +571,8 @@ table th {
       
       background-color: #28323C ;
   }
+  .gg{
+    padding: 20px;
+    margin: 0;
+  }
+  

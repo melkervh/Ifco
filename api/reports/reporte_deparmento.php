@@ -44,11 +44,11 @@ if ($datadepartamento = $departamento->reporDepart()) {
             $pdf->cell(45, 10, utf8_decode($rowproducto['municipio']), 1, 1, 'C');
 
         } else {
-            $pdf->cell(0, 10, utf8_decode('No hay productos'), 1, 1);
+            $pdf->cell(0, 10, utf8_decode('No hay clientes'), 1, 1);
         }
     }
 } else {
-    $pdf->cell(0, 10, utf8_decode('No hay productos para mostrar'), 1, 1);
+    $pdf->cell(0, 10, utf8_decode('No hay clientes para mostrar'), 1, 1);
 }
 
 // Se envía el documento al navegador y se llama al método footer()
