@@ -11,6 +11,7 @@ class Usuarios extends Validator
     private $apellido_usuario = null;
     private $clave_usuario = null;
     private $correo_usuario = null;
+    private $fecha = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -65,6 +66,16 @@ class Usuarios extends Validator
         }
     }
 
+    public function setFecha($value)
+    {
+        if ($this->validateDate($value)) {
+            $this->fecha = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -91,6 +102,11 @@ class Usuarios extends Validator
     public function getCorreoUsuario()
     {
         return $this->correo_usuario;
+    }
+
+    public function getFecha()
+    {
+        return $this->fecha;
     }
 
     /*
@@ -186,6 +202,22 @@ class Usuarios extends Validator
         $sql = 'DELETE FROM usuario
                 WHERE id_usuario = ?';
         $params = array($this->id_usuario);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function validacioncontraseña () {
+            $sql = 'select fecha_clave from usuario
+            where id_usuario = ?' ;
+            $params = array($this->id_usuario);
+            $clave = Database::executeRow($sql, $params);
+            return $clave;
+    }
+
+    public function actualizarcontraseña () {
+        $sql = 'UPDATE usuario
+        SET fecha_clave = ?
+        WHERE = id_usuario = ?';
+        $params = array(date('d m y',time()), $this->id_usuario);
         return Database::executeRow($sql, $params);
     }
 }

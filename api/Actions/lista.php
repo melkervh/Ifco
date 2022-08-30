@@ -104,8 +104,13 @@ if (isset($_GET['action'])) {
                     } elseif (!$listas->setClaveUsuario($_POST['clave_usuario'])) {
                         $result['exception'] = $listas->getPasswordError();
                     } elseif ($listas->createRow()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Usuario registrado correctamente';
+                        if ($listas->actualizarcontraseña()) {
+                            $result['status'] = 1;
+                            $result['message'] = 'Usuario registrado correctamente';
+                        }
+                        else {
+                            $result['exception'] = 'Ni modo no se acutualizo la fecha';
+                        }
                     } else {
                         $result['exception'] = Database::getException();
                     }
