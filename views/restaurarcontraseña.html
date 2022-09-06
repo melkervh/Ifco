@@ -17,24 +17,25 @@
     <header>
     </header>
     <main>
-        <div class="Primar">
-            <div class="signupFrm">
-                <div class="wrapper">
-                    <form autocomplete="off" method="post" id="register-form" >
-                        <h1 class="title">Cambio de contraseña</h1>
-                        <input class="hidden"  type="number" id="id_usuario"
-                            name="id_usuario">
-                        <div class="inputContainer">
-                            <label for="clave" class="label">Clave</label>
-                            <input id="clave" type="password" name="clave" class="input" required>
-                        </div>
+        <div>
+            <div class="Primar">
+                <div class="signupFrm">
+                    <div class="wrapper">
+                        <form autocomplete="off" method="post" id="register-form">
+                            <h1 class="title">Cambio de contraseña</h1>
+                    
+                            <div class="inputContainer">
+                                <label for="clave" class="label">Clave</label>
+                                <input id="clave" type="password" name="clave" class="input" required>
+                            </div>
 
-                        <div class="inputContainer">
-                            <label for="confirmar" class="label">Confirme Clave</label>
-                            <input id="confirmar" type="password" name="confirmar" class="input" required>
-                        </div>
-                        <input type="submit" class="submitBtn" value="Registrar">
-                    </form>
+                            <div class="inputContainer">
+                                <label for="confirmar" class="label">Confirme Clave</label>
+                                <input id="confirmar" type="password" name="confirmar" class="input" required>
+                            </div>
+                          <button type="submit" class="submitBtn" value="Registrar">Cambiar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,7 +48,7 @@
     <script src="../controllers/components.js"></script>
     <script src="../controllers/cambiodeclave.js"></script>
 
-  
+
 </body>
 
 </html>

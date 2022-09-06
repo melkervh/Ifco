@@ -115,4 +115,5 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(request.status + ' ' + request.statusText);
         }
     });
+    inactivityTime();
 });

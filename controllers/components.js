@@ -664,3 +664,42 @@ function logOut() {
         }
     });
 }
+
+var inactivityTime = function () {
+    var time;
+    window.onload = resetTimer;
+    // DOM Events
+    document.onmousemove = resetTimer; // Reconoce movimiento del mouse
+    document.onkeydown = resetTimer;  // Reconoce teclas presionadas
+    window.onmousedown = resetTimer;  // Reconoce toques de pantalla táctil     
+    window.ontouchstart = resetTimer; // Reconoce deslizes de pantalla táctil     
+    window.ontouchmove = resetTimer;  // Required by some devices 
+    window.onclick = resetTimer;      // Reconoce clicks de pantalla táctil
+    window.addEventListener('scroll', resetTimer, true); // Reconoce el scroll
+    function logOut() {
+        fetch(API + 'logOut', {
+            method: 'get'
+        }).then(function (request) {
+            // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+            if (request.ok) {
+                // Se obtiene la respuesta en formato JSON.
+                request.json().then(function (response) {
+                    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                    if (response.status) {
+                        sweetAlert(3, "Se ha cerrado la sesión por inactividad", 'index.html');
+                    } else {
+                        sweetAlert(2, response.exception, null);
+                    }
+                });
+            } else {
+                console.log(request.status + ' ' + request.statusText);
+            }
+        });
+    }
+    function resetTimer() {
+        clearTimeout(time);
+        time = setTimeout(logOut, 10000)
+        // 1000 milisegundos = 1 segundo
+        // 300000 milisegundos = 5 min
+    }
+}

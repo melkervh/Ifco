@@ -3,8 +3,6 @@ const API_CAMBIO= SERVER + 'Actions/cambiodecontraseña.php?action=';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Se llama a la función que muestra el historial
-    readRows(API_CAMBIO);
 });
 // Función para preparar el formulario al momento de modificar un registro.
 function openUpdate(id_usuario) {
@@ -62,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (response.status) {
                     sweetAlert(3, response.message, 'login.html');
                 } else {
-                    sweetAlert(4, 'Debe crear un usuario para comenzar', null);
+                    sweetAlert(4, 'Debe cambiar su clave ', null);
                 }
             });
         } else {

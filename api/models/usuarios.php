@@ -235,12 +235,14 @@ class Usuarios extends Validator
       //Método para obtener la diferencia de días entre la ultima fecha de actualización de contraseña.
       public function CambioDeClave()
       {
-          $sql = " UPDATE usuario
-          SET  clave_usuario=? , fecha_clave=?
-          WHERE id_usuario = ? ";
-          $params = array($this->id_usuario);
-          $days = Database::getRow($sql, $params);
-          return intval($days['dias']);
+        date_default_timezone_set('America/El_Salvador');
+        $fecha_actual = date('Y-m-d h:i:s', time());
+        $sql = " UPDATE usuario
+        SET  clave_usuario=? , fecha_clave=?
+        WHERE id_usuario = ? ";
+        $params = array($this->clave_usuario, $fecha_actual, $_SESSION['id_usuario'] );
+        $days = Database::getRow($sql, $params);
+        return intval($days['dias']);
       }
 }
 ?>

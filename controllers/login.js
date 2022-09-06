@@ -41,9 +41,12 @@ document.getElementById('session-form').addEventListener('submit', function (eve
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     sweetAlert(1, response.message, 'index.html');
+                } else if (response.password){
+                    sweetAlert(4, 'Debe actualizar su clave, la contraseña expiro despues de 90 dias','restaurarcontraseña.html');
                 } else {
-                    sweetAlert(2, response.exception, 'restaurarcontraseña.html');
+                    sweetAlert(2, response.exception,);
                 }
+                
             });
         } else {
             console.log(request.status + ' ' + request.statusText);
