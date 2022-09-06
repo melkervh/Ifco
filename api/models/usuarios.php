@@ -121,6 +121,7 @@ class Usuarios extends Validator
         $params = array($correo_usuario);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_usuario = $data['id_usuario'];
+            $_SESSION['id_usuario']= $this->id_usuario;
             $this->correo_usuario = $correo_usuario;
             return true;
         } else {
@@ -213,12 +214,33 @@ class Usuarios extends Validator
             return $clave;
     }
 
-    public function actualizarcontraseña () {
+    public function validarContraseña () {
         $sql = 'UPDATE usuario
         SET fecha_clave = ?
         WHERE = id_usuario = ?';
         $params = array(date('d m y',time()), $this->id_usuario);
         return Database::executeRow($sql, $params);
     }
+
+    //Método para obtener la diferencia de días entre la ultima fecha de actualización de contraseña.
+    public function checkPasswordDate()
+    {
+        $sql = "SELECT EXTRACT(DAY FROM (now() - fecha_clave)) as dias 
+                FROM usuario
+                WHERE id_usuario = ?";
+        $params = array($this->id_usuario);
+        $days = Database::getRow($sql, $params);
+        return intval($days['dias']);
+    }
+      //Método para obtener la diferencia de días entre la ultima fecha de actualización de contraseña.
+      public function CambioDeClave()
+      {
+          $sql = " UPDATE usuario
+          SET  clave_usuario=? , fecha_clave=?
+          WHERE id_usuario = ? ";
+          $params = array($this->id_usuario);
+          $days = Database::getRow($sql, $params);
+          return intval($days['dias']);
+      }
 }
 ?>

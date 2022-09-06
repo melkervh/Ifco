@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+// Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de iniciar sesión.
 document.getElementById('session-form').addEventListener('submit', function (event) {
@@ -41,7 +42,7 @@ document.getElementById('session-form').addEventListener('submit', function (eve
                 if (response.status) {
                     sweetAlert(1, response.message, 'index.html');
                 } else {
-                    sweetAlert(2, response.exception, null);
+                    sweetAlert(2, response.exception, 'restaurarcontraseña.html');
                 }
             });
         } else {

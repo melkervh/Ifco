@@ -109,13 +109,15 @@ if (isset($_GET['action'])) {
                 $_POST = $usuario->validateForm($_POST);
                 if (!$usuario->checkUser($_POST['correo'])) {
                     $result['exception'] = 'correo incorrecto';
-                } elseif ($usuario->checkPassword($_POST['clave'])) {
+                } elseif (!$usuario->checkPassword($_POST['clave'])) {
+                    $result['exception'] = 'Contraseña incorrecta.';
+                } elseif ($usuario->checkPasswordDate() < 90) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_usuario'] = $usuario->getIdUsuario();
                     $_SESSION['correo_usuario'] = $usuario->getCorreoUsuario();
-                } else {
-                    $result['exception'] = 'Clave incorrecta';
+                }else {
+                    $result['exception'] = 'La contraseña expiro despues de 90 dias, por favor pidale a su administrador que la cambie';
                 }
                 break;
             default:
