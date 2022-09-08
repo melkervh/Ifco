@@ -12,6 +12,8 @@ class Usuarios extends Validator
     private $clave_usuario = null;
     private $correo_usuario = null;
     private $fecha = null;
+    private $intentos = null;
+    private $fecha_intentos;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -109,6 +111,15 @@ class Usuarios extends Validator
         return $this->fecha;
     }
 
+    public function getIntentos()
+    {
+        return $this->intentos;
+    }
+    public function getFechaIntentos()
+    {
+        return $this->fecha_intentos;
+    }
+
     /*
     *   Métodos para gestionar la cuenta del usuario.
     */
@@ -117,12 +128,14 @@ class Usuarios extends Validator
     /*Funcion para la comprobacion del correo*/
     public function checkUser($correo_usuario)
     {
-        $sql = 'SELECT id_usuario FROM usuario WHERE correo_usuario = ?';
+        $sql = 'SELECT id_usuario, intentos, fechabloqueo FROM usuario WHERE correo_usuario = ?';
         $params = array($correo_usuario);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_usuario = $data['id_usuario'];
             $_SESSION['id_usuario']= $this->id_usuario;
             $this->correo_usuario = $correo_usuario;
+            $this->intentos = $data['intentos'];
+            $this->fecha_intentos = $data['fechabloqueo'];
             return true;
         } else {
             return false;
@@ -142,6 +155,37 @@ class Usuarios extends Validator
             return false;
         }
     }
+
+        //Método para agregar una unidad a los intentos fallidos e ingresar la fehca y hora del ultimo intento fallido
+        public function intentoFallido($correo_usuario)
+        {
+            $sql = 'UPDATE usuario 
+            set intentos = intentos + 1
+            WHERE correo_usuario = ?';
+            $params = array($this->correo_usuario);
+            return Database::executeRow($sql, $params);
+        }
+    
+        //Método para agregar una unidad a los intentos fallidos e ingresar la fehca y hora del ultimo intento fallido
+        public function bloqueoIntentos($correo_usuario, $date)
+        {
+            $future_date = date("Y-m-d H:i",strtotime($date."+ 1 days")); 
+            $sql = 'UPDATE usuario 
+            set intentos = 0, fechabloqueo = ?
+            WHERE correo_usuario = ?';
+            $params = array($future_date, $this->correo_usuario);
+            return Database::executeRow($sql, $params);
+        }
+        
+        //Método para agregar una unidad a los intentos fallidos e ingresar la fehca y hora del ultimo intento fallido
+        public function reinicioConteoIntentos($correo_usuario)
+        {
+            $sql = 'UPDATE usuario 
+            set intentos = 0
+            WHERE correo_usuario = ?';
+            $params = array($this->correo_usuario);
+            return Database::executeRow($sql, $params);
+        }
 
      /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).

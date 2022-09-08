@@ -11,6 +11,8 @@ if (isset($_GET['action'])) {
     $usuario = new Usuarios;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'password'=>0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
+    date_default_timezone_set('America/El_Salvador');
+    $date = date('Y-m-d H:i');
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_usuario'])) {
         $result['session'] = 1;
@@ -109,14 +111,21 @@ if (isset($_GET['action'])) {
                 $_POST = $usuario->validateForm($_POST);
                 if (!$usuario->checkUser($_POST['correo'])) {
                     $result['exception'] = 'correo incorrecto';
+                } elseif ($usuario->getFechaIntentos() > $date) {
+                    $result['exception'] = 'Tu cuenta esta bloqueada momentaneamente, intentalo más tarde';
+                } elseif ($usuario->getIntentos() > 2) {
+                    $result['exception'] = 'Limite de intentos alcanzado, tu cuenta ha sido bloqueda temporalmente';
+                    $usuario->bloqueoIntentos($_POST['correo'], $date);
                 } elseif (!$usuario->checkPassword($_POST['clave'])) {
-                    $result['exception'] = 'Contraseña incorrecta.';
+                    $result['exception'] = 'Contraseña incorrecta.';                    
+                    $usuario->intentoFallido($_POST['correo']);
+                    $result['status'] = 0;
                 } elseif ($usuario->checkPasswordDate() < 90) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_usuario'] = $usuario->getIdUsuario();
                     $_SESSION['correo_usuario'] = $usuario->getCorreoUsuario();
-                }else {
+                }   else {
                     $result['password'] = 1;
                     $result['exception'] = 'La contraseña expiro despues de 90 dias';
                 }
