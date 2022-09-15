@@ -146,10 +146,16 @@ class Database
                 self::$error = 'Nombre de tabla desconocido';
                 break;
             case '23503':
-               // self::$error = 'Registro ocupado, no se puede eliminar';
+               self::$error = 'Registro ocupado, no se puede eliminar';
+                break;
+            case 'HY093':
+                self::$error = 'Se envían más parámetros de los requeridos';
+                break;
+            case '22001':
+                self::$error = 'Los datos ingresados superan el límite de caracteres permitidos';
                 break;
             default:
-              //  self::$error = 'Ocurrió un problema en la base de datos';
+               self::$error = 'Ocurrió un problema en la base de datos';
         }
     }
 

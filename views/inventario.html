@@ -31,7 +31,7 @@
                 <div class="modal fade" id="productos-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
-                        <form method="post" id="productos-form">
+                        <form autocomplete="off" method="post" id="productos-form">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modal-title"></h5>
@@ -102,7 +102,7 @@
                 <div class="modal fade" id="marcas-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
-                        <form method="post" id="marcas-form">
+                        <form autocomplete="off" method="post" id="marcas-form">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modal-title"></h5>
@@ -151,7 +151,7 @@
                 <!-- Modal -->
                 <div class="modal fade" id="tipopro-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
-                    <form method="post" id="tipo-form">
+                    <form autocomplete="off" method="post" id="tipo-form">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -206,7 +206,7 @@
                         <div class="Listas">
                             <nav class="navbar ">
                                 <div class="container-fluid">
-                                    <form class="d-flex" method="post" id="buscarproductos-form" role="search">
+                                    <form autocomplete="off" class="d-flex" method="post" id="buscarproductos-form" role="search">
                                         <input class="form-control me-2" type="search" name="search" id="search"
                                             placeholder="Buscar por nombre del producto ..." aria-label="Search">
                                         <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -216,7 +216,7 @@
                             <table class="table table-borderless">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">ID</th>
+                                        
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Descripcion</th>
@@ -235,7 +235,7 @@
                         <div class="Listas">
                             <nav class="navbar ">
                                 <div class="container-fluid">
-                                    <form class="d-flex" role="search" method="post" id="buscarmarcas-form">
+                                    <form autocomplete="off" class="d-flex" role="search" method="post" id="buscarmarcas-form">
                                         <input class="form-control me-2" type="search" id="search" name="search"
                                             placeholder="Buscar por nombre " aria-label="Search">
                                         <button class="btn btn-outline-primary" type="submit">Buscar
@@ -246,7 +246,7 @@
                             <table class="table table-borderless">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">ID</th>
+                                        
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Tipo de producto</th>
                                         <th scope="col">Proveedor</th>
@@ -262,7 +262,7 @@
                         <div class="Listas">
                             <nav class="navbar ">
                                 <div class="container-fluid">
-                                    <form class="d-flex" role="search" method="post" id="buscartipo-form">
+                                    <form autocomplete="off" class="d-flex" role="search" method="post" id="buscartipo-form">
                                         <input class="form-control me-2" type="search" placeholder="Buscar por nombre del tipo
                                         de producto ..." id="search"
                                             name="search" aria-label="Search">
@@ -273,7 +273,7 @@
                             <table class="table table-borderless">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">ID</th>
+                                        
                                         <th scope="col">Nombre del tipo</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
@@ -294,9 +294,9 @@
                 crossorigin="anonymous"></script>
             <script src="../resources/js/bootstrap.min.js"></script>
             <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script src="../controllers/components.js"></script>
             <script src="../controllers/acounst.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script src="../controllers/inventario.js"></script>
 
 </body>

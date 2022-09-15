@@ -53,7 +53,7 @@ function openShowProductos() {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_producto}</td>
+                       
                         <td>${row.nombre_prodroducto}</td>
                         <td>${row.cantidad_prodroducto}</td>
                         <td>${row.descripcion_producto}</td>
@@ -116,7 +116,7 @@ function BuscadorProductos(form) {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_producto}</td>
+               
                         <td>${row.nombre_prodroducto}</td>
                         <td>${row.cantidad_prodroducto}</td>
                         <td>${row.descripcion_producto}</td>
@@ -261,7 +261,7 @@ function openShowMarcas() {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_marca}</td>
+                
                         <td>${row.marca}</td>
                         <td>${row.nombre_prv}</td>
                         <td>${row.tipo_producto}</td>
@@ -271,6 +271,9 @@ function openShowMarcas() {
                             </a>
                             <a onclick="openDeleteMarcas(${row.id_marca})">
                                 <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                            <a onclick="openReporteMarcas(${row.id_marca})">
+                                <i class="fa-solid fa-file-pdf"></i>
                             </a>
                         </td>
                         </tr>
@@ -314,7 +317,7 @@ function BuscadorMarcas(form) {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_marca}</td>
+                    
                         <td>${row.marca}</td>
                         <td>${row.nombre_prv}</td>
                         <td>${row.tipo_producto}</td>
@@ -450,7 +453,6 @@ function openShowTipo() {
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
                         <tr>
-                        <td>${row.id_tipo_prod}</td>
                         <td>${row.tipo_producto}</td>
                         <td>
                             <a onclick="openUpdateTipo(${row.id_tipo_prod})" data-bs-toggle="modal" data-bs-target="#tipopro-modal">
@@ -597,6 +599,13 @@ function openDeleteTipo(id) {
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
     confirmDeleteInv(API_TIPO, data);
     openShowTipo();
+}
+// Función para abrir el reporte de productos.
+function openReporteMarcas(marcaa) {
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/reporte_marcas.php?id_marca=' + marcaa;
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
 }
 
 

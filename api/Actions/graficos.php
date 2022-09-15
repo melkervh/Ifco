@@ -26,12 +26,61 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
-            case 'porcentajeProductosCategoria':
-                if ($result['dataset'] = $graficas->porcentajeProductosCategoria()) {
+            case 'ventaspormesfac':
+                if ($result['dataset'] = $graficas->ventapormesfac()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
                 }
+                break;
+                case 'ventaspormescre':
+                    if ($result['dataset'] = $graficas->ventapormescre()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                    break;
+                case 'estadoproducto':
+                        if ($result['dataset'] = $graficas->estadoproducto()) {
+                            $result['status'] = 1;
+                        } else {
+                            $result['exception'] = 'No hay datos disponibles';
+                        }
+                break;
+                case 'porcentajeProductosCategoria':
+                    if ($result['dataset'] = $graficas->porcentajeProductosCategoria()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                break;
+                case 'clienteDepartamento':
+                    if ($result['dataset'] = $graficas->clienteDepartamento()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                break;
+                case 'productosMasVendidos':
+                    if ($result['dataset'] = $graficas->productosMasVendidos()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                break;
+                case 'clientesconmascompras':
+                    if ($result['dataset'] = $graficas->clientesConmasCompras()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                break;
+                case 'clientesconmascomprasCre':
+                    if ($result['dataset'] = $graficas->clientesConmasComprasC()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
                 break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';

@@ -7,11 +7,27 @@ class Clientes extends Validator
     /* Método para cargar el historial ....................................................... */
     public function readAll()
     {
-        $sql = 'SELECT nombre_cli, apellido_cli, "DUI",telefono, departamento
+        $sql = 'SELECT nombre_cli, apellido_cli, "DUI",telefono
         FROM cliente
         ORDER BY nombre_cli';
         $params = null;
         return Database::getRows($sql, $params);
     }
-    
+    public function ReporteCliente()
+    {
+        $sql = 'SELECT nombre_cli, apellido_cli, "DUI",telefono,departamento
+        FROM cliente
+        ORDER BY nombre_cli';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+      /*Metodo para el llenado de la tabla para el reporte del departamento y municipio*/
+      public function reporDepart()
+      {
+          $sql = 'SELECT nombre_cli, apellido_cli, departamento, municipio
+          FROM cliente
+          ORDER BY nombre_cli';
+          $params = null;
+          return Database::getRows($sql, $params);
+      }
 }

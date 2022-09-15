@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>historial</title>
     <!--CSS bootstrap-->
+    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
 </head>
@@ -20,7 +21,7 @@
             <div class="historial">
                 <nav class="navbar ">
                     <div class="container-fluid">
-                      <form class="d-flex" role="search" method="post" id="search-form">
+                      <form autocomplete="off" class="d-flex" role="search" method="post" id="search-form">
                         <input class="form-control me-2" type="search" name="search" id="search" placeholder="Buscar por nombre del cliente ..." aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit">Search</button>
                       </form>
@@ -29,11 +30,8 @@
                 <table class="table aria-label">
                     <thead class="table-dark">
                         <tr>
-                            <th scope="col" class="texte">#</th>
-                            <th scope="col" class="texte">PDF</th>
                             <th scope="col" class="texte">NOMBRE</th>
                             <th scope="col" class="texte">FECHA</th>
-                            <th scope="col" class="texte">VISTA</th>
                             <th scope="col" class="texte">FACTURA</th>
                         </tr>
                     </thead>

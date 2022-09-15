@@ -22,11 +22,10 @@ class Historial extends Validator
     /* Método para cargar el historial ....................................................... */
     public function readAll()
     {
-        $sql = 'SELECT id_fact_nor, nombre_cli, fecha_fn
+        $sql = '	SELECT id_fact_nor, nombre_cli, fecha_fn
         FROM factura_normal
-        INNER JOIN cliente c
-        ON id_cliente = c.id_cliente
-        ORDER BY fecha_fn DESC';
+        INNER JOIN cliente USING (id_cliente)
+        ORDER BY id_fact_nor ';
         $params = null;
         return Database::getRows($sql, $params);
     }
@@ -52,9 +51,9 @@ class Historial extends Validator
         $params = array($this->id_fact_nor);
         return Database::getRows($sql, $params);
     }
-
-    /* Método para los productos de los reportes de la factura */
-    public function readFactura(){
+    
+     /* Método para los productos de los reportes de la factura */
+     public function readFactura(){
         $sql = 'SELECT id_fact_nor, vnta_dt, fecha_fn, numero_fact
                 FROM factura_normal
                 WHERE id_fact_nor = ?';
@@ -65,16 +64,13 @@ class Historial extends Validator
     /* Método para los productos de los reportes de la factura */
     public function readAllProductos(){
         $sql = 'SELECT detalle_factura.id_detalle_fac, nombre_prodroducto, precio_u, precio_total, cantidad_com
-                FROM detalle_factura
-                INNER JOIN factura
-                ON factura.id_detalle_fac = detalle_factura.id_detalle_fac
-                INNER JOIN factura_normal
-                ON factura.id_fact_nor = factura_normal.id_fact_nor
-                INNER JOIN producto
-                ON detalle_factura.id_producto = producto.id_producto
-                WHERE factura.id_fact_nor = ?';
+        FROM detalle_factura
+        INNER JOIN factura_normal
+        ON detalle_factura.id_fact_nor = factura_normal.id_fact_nor
+        INNER JOIN producto
+        ON detalle_factura.id_producto = producto.id_producto
+                WHERE factura_normal.id_fact_nor = ?';
         $params = array($this->id_fact_nor);
         return Database::getRows($sql, $params);
     }
-    
 }

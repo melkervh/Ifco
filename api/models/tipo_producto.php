@@ -93,6 +93,4 @@ class TipoProducto extends Validator{
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }   
-
-
 }

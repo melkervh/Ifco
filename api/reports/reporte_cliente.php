@@ -9,7 +9,7 @@ $pdf->startReport('Listado de clientes');
 $cliente = new Clientes;
 
     // Se verifica si existen registros (clientes) para mostrar.
-    if ($dataClientes = $cliente->readAll()) {
+    if ($dataClientes = $cliente->ReporteCliente()) {
                     
         // Se establece un color de relleno para los encabezados.
         $pdf->setFillColor(40, 75, 99);

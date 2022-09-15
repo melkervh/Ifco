@@ -11,6 +11,9 @@ class Usuarios extends Validator
     private $apellido_usuario = null;
     private $clave_usuario = null;
     private $correo_usuario = null;
+    private $fecha = null;
+    private $intentos = null;
+    private $fecha_intentos;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -65,6 +68,16 @@ class Usuarios extends Validator
         }
     }
 
+    public function setFecha($value)
+    {
+        if ($this->validateDate($value)) {
+            $this->fecha = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -93,6 +106,20 @@ class Usuarios extends Validator
         return $this->correo_usuario;
     }
 
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    public function getIntentos()
+    {
+        return $this->intentos;
+    }
+    public function getFechaIntentos()
+    {
+        return $this->fecha_intentos;
+    }
+
     /*
     *   Métodos para gestionar la cuenta del usuario.
     */
@@ -101,11 +128,14 @@ class Usuarios extends Validator
     /*Funcion para la comprobacion del correo*/
     public function checkUser($correo_usuario)
     {
-        $sql = 'SELECT id_usuario FROM usuario WHERE correo_usuario = ?';
+        $sql = 'SELECT id_usuario, intentos, fechabloqueo FROM usuario WHERE correo_usuario = ?';
         $params = array($correo_usuario);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_usuario = $data['id_usuario'];
+            $_SESSION['id_usuario']= $this->id_usuario;
             $this->correo_usuario = $correo_usuario;
+            $this->intentos = $data['intentos'];
+            $this->fecha_intentos = $data['fechabloqueo'];
             return true;
         } else {
             return false;
@@ -125,6 +155,37 @@ class Usuarios extends Validator
             return false;
         }
     }
+
+        //Método para agregar una unidad a los intentos fallidos e ingresar la fehca y hora del ultimo intento fallido
+        public function intentoFallido($correo_usuario)
+        {
+            $sql = 'UPDATE usuario 
+            set intentos = intentos + 1
+            WHERE correo_usuario = ?';
+            $params = array($this->correo_usuario);
+            return Database::executeRow($sql, $params);
+        }
+    
+        //Método para agregar una unidad a los intentos fallidos e ingresar la fehca y hora del ultimo intento fallido
+        public function bloqueoIntentos($correo_usuario, $date)
+        {
+            $future_date = date("Y-m-d H:i",strtotime($date."+ 1 days")); 
+            $sql = 'UPDATE usuario 
+            set intentos = 0, fechabloqueo = ?
+            WHERE correo_usuario = ?';
+            $params = array($future_date, $this->correo_usuario);
+            return Database::executeRow($sql, $params);
+        }
+        
+        //Método para agregar una unidad a los intentos fallidos e ingresar la fehca y hora del ultimo intento fallido
+        public function reinicioConteoIntentos($correo_usuario)
+        {
+            $sql = 'UPDATE usuario 
+            set intentos = 0
+            WHERE correo_usuario = ?';
+            $params = array($this->correo_usuario);
+            return Database::executeRow($sql, $params);
+        }
 
      /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -188,5 +249,44 @@ class Usuarios extends Validator
         $params = array($this->id_usuario);
         return Database::executeRow($sql, $params);
     }
+
+    public function validacioncontraseña () {
+            $sql = 'select fecha_clave from usuario
+            where id_usuario = ?' ;
+            $params = array($this->id_usuario);
+            $clave = Database::executeRow($sql, $params);
+            return $clave;
+    }
+
+    public function validarContraseña () {
+        $sql = 'UPDATE usuario
+        SET fecha_clave = ?
+        WHERE = id_usuario = ?';
+        $params = array(date('d m y',time()), $this->id_usuario);
+        return Database::executeRow($sql, $params);
+    }
+
+    //Método para obtener la diferencia de días entre la ultima fecha de actualización de contraseña.
+    public function checkPasswordDate()
+    {
+        $sql = "SELECT EXTRACT(DAY FROM (now() - fecha_clave)) as dias 
+                FROM usuario
+                WHERE id_usuario = ?";
+        $params = array($this->id_usuario);
+        $days = Database::getRow($sql, $params);
+        return intval($days['dias']);
+    }
+      //Método para obtener la diferencia de días entre la ultima fecha de actualización de contraseña.
+      public function CambioDeClave()
+      {
+        date_default_timezone_set('America/El_Salvador');
+        $fecha_actual = date('Y-m-d h:i:s', time());
+        $sql = " UPDATE usuario
+        SET  clave_usuario=? , fecha_clave=?
+        WHERE id_usuario = ? ";
+        $params = array($this->clave_usuario, $fecha_actual, $_SESSION['id_usuario'] );
+        $days = Database::getRow($sql, $params);
+        return intval($days['dias']);
+      }
 }
 ?>

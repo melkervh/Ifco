@@ -66,7 +66,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$productos->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
                 } elseif (!$productos->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripcion incorrecta';
+                    $result['exception'] = 'Descripción incorrecta';
                 } elseif (!$productos->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecta'; 
                 } elseif (!$productos->setMarca($_POST['marca_sel'])) {
@@ -122,18 +122,18 @@ if (isset($_GET['action'])) {
                     if (!$productos->setId($_POST['codigo'])) {
                     $result['exception'] = 'id_producto incorrecto';
                     } elseif (!$productos->setnombrecom($_POST['nombre_com'])) {
-                        $result['exception'] = 'nombre no valido';
+                        $result['exception'] = 'Nombre no valido';
                     } elseif (!$productos->setPrecioU($_POST['precioU'])) {
-                    $result['exception'] = 'precio unidad no valido';
+                    $result['exception'] = 'Precio unidad no valido';
                     }elseif (!$productos->setPrecioTotal($_POST['total'])) {
-                    $result['exception'] = 'precio no valido';
+                    $result['exception'] = 'Precio no valido';
                     }elseif (!$productos-> setCantidadCom($_POST['cantidad'])) {
-                    $result['exception'] = 'cantidad no valida';
+                    $result['exception'] = 'Cantidad no valida';
                     }elseif (!$productos->setfact_nor($_POST['codigo2'])) {
-                        $result['exception'] = 'codigo factura no valido';
+                        $result['exception'] = 'Código de factura no valido';
                     }elseif ($productos->createDetalle()) {
                     $result['status'] = 1;
-                    $result['message'] = 'detalle creado' ;     
+                    $result['message'] = 'Detalle creado correctamente' ;     
                     } else {
                     $result['exception'] = Database::getException();;
                     }

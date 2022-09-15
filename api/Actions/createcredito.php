@@ -21,16 +21,16 @@ if (isset($_GET['action'])) {
             case 'create':
                 $_POST = $createcredito  ->validateForm($_POST);
                 if (!$createcredito  ->setNombrescliente($_POST['nombre_cli'])) {
-                    $result['exception'] = 'nombre incorrecto';
+                    $result['exception'] = 'Nombre incorrecto';
                 } elseif (!$createcredito ->setApellidoscliente($_POST['apellido_cli'])) {
-                    $result['exception'] = 'apellido no vslido';
+                    $result['exception'] = 'Apellido no vslido';
                 } elseif (!$createcredito ->setDUI($_POST['DUI'])) {
-                    $result['exception'] = 'DUI no valida';
+                    $result['exception'] = 'DUI no valido';
                 }elseif (!$createcredito ->setDepartamentoClie($_POST['direccion'])) {
-                    $result['exception'] = 'direcion no valido';        
+                    $result['exception'] = 'Direcion no valida';        
                 }elseif ( $createcredito ->createClienteCredito()) {
                     $result['status'] = 1;
-                    $result['message'] = 'cliente creado' ;
+                    $result['message'] = 'Cliente creado correctamente' ;
                 } else {
                     $result['exception'] = Database::getException();;
                 }
@@ -38,18 +38,18 @@ if (isset($_GET['action'])) {
                 case 'createfactuC':
                 $_POST = $createcredito ->validateForm($_POST);
                 if (!$createcredito ->setNotamision($_POST['mision'])) {
-                $result['exception'] = 'dato de la venta incorrecto';
+                $result['exception'] = 'Dato de la venta incorrecto';
                 } elseif (!$createcredito ->setcondicion($_POST['condicion'])) {
-                        $result['exception'] = 'condicion no valida';
+                        $result['exception'] = 'Condición no valida';
                 }elseif (!$createcredito ->setgiro($_POST['giro'])) {
-                    $result['exception'] = 'giro no valida';
+                    $result['exception'] = 'Giro no valido';
                 } elseif (!$createcredito ->setVia($_POST['via'])) {
-                    $result['exception'] = 'via no valida';
+                    $result['exception'] = 'Via no valida';
                 } elseif (!$createcredito ->setfechacre($_POST['fecha'])) {
-                $result['exception'] = 'fecha no valida';
+                $result['exception'] = 'Fecha no valida';
                 }elseif ($createcredito ->createCredito()) {
                         $result['status'] = 1;
-                        $result['message'] = 'factura creada' ;
+                        $result['message'] = 'Factura creada correctamente.' ;
                 }else {
                         $result['exception'] = Database::getException();;
                 }
@@ -57,18 +57,18 @@ if (isset($_GET['action'])) {
                 case 'createdetallec':
                 $_POST = $createcredito ->validateForm($_POST);
                 if (!$createcredito ->setIdProductoCre($_POST['codigo01'])) {
-                $result['exception'] = 'codigo incorrecto';
+                $result['exception'] = 'Código incorrecto';
                 }  elseif (!$createcredito ->setNombrCre($_POST['nombre_pro'])) {
-                $result['exception'] = 'nombre no valido';
+                $result['exception'] = 'Nombre no valido';
                 }elseif (!$createcredito ->setCantidadCre($_POST['cantidad'])) {
-                $result['exception'] = 'precio no valido';
+                $result['exception'] = 'Precio no valido';
                 }elseif (!$createcredito -> setPrecioUni($_POST['precio_u'])) {
-                $result['exception'] = 'precio no valida';
+                $result['exception'] = 'Precio no valido';
                 }elseif (!$createcredito -> setTotal($_POST['total'])) {
-                $result['exception'] = 'precio total no valida';
+                $result['exception'] = 'Precio total no valido';
                 }elseif ($createcredito ->createDetalleCre()) {
                 $result['status'] = 1;
-                $result['message'] = 'detalle creado' ;     
+                $result['message'] = 'Detalle del credito creado correctamente.' ;     
                 } else {
                 $result['exception'] = Database::getException();;
                 }

@@ -5,7 +5,8 @@
 /*
 *   Constante para establecer la ruta del servidor.
 */
-const SERVER = 'http://localhost/ifco-main/api/';
+const SERVER = 'http://localhost/ifco/api/';
+
 /*
 *   Función para obtener todos los registros disponibles en los mantenimientos de tablas (operación read).
 *
@@ -267,6 +268,52 @@ function barGraph(canvas, xAxis, yAxis, legend, title) {
             datasets: [{
                 label: legend,
                 data: yAxis,
+                borderColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
+                color: '#284B63',
+                borderWidth: 1,
+                backgroundColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
+                barPercentage: 1
+            }]
+        },
+        options: {
+            aspectRatio: 1,
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+function barGraph2(canvas, xAxis, yAxis, legend, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    for (i = 0; i < xAxis.length; i++) {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    }
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    const chart = new Chart(context, {
+        type: 'bar',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
                 borderColor: '#000000',
                 borderWidth: 1,
                 backgroundColor: colors,
@@ -303,7 +350,40 @@ function barGraph(canvas, xAxis, yAxis, legend, title) {
 *
 *   Retorno: ninguno.
 */
-function pieGraph(canvas, legends, values, title) {
+function polarArea(canvas, legends, values, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    for (i = 0; i < values.length; i++) {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    }
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    const chart = new Chart(context, {
+        type: 'polarArea',
+        data: {
+            labels: legends,
+            datasets: [{
+                data: values,
+                backgroundColor: colors
+            }],
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+                title: {
+                    display: true,
+                    text: title
+                },
+            },
+        },
+    });
+}
+function polarArea2(canvas, legends, values, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
@@ -315,6 +395,72 @@ function pieGraph(canvas, legends, values, title) {
     // Se crea una instancia para generar el gráfico con los datos recibidos.
     const chart = new Chart(context, {
         type: 'pie',
+        data: {
+            labels: legends,
+            datasets: [{
+                data: values,
+                backgroundColor: colors
+            }],
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: title
+                    }
+                }
+            }
+        },
+    });
+}
+function polarArea3(canvas, legends, values, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    for (i = 0; i < values.length; i++) {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    }
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    const chart = new Chart(context, {
+        type: 'polarArea',
+        data: {
+            labels: legends,
+            datasets: [{
+                data: values,
+                backgroundColor: colors
+            }],
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: title
+                    }
+                }
+            }
+        },
+    });
+}
+function pieGraph2(canvas, legends, values, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    for (i = 0; i < values.length; i++) {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    }
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    const chart = new Chart(context, {
+        type: 'doughnut',
         data: {
             labels: legends,
             datasets: [{
@@ -357,6 +503,8 @@ function lineGraph(canvas, xAxis, yAxis, legend, title) {
         },
         options: {
             aspectRatio: 1,
+            radius: 4,
+            pointStyle: 'rectRounded',
             plugins: {
                 title: {
                     display: true,
@@ -377,6 +525,110 @@ function lineGraph(canvas, xAxis, yAxis, legend, title) {
         }
     });
 }
+// funcion con la que se destruye y crea la siguiente grafica
+let graft;
+function lineGraph1(canvas, xAxis, yAxis, legend, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    for (i = 0; i < xAxis.length; i++) {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    }
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    var context = document.getElementById(canvas).getContext('2d');
+    // aqui se hacae el cambio entre grafica y grafica 
+    if (graft) {
+        graft.destroy();
+    }
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    graft = new Chart(context, {
+        type: 'line',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                borderColor: '#000000',
+                borderWidth: 1,
+                backgroundColor: colors,
+                barPercentage: 1
+            }]
+        },
+        options: {
+            aspectRatio: 1,
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+// funcion con la que se destruye y crea la siguiente grafica
+// segunda grafica con la funcion let graft 
+let graft2;
+function barGraph3(canvas, xAxis, yAxis, legend, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    for (i = 0; i < xAxis.length; i++) {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    }
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    var context = document.getElementById(canvas).getContext('2d');
+    if (graft2) {
+        graft2.destroy();
+    }
+    // Se crea una instancia para generar el gráfico con los datos recibidos.
+    graft2 = new Chart(context, {
+        type: 'bar',
+        data: {
+            labels: xAxis,
+            datasets: [{
+                label: legend,
+                data: yAxis,
+                borderColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
+                color: '#284B63',
+                borderWidth: 1,
+                backgroundColor: ['rgb (40,75,99)', 'rgb(40,75,99)'],
+                barPercentage: 1
+            }]
+        },
+        options: {
+            aspectRatio: 1,
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
 // Función para mostrar un mensaje de confirmación al momento de cerrar sesión.
 function logOut() {
     swal({
@@ -411,4 +663,43 @@ function logOut() {
             sweetAlert(4, 'Puede continuar con la sesión', null);
         }
     });
+}
+
+var inactivityTime = function () {
+    var time;
+    window.onload = resetTimer;
+    // DOM Events
+    document.onmousemove = resetTimer; // Reconoce movimiento del mouse
+    document.onkeydown = resetTimer;  // Reconoce teclas presionadas
+    window.onmousedown = resetTimer;  // Reconoce toques de pantalla táctil     
+    window.ontouchstart = resetTimer; // Reconoce deslizes de pantalla táctil     
+    window.ontouchmove = resetTimer;  // Required by some devices 
+    window.onclick = resetTimer;      // Reconoce clicks de pantalla táctil
+    window.addEventListener('scroll', resetTimer, true); // Reconoce el scroll
+    function logOut() {
+        fetch(API + 'logOut', {
+            method: 'get'
+        }).then(function (request) {
+            // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+            if (request.ok) {
+                // Se obtiene la respuesta en formato JSON.
+                request.json().then(function (response) {
+                    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                    if (response.status) {
+                        sweetAlert(3, "Se ha cerrado la sesión por inactividad", 'index.html');
+                    } else {
+                        sweetAlert(2, response.exception, null);
+                    }
+                });
+            } else {
+                console.log(request.status + ' ' + request.statusText);
+            }
+        });
+    }
+    function resetTimer() {
+        clearTimeout(time);
+        time = setTimeout(logOut, 10000)
+        // 1000 milisegundos = 1 segundo
+        // 300000 milisegundos = 5 min
+    }
 }

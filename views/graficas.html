@@ -15,21 +15,56 @@
 <body>
     <header>
     </header>
-    <main>
+
+    <main class="container-xl">
         <div class="row">
             <div class="col s12 m6 gg">
-                <!-- Se muestra un gráfico de barra con la cantidad de productos por categoría -->
-                <canvas id="chart1"></canvas>
+                <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                <canvas id="chart7"></canvas>
             </div>
-            <div class="col s12 m6">
+            <div class="col s12 m6 gg">
                 <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
                 <canvas id="chart2"></canvas>
+                <button value="0" id="factu" onclick="ventaspormes() " type="button" class="btn btn-success">vista de
+                    credito</button>
             </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+            <div class="row">
+                <div class="col s12 m6 gg">
+                    <!-- Se muestra un gráfico de barra con la cantidad de productos por categoría -->
+                    <canvas id="chart1"></canvas>
+                </div>
+                <div class="col s12 m6 gg">
+                    <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                    <canvas id="chart4"></canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 gg">
+                    <!-- Se muestra un gráfico de barra con la cantidad de productos por categoría -->
+                    <canvas id="chart3"></canvas>
+                    <button value="0" id="ventas" onclick="clientesConmasCompras() " type="button" class="btn btn-success">vista de
+                        credito</button>
+                </div>
+                <div class="col s12 m6 gg">
+                    <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                    <canvas id="chart6"></canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 gg">
+                    <!-- Se muestra un gráfico de barra con la cantidad de productos por categoría -->
+                    <canvas id="chart5"></canvas>
+                </div>
+                <div class="col s12 m6 gg">
+                    <!-- Se muestra un gráfico de barra con la cantidad de productos por categoría -->
+                    <canvas id="chart8"></canvas>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
     </main>
-        <!-- inicio primera viñeta-->
-           <!-- final primer viñeta-->
+    <!-- inicio primera viñeta-->
+    <!-- final primer viñeta-->
     <footer></footer>
     <!--JS bootstrap-->
     <script src="../resources/js/bootstrap.min.js"></script>
@@ -38,7 +73,7 @@
     <script src="../controllers/components.js"></script>
     <script src="../controllers/acounst.js"></script>
     <script src="../controllers/main.js"></script>
-    
+
 </body>
 
 </html>

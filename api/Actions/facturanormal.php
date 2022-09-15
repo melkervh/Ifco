@@ -21,16 +21,16 @@ if (isset($_GET['action'])) {
             case 'create':
                 $_POST = $crearfactu ->validateForm($_POST);
                 if (!$crearfactu ->setNombrecliente($_POST['nombre_cli'])) {
-                    $result['exception'] = 'nombre incorrecto';
+                    $result['exception'] = 'Nombre incorrecto';
                 } elseif (!$crearfactu->setApellidocliente($_POST['apellido'])) {
-                    $result['exception'] = 'apellido no vslido';
+                    $result['exception'] = 'Apellido no valido';
                 } elseif (!$crearfactu->setdui($_POST['DUI'])) {
-                    $result['exception'] = 'DUI no valida';
+                    $result['exception'] = 'DUI no valido';
                 }elseif (!$crearfactu->setDepartamento($_POST['direccion'])) {
-                    $result['exception'] = 'direcion no valido';        
+                    $result['exception'] = 'Dirección no valida';        
                 }elseif ($crearfactu->createCliente()) {
                     $result['status'] = 1;
-                    $result['message'] = 'cliente creado' ;
+                    $result['message'] = 'Cliente creado correctamente.' ;
                 } else {
                     $result['exception'] = Database::getException();;
                 }
@@ -38,12 +38,12 @@ if (isset($_GET['action'])) {
                 case 'createfactu':
                   $_POST =$crearfactu->validateForm($_POST);
                 if (!$crearfactu->setventa($_POST['venta'])) {
-                $result['exception'] = 'dato de la venta incorrecto';
+                $result['exception'] = 'Dato de la venta incorrecto';
                 } elseif (!$crearfactu->setfecha($_POST['fecha'])) {
-                        $result['exception'] = 'fecha no valida';
+                        $result['exception'] = 'Fecha no valida';
                 } elseif ($crearfactu->createfactura()) {
                         $result['status'] = 1;
-                        $result['message'] = 'factura creada' ;
+                        $result['message'] = 'Factura creada correctamente.' ;
                 }else {
                         $result['exception'] = Database::getException();;
                 }

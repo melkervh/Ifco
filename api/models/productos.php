@@ -260,7 +260,39 @@ class Productos extends Validator{
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }  
-
-
+ /* consulta para el llenado de datos en el reporte con referencia al producto */
+    public function reporProduc(){
+        $sql = 'SELECT id_producto, nombre_prodroducto, producto.id_marca, marca
+        FROM producto
+        INNER JOIN marca
+        ON producto.id_marca = marca.id_marca';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+    public function reporInvent(){
+        $sql = "SELECT nombre_prodroducto, cantidad_prodroducto, precio_unidad, marca,tipo_producto, CASE estado_producto
+		        WHEN true THEN 'Disponible'
+		        WHEN false THEN 'Agotado'
+		        ELSE 'NA'
+		        END estado_producto
+                FROM producto
+                INNER JOIN marca
+                ON producto.id_marca = marca.id_marca
+                INNER JOIN tipo_producto
+                ON tipo_producto.id_tipo_prod = marca.id_tipo_prod";
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+     //*Metodo para el reporte parametrizado de las marcas *//
+     public function marcaProduc()
+     {
+         $sql = 'SELECT nombre_prodroducto, cantidad_prodroducto, descripcion_producto
+         FROM producto tp
+         INNER JOIN marca USING(id_marca)
+         WHERE marca.id_marca = ?
+         ORDER BY nombre_prodroducto';
+         $params = array($this->marca);
+         return Database::getRows($sql, $params);
+     }
 
 }

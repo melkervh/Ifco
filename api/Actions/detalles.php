@@ -43,20 +43,20 @@ if (isset($_GET['action'])) {
             case 'createdetalle':
                 $_POST = $detalles->validateForm($_POST);
                 if (!$detalles->setIdProducto($_POST['codigo'])) {
-                $result['exception'] = 'id_producto incorrecto';
+                $result['exception'] = 'Producto incorrecto';
                 } elseif (!$detalles->setnombre_com($_POST['nombre_com'])) {
-                    $result['exception'] = 'nombre no valido';
+                    $result['exception'] = 'Nombre no valido';
                 } elseif (!$detalles->setPrecioU($_POST['precioU'])) {
-                $result['exception'] = 'precio unidad no valido';
+                $result['exception'] = 'Precio por unidad no valido';
                 }elseif (!$detalles->setPrecioTotal($_POST['total'])) {
-                $result['exception'] = 'precio no valido';
+                $result['exception'] = 'Precio total no valido';
                 }elseif (!$detalles-> setCantidadCom($_POST['cantidad'])) {
-                $result['exception'] = 'cantidad no valida';
+                $result['exception'] = 'Cantidad no valida';
                 }elseif (!$detalles->setfact_nor($_POST['codigo2'])) {
-                    $result['exception'] = 'codigo factura no valido';
+                    $result['exception'] = 'Código de factura no valido';
                 }elseif ($detalles->createDetalle()) {
                 $result['status'] = 1;
-                $result['message'] = 'detalle creado' ;     
+                $result['message'] = 'Detalle de la factura creado correctamente' ;     
                 } else {
                 $result['exception'] = Database::getException();;
                 }
