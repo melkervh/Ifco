@@ -98,6 +98,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$usuario->setClaveUsuario($_POST['clave'])) {
                     $result['exception'] = $usuario->getPasswordError();
+                } elseif (strpos($_POST['clave'], $_POST['nombres']) !== false) {
+                    $result['exception'] = 'La contraseña no puede contener el nombre del usuario en ella';
                 } elseif ($usuario->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario registrado correctamente';

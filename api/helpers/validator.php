@@ -218,18 +218,37 @@ class Validator
     */
     public function validatePassword($value)
     {
-        // Se verifica la longitud mínima.
-        if (strlen($value) >= 6) {
-            // Se verifica la longitud máxima.
-            if (strlen($value) <= 72) {
-                return true;
-            } else {
-                $this->passwordError = 'Clave mayor a 72 caracteres';
-                return false;
-            }
-        } else {
-            $this->passwordError = 'Clave menor a 6 caracteres';
+        //Se valida que la clave sea mayor a 8, de lo conotrario se mandara el mensaje respectivo
+        if(strlen($value) < 8) {
+            $this->passwordError = 'La clave debe tener 8 o mas caracteres';
             return false;
+        } 
+        //Se valida que la clave no pase de 72 caracteres.
+        elseif (strlen($value) > 72) {
+            $this->passwordError = 'La clave sobrepasa el limite de caracteres';
+            return false;
+        } 
+        //se valida para que la clave tenga por lo menos un digito en ella.
+        elseif (!preg_match('`[0-9]`', $value)) {
+            $this->passwordError = 'La clave debe tener por lo menos un digito';
+            return false;
+        }
+        //se valida para que la clave tenga por lo menos una letra minuscula.
+        elseif (!preg_match('`[a-z]`', $value)) {
+            $this->passwordError = 'La clave debe tener por lo menos una letra minuscula.';
+            return false;
+        }
+        //se valida para que la clave tenga por lo menos una letra mayuscula.
+        elseif (!preg_match('`[A-Z]`', $value)) {
+            $this->passwordError = 'La clave debe tener por lo menos una letra mayuscula.';
+            return false;
+        }
+          //se valida para que la clave tenga por lo menos un caracter especial.
+          elseif (!preg_match('/[=+?@#!%$().ñ*¡&]/', $value)) {
+            $this->passwordError = 'La clave debe tener por lo menos un caracter especial.';
+            return false;
+        } else {
+            return true;
         }
     }
 
