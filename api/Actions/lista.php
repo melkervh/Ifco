@@ -91,6 +91,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Linea 107:Se valida que en la clave que se ingrese no permita la informacion del usuario en este 
+                //caso el nombre de lo contrario mostrara su respectivo mensaje .
+                //Linea 110:Se valida que en la clave que se ingrese no permita la informacion del usuario en este 
+                //caso el apellido de lo contrario mostrara su respectivo mensaje .
                 case 'create':
                     $_POST = $listas->validateForm($_POST);
                     if (!$listas->setNombreUsuario($_POST['nombre_usuario'])) {
