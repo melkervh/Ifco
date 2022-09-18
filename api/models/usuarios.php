@@ -13,6 +13,7 @@ class Usuarios extends Validator
     private $correo_usuario = null;
     private $fecha = null;
     private $intentos = null;
+    private $dui_usuario = null;
     private $fecha_intentos;
 
     /*
@@ -32,6 +33,16 @@ class Usuarios extends Validator
     {
         if ($this->validateAlphabetic($value, 1, 50)) {
             $this->nombre_usuario = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setDui($value)
+    {
+        if ($this->validateDUI($value)){
+            $this->dui_usuario = $value;
             return true;
         } else {
             return false;
@@ -120,6 +131,11 @@ class Usuarios extends Validator
         return $this->fecha_intentos;
     }
 
+    public function getDui()
+    {
+        return $this->dui_usuario;
+    }
+
     /*
     *   Métodos para gestionar la cuenta del usuario.
     */
@@ -150,6 +166,20 @@ class Usuarios extends Validator
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($password, $data['clave_usuario'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*Funcion para comprobar el dui*/
+    public function checkIdentificacion($dui_usuario)
+    {
+        $sql = 'SELECT dui_usuario FROM usuario WHERE id_usuario = ?';
+        $params = array($this->id_usuario);
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if ($data['clave_usuario'] == $dui_usuario)- {
             return true;
         } else {
             return false;
