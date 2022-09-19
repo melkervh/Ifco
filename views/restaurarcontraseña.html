@@ -23,12 +23,17 @@
                     <div class="wrapper">
                         <form autocomplete="off" method="post" id="save-form">
                             <h1 class="title">Cambio de contraseña</h1>
-                            <label for="clave_usuario" class="form-label"> Clave</label>
+                            <label for="clave_actual" class="form-label">Contraseña actual</label>
+                            <div class="inputContainer">
+                                <input id="clave_actual" type="password" placeholder="Clave" aria-label="Last name"
+                                    name="clave_actual" class="input" required>
+                            </div>
+                            <label for="clave_usuario" class="form-label">Clave</label>
                             <div class="inputContainer">
                                 <input id="clave_usuario" type="password" placeholder="Clave" aria-label="Last name"
                                     name="clave_usuario" class="input" required>
                             </div>
-                            <label for="mision" class="form-label">confirmar Clave</label>
+                            <label for="mision" class="form-label">Confirmar clave</label>
                             <div class="inputContainer">
 
                                 <input id="confirmar" type="password" placeholder="confirmar Clave" name="confirmar"

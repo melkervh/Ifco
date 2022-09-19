@@ -90,9 +90,13 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Usuario incorrecto';
                     } elseif (!$listas->readOne2()) {
                         $result['exception'] = 'Usuario inexistente';
-                    }  elseif ($_POST['clave_usuario'] != $_POST['confirmar']) {
+                    } elseif (!$listas->checkPassword($_POST['clave_actual'])) {
+                        $result['exception'] = 'La contraseña actual es incorrecta';
+                    } elseif ($_POST['clave_usuario'] != $_POST['confirmar']) {
                         $result['exception'] = 'Claves diferentes';
-                    }elseif (!$listas->setClaveUsuario($_POST['clave_usuario'])) {
+                    } elseif ($_POST['clave_actual'] == $_POST['confirmar']) {
+                        $result['exception'] = 'La nueva clave debe ser diferente a la anterior';
+                    } elseif (!$listas->setClaveUsuario($_POST['clave_usuario'])) {
                         $result['exception'] = $listas->getPasswordError();
                     }elseif ($listas->updateClave()) {
                         $result['status'] = 1;

@@ -33,11 +33,10 @@
                 <input type="email" class="form-control " id="correo_usuario" name="correo_usuario">
             </div>
             <div class="col-md-6 col-sm-12 center-align mt-4">
-                <button type="submit" class="btn btn-primary" data-tooltip="Guardar"
-                id="save-modal">guardar </button>
+                <button type="submit" class="btn btn-primary" data-tooltip="Guardar" id="save-modal">guardar </button>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA"
-                onclick="openCreate()"> Cambiar contraseña
-               </button>
+                    onclick="openCreate()"> Cambiar contraseña
+                </button>
 
             </div>
         </form>
@@ -59,31 +58,34 @@
                                 <div class="modal-body">
                                     <form autocomplete="off" method="post" id="clave-form">
                                         <div class="row">
-                                            <input class="hidden" style="visibility:hidden;" type="number" id="id_usuario"
-                                                name="id_usuario">
+                                            <input class="hidden" style="visibility:hidden;" type="number"
+                                                id="id_usuario" name="id_usuario">
                                             <div class="col-lg-6">
-                                                <label for="clave_usuario" class="form-label">clave</label>
-                                                <input type="password" class="form-control" placeholder=""
-                                                    aria-label="First name" name="clave_usuario" id="clave_usuario">
+                                                <label for="clave_actual" class="form-label">clave actual</label>
+                                                <input type="password" class="form-control" name="clave_actual" id="clave_actual">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="clave_usuario" class="form-label">Clave</label>
+                                                <input type="password" class="form-control" name="clave_usuario" id="clave_usuario">
                                             </div>
                                             <div class="col-lg-6">
                                                 <label for="confirmar" class="form-label">Confirmar clave</label>
-                                                <input type="password" class="form-control" placeholder=""
-                                                    aria-label="First name" name="confirmar" id="confirmar">
+                                                <input type="password" class="form-control" name="confirmar" id="confirmar">
                                             </div>
-    
+
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="reset" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-primary" data-tooltip="Guardar"
                                         id="clave-modal">guardar </button>
                                 </div>
                                 </form>
-    
+
                             </div>
-    
-    
+
+
                         </div>
                     </div>
                 </div>

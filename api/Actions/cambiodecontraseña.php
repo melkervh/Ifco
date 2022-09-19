@@ -29,11 +29,16 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Usuario incorrecto';
             } elseif ($_POST['clave_usuario'] != $_POST['confirmar']) {
                 $result['exception'] = 'Claves diferentes';
-            }elseif (!$contraseña->setClaveUsuario($_POST['clave_usuario'])) {
+            } elseif (!$contraseña->checkPassword($_POST['clave_actual'])) {
+                $result['exception'] = 'La contraseña actual es incorrecta';
+            } elseif ($_POST['clave_actual'] == $_POST['clave_usuario']) {
+                $result['exception'] = 'La nueva clave debe ser diferente a la actual';
+            } elseif (!$contraseña->setClaveUsuario($_POST['clave_usuario'])) {
                 $result['exception'] = $contraseña->getPasswordError();
-            }elseif (!$contraseña->CambioDeClave()) {
+            }elseif ($contraseña->CambioDeClave()) {
                 $result['status'] = 1;
                 $result['message'] = 'Usuario modificado correctamente';
+                $_SESSION['fechaexp'] = 1;
             } else {
                 $result['exception'] = Database::getException();
             }

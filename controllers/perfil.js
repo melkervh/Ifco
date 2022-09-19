@@ -40,35 +40,6 @@ function openUpdate(id_usuario) {
         }
     });
 }
-// Función para preparar el formulario al momento de modificar un registro.
-function openUpdate2(id_usuario) {
-    // Se define un objeto con los datos del registro seleccionado.
-    const data = new FormData();
-    data.append('id_usuario', id_usuario);
-    // Petición para obtener los datos del registro solicitado.
-    fetch(API_PERFIL + 'readOne2', {
-        method: 'post',
-        body: data
-    }).then(function (request) {
-        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-        if (request.ok) {
-            // Se obtiene la respuesta en formato JSON.
-            request.json().then(function (response) {
-                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-                if (response.status) {
-                    // Se inicializan los campos del formulario con los datos del registro seleccionado.
-                    document.getElementById('clave_usuario').value = response.dataset.clave_usuario;
-                    // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-
-                } else {
-                    sweetAlert(2, response.exception, null);
-                }
-            });
-        } else {
-            console.log(request.status + ' ' + request.statusText);
-        }
-    });
-}
 
 document.getElementById('save-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
