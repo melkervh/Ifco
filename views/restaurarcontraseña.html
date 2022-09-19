@@ -21,19 +21,20 @@
             <div class="Primar">
                 <div class="signupFrm">
                     <div class="wrapper">
-                        <form autocomplete="off" method="post" id="register-form">
+                        <form autocomplete="off" method="post" id="save-form">
                             <h1 class="title">Cambio de contraseña</h1>
-                    
+                            <label for="clave_usuario" class="form-label"> Clave</label>
                             <div class="inputContainer">
-                                <label for="clave" class="label">Clave</label>
-                                <input id="clave" type="password" name="clave" class="input" required>
+                                <input id="clave_usuario" type="password" placeholder="Clave" aria-label="Last name"
+                                    name="clave_usuario" class="input" required>
                             </div>
+                            <label for="mision" class="form-label">confirmar Clave</label>
+                            <div class="inputContainer">
 
-                            <div class="inputContainer">
-                                <label for="confirmar" class="label">Confirme Clave</label>
-                                <input id="confirmar" type="password" name="confirmar" class="input" required>
+                                <input id="confirmar" type="password" placeholder="confirmar Clave" name="confirmar"
+                                    class="input" required>
                             </div>
-                          <button type="submit" class="submitBtn" value="Registrar">Cambiar</button>
+                            <button type="submit" class="submitBtn" value="Registrar">Cambiar</button>
                         </form>
                     </div>
                 </div>

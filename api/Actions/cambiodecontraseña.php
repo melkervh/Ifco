@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    $result['session'] = 1;
+    $result['session'] = 2;
     // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
     switch ($_GET['action']) {
         case 'checkPasswordDate':
@@ -31,7 +31,7 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Claves diferentes';
             }elseif (!$contraseña->setClaveUsuario($_POST['clave_usuario'])) {
                 $result['exception'] = $contraseña->getPasswordError();
-            }elseif ($contraseña->CambioDeClave()) {
+            }elseif (!$contraseña->CambioDeClave()) {
                 $result['status'] = 1;
                 $result['message'] = 'Usuario modificado correctamente';
             } else {

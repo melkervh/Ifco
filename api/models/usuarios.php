@@ -159,10 +159,10 @@ class Usuarios extends Validator
         //Método para agregar una unidad a los intentos fallidos e ingresar la fehca y hora del ultimo intento fallido
         public function intentoFallido($correo_usuario)
         {
-            $sql = 'UPDATE usuario 
-            set intentos = intentos + 1
+            $sql = 'UPDATE public.usuario
+            SET intentos =  intentos + 1
             WHERE correo_usuario = ?';
-            $params = array($this->correo_usuario);
+            $params = array($correo_usuario);
             return Database::executeRow($sql, $params);
         }
     
@@ -173,7 +173,7 @@ class Usuarios extends Validator
             $sql = 'UPDATE usuario 
             set intentos = 0, fechabloqueo = ?
             WHERE correo_usuario = ?';
-            $params = array($future_date, $this->correo_usuario);
+            $params = array($future_date, $correo_usuario);
             return Database::executeRow($sql, $params);
         }
         
@@ -183,7 +183,7 @@ class Usuarios extends Validator
             $sql = 'UPDATE usuario 
             set intentos = 0
             WHERE correo_usuario = ?';
-            $params = array($this->correo_usuario);
+            $params = array($correo_usuario);
             return Database::executeRow($sql, $params);
         }
 
@@ -285,8 +285,7 @@ class Usuarios extends Validator
         SET  clave_usuario=? , fecha_clave=?
         WHERE id_usuario = ? ";
         $params = array($this->clave_usuario, $fecha_actual, $_SESSION['id_usuario'] );
-        $days = Database::getRow($sql, $params);
-        return intval($days['dias']);
+        return Database::executeRow($sql, $params);
       }
 }
 ?>
