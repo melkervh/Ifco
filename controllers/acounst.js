@@ -78,12 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <li><a class="dropdown-item" href="graficas.html">Graficas</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="perfil.html">Perfil </a>
+                        </li>
                                 <li class="nav-item">
                                         <a onclick="logOut()" class="nav-link">Cerrar sesión</a>
                                     </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" href="perfil.html">Perfil </a>
-                                </li>
                             </ul>
                         </div>
                     </div>

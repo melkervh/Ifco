@@ -230,6 +230,14 @@ class Usuarios extends Validator
         $params = array($this->id_usuario);
         return Database::getRow($sql, $params);
     }
+    public function readOne2()
+    {
+        $sql = 'SELECT id_usuario 
+                FROM usuario
+                WHERE id_usuario = ?';
+        $params = array($this->id_usuario);
+        return Database::getRow($sql, $params);
+    }
 
     //Modificar un Usuario//
     public function updateRow()
@@ -238,6 +246,14 @@ class Usuarios extends Validator
                 SET nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?
                 WHERE id_usuario = ?';
         $params = array($this->nombre_usuario, $this->apellido_usuario, $this->correo_usuario, $this->id_usuario);
+        return Database::executeRow($sql, $params);
+    }
+    public function updateClave()
+    {
+        $sql = 'UPDATE usuario 
+                SET clave_usuario=?
+                WHERE id_usuario = ?';
+        $params = array($this->clave_usuario, $this->id_usuario);
         return Database::executeRow($sql, $params);
     }
 
