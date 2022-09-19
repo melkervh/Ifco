@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listados</title>
+    <!--CSS bootstrap-->
+    <link type="image/png" rel="icon" href="../resources/img/logo.jpeg">
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../resources/css/styless_ifco.css" media="screen,projection" />
+</head>
+
+<body>
+    <!--Se agrega esa clase extraida de Boostrap5 para fijar el navbar-->
+    <header></header>
+    <main class="container">
+        <!-- Título del contenido principal -->
+        <h2 class="titul">Editar Perfil</h2>
+        <!-- Formulario para cambiar datos personales -->
+        <form class="row" method="post" id="">
+            <div class="col-md-6 col-sm-12 ">
+                <label for="nombre_usuario" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario">
+            </div>
+            <div class="col-md-6 col-sm-12 ">
+                <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="col-md-6 col-sm-12 center-align ">
+                <label for="exampleFormControlInput1" class="form-label">correo</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="col-md-6 col-sm-12 center-align mt-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA"
+                onclick="openCreate()"> Cambiar contraseña
+               </button>
+                <button type="submit" class="btn btn-primary" data-tooltip="Guardar"
+                id="save-modal">guardar </button>
+            </div>
+        </form>
+    </main>
+    <footer></footer>
+    <!--JS bootstrap-->
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
+    <script src="../controllers/acounst.js"></script>
+</body>
+
+</html>

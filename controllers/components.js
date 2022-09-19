@@ -698,7 +698,7 @@ var inactivityTime = function () {
     }
     function resetTimer() {
         clearTimeout(time);
-        time = setTimeout(logOut, 10000)
+        time = setTimeout(logOut, 30000000)
         // 1000 milisegundos = 1 segundo
         // 300000 milisegundos = 5 min
     }
