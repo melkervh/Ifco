@@ -26,20 +26,68 @@
             </div>
             <div class="col-md-6 col-sm-12 ">
                 <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
+                <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario">
             </div>
-            <div class="col-md-6 col-sm-12 center-align ">
+            <div class="col-md-6 col-sm-12 center-align mt-6 ">
                 <label for="exampleFormControlInput1" class="form-label">correo</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1">
+                <input type="email" class="form-control " id="correo_usuario" name="correo_usuario">
             </div>
             <div class="col-md-6 col-sm-12 center-align mt-4">
+                <button type="submit" class="btn btn-primary" data-tooltip="Guardar"
+                id="save-modal">guardar </button>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA"
                 onclick="openCreate()"> Cambiar contraseña
                </button>
-                <button type="submit" class="btn btn-primary" data-tooltip="Guardar"
-                id="save-modal">guardar </button>
+
             </div>
         </form>
+        <section class="container-xl tamaño">
+            <div class="row">
+                <div class="col">
+                    <!-- Button trigger modal -->
+                    <!-- Button trigger modal -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="usuaiosA" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">agregar usuarios</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form autocomplete="off" method="post" id="save-form">
+                                        <div class="row">
+                                            <input class="hidden" style="visibility:hidden;" type="number" id="id_usuario"
+                                                name="id_usuario">
+                                            <div class="col-lg-6">
+                                                <label for="clave_usuario" class="form-label">clave</label>
+                                                <input type="password" class="form-control" placeholder=""
+                                                    aria-label="First name" name="clave_usuario" id="clave_usuario">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="confirmar" class="form-label">clave</label>
+                                                <input type="password" class="form-control" placeholder=""
+                                                    aria-label="First name" name="confirmar" id="confirmar">
+                                            </div>
+    
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary" data-tooltip="Guardar"
+                                        id="save-modal">guardar </button>
+                                </div>
+                                </form>
+    
+                            </div>
+    
+    
+                        </div>
+                    </div>
+                </div>
+        </section>
     </main>
     <footer></footer>
     <!--JS bootstrap-->
@@ -47,6 +95,7 @@
     <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
+    <script src="../controllers/perfil.js"></script>
     <script src="../controllers/acounst.js"></script>
 </body>
 

@@ -81,6 +81,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <li class="nav-item">
                                         <a onclick="logOut()" class="nav-link">Cerrar sesión</a>
                                     </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="perfil.html">Perfil </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
