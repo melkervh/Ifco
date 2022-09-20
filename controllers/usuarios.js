@@ -26,9 +26,6 @@ function fillTable(dataset) {
         <td>${row.apellido_usuario}</td>
         <td>${row.correo_usuario}</td>
         <td>
-        <a onclick="openUpdate(${row.id_usuario})" data-bs-toggle="modal" data-bs-target="#usuaiosA">
-            <i class="fa-solid fa-pen"></i>
-        </a>
         <a onclick="openDelete(${row.id_usuario})">
             <i class="fa-solid fa-trash-can"></i>
         </a>

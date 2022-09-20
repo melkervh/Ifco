@@ -74,12 +74,7 @@ if (isset($_GET['action'])) {
                 } elseif ($usuario->getIntentos() > 2) {
                     $result['exception'] = 'Limite de intentos alcanzado, tu cuenta ha sido bloqueda temporalmente';
                     $usuario->bloqueoIntentos($_POST['correo'], $date);
-                } elseif ($usuario->checkIdentificacion($_POST['dui'])) {
-                    $result['exception'] = 'DUI incorrecto.';
-                    $usuario->intentoFallido($_POST['correo']);
-                    $result['status'] = 0;
-                    $_SESSION['fechaexp'] = 0;
-                }  elseif (!$usuario->checkPassword($_POST['clave'])) {
+                } elseif (!$usuario->checkPassword($_POST['clave'])) {
                     $result['exception'] = 'Contraseña incorrecta.';                    
                     $usuario->intentoFallido($_POST['correo']);
                     $result['status'] = 0;
