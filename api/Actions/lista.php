@@ -44,7 +44,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$listas->setIdUsuario($_POST['id_usuario'])) {
+                if (!$listas->setIdUsuario($_SESSION['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif ($result['dataset'] = $listas->readOne()) {
                     $result['status'] = 1;
@@ -54,9 +54,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
+                case 'readOne2':
+                    if (!$listas->setIdUsuario($_SESSION['id_usuario'])) {
+                        $result['exception'] = 'Usuario incorrecto';
+                    } elseif ($result['dataset'] = $listas->readOne2()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Usuario inexistente';
+                    }
+                    break;
             case 'update':
                 $_POST = $listas->validateForm($_POST);
-                if (!$listas->setIdUsuario($_POST['id_usuario'])) {
+                if (!$listas->setIdUsuario($_SESSION['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$listas->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
@@ -66,17 +77,34 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$listas->setCorreoUsuario($_POST['correo_usuario'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif ($_POST['clave_usuario'] != $_POST['confirmar']) {
-                    $result['exception'] = 'Claves diferentes';
-                }elseif (!$listas->setClaveUsuario($_POST['clave_usuario'])) {
-                    $result['exception'] = $listas->getPasswordError();
-                }elseif ($listas->updateRow()) {
+                } elseif ($listas->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                case 'update2':
+                    $_POST = $listas->validateForm($_POST);
+                    if (!$listas->setIdUsuario($_SESSION['id_usuario'])) {
+                        $result['exception'] = 'Usuario incorrecto';
+                    } elseif (!$listas->readOne2()) {
+                        $result['exception'] = 'Usuario inexistente';
+                    } elseif (!$listas->checkPassword($_POST['clave_actual'])) {
+                        $result['exception'] = 'La contraseña actual es incorrecta';
+                    } elseif ($_POST['clave_usuario'] != $_POST['confirmar']) {
+                        $result['exception'] = 'Claves diferentes';
+                    } elseif ($_POST['clave_actual'] == $_POST['confirmar']) {
+                        $result['exception'] = 'La nueva clave debe ser diferente a la anterior';
+                    } elseif (!$listas->setClaveUsuario($_POST['clave_usuario'])) {
+                        $result['exception'] = $listas->getPasswordError();
+                    }elseif ($listas->updateClave()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Usuario modificado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             case 'delete':
                 if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
