@@ -167,20 +167,20 @@ class Usuarios extends Validator
         } else {
             return false;
         }
-    }
-/*Funcion para comprobar el dui*/
-public function checkIdentificacion($dui_usuario)
-{
-    $sql = 'SELECT dui_usuario FROM usuario WHERE id_usuario = ?';
-    $params = array($this->id_usuario);
-    $data = Database::getRow($sql, $params);
-    // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-    if ($data['clave_usuario'] == $dui_usuario)-{
-        return true;
-    } else {
-        return false;
-    }
-}
+    } 
+     /*Funcion para comprobar el dui*/
+      public function checkIdentificacion($dui_usuario)
+         {
+          $sql = 'SELECT dui_usuario FROM usuario WHERE id_usuario = ?';
+            $params = array($this->id_usuario);
+            $data = Database::getRow($sql, $params);
+                    // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if ($data['dui'] == $dui_usuario){
+          return true;}
+          else {
+            return false;
+        }
+     }
         //Método para agregar una unidad a los intentos fallidos e ingresar la fehca y hora del ultimo intento fallido
         public function intentoFallido($correo_usuario)
         {
