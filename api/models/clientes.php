@@ -30,4 +30,13 @@ class Clientes extends Validator
           $params = null;
           return Database::getRows($sql, $params);
       }
+      public function searchRows($value)
+      {
+          $sql = 'SELECT id_cliente,nombre_cli,apellido_cli,"DUI",telefono
+          FROM cliente
+          WHERE nombre_cli ILIKE ? OR apellido_cli ILIKE ?
+          ORDER BY nombre_cli';
+          $params = array("%$value%", "%$value%");
+          return Database::getRows($sql, $params);
+      }
 }

@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que muestra el historial
     readRows(API_CLIENTES);
 });
+document.getElementById('search-form').addEventListener('submit', function (event) {
+
+    event.preventDefault();
+
+    // Se llama a la función que realiza la búsqueda.
+    searchRows(API_CLIENTES, 'search-form');
+});
 // Para mostrar los productos recientes
 function fillTable(dataset) {
     let content = '';

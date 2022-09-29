@@ -29,6 +29,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
             break;
+            case 'search':
+                $_POST = $clientes->validateForm($_POST);
+                if ($_POST['search'] == '') {
+                    $result['exception'] = 'Ingrese un valor para buscar';
+                } elseif ($result['dataset'] = $clientes->searchRows($_POST['search'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Valor encontrado';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
+                }
+                break;
 
             // Evalua y hace la operación para el buscador.
             default:

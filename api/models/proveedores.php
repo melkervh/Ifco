@@ -58,8 +58,7 @@ class Proveedores extends Validator
     {
         $sql = 'SELECT id_proveedor, nombre_prv, contacto
         FROM proveedor
-       WHERE nombre_prv ILIKE ?
-              ORDER BY nombre_pvr';
+       WHERE nombre_prv = ?';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
