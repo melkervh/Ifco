@@ -141,7 +141,15 @@ class Usuarios extends Validator
             return false;
         }
     }
-
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario
+                FROM usuario
+                WHERE apellido_usuario ILIKE ? OR nombre_usuario ILIKE ?
+                ORDER BY apellido_usuario';
+        $params = array("%$value%", "%$value%");
+        return Database::getRows($sql, $params);
+    }
     /*Funcion para comprobar la clave*/
     public function checkPassword($password)
     {
@@ -201,16 +209,6 @@ class Usuarios extends Validator
     }
 
     //Busqueda de Usuario//
-    public function searchRows($value)
-    {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario
-                FROM usuario
-                WHERE apellido_usuario ILIKE ? OR nombre_usuario ILIKE ?
-                ORDER BY apellido_usuario';
-        $params = array("%$value%", "%$value%");
-        return Database::getRows($sql, $params);
-    }
-
     //Buscar varios Usuarios//
     public function readAll()
     {

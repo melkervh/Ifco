@@ -38,49 +38,38 @@
                             <div class="modal-body">
                                 <form autocomplete="off" method="post" id="save-form">
                                     <div class="row">
-                                        <input class="hidden" style="visibility:hidden;" type="number" id="cliente"
+                                        <input class="hidden" style="visibility:hidden;" type="number" id="id_cliente"
                                             name="id_cliente">
                                         <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                            <label for="Nombrec" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" placeholder=""
-                                                aria-label="First name">
+                                                aria-label="First name" id="Nombrec" name="Nombrec">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="formGroupExampleInput" class="form-label">Apellido</label>
+                                            <label for="apellidoc" class="form-label">Apellido</label>
                                             <input type="text" class="form-control" placeholder=""
-                                                aria-label="Last name">
+                                                aria-label="Last name" id="apellidoc" name="apellidoc">
                                         </div>
                                     </div>
                                     <div class="clave">
                                         <div class="row ">
                                             <div class="col-lg-6">
-                                                <label for="formGroupExampleInput" class="form-label">Dui</label>
+                                                <label for="DUI" class="form-label">Dui</label>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    aria-label="Last name">
+                                                    aria-label="Last name" id="DUI" name="DUI">
                                             </div>
                                             <div class="col-lg-6">
-                                                <label for="formGroupExampleInput" class="form-label">Telefono</label>
+                                                <label for="Telefono" class="form-label">Telefono</label>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    aria-label="Last name">
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label for="formGroupExampleInput"
-                                                    class="form-label">Departamento</label>
-                                                <input type="text" class="form-control" placeholder=""
-                                                    aria-label="Last name">
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label for="formGroupExampleInput" class="form-label">Municipio</label>
-                                                <input type="text" class="form-control" placeholder=""
-                                                    aria-label="Last name">
+                                                    aria-label="Last name" id="Telefono" name="Telefono">
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary">guardar</button>
+                                <button type="reset"  class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit"id="save-modal" class="btn btn-primary">guardar</button>
                             </div>
                         </div>
                     </div>
@@ -129,8 +118,8 @@
     <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
-    <script src="../controllers/clientes.js"></script>
     <script src="../controllers/acounst.js"></script>
+    <script src="../controllers/clientes.js"></script>
 </body>
 
 </html>
