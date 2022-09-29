@@ -236,7 +236,6 @@ function fillSelect(endpoint, select, selected) {
                 // Se agregan las opciones a la etiqueta select mediante su id.
                 document.getElementById(select).innerHTML = content;
                 // Se inicializa el componente Select del formulario para que muestre las opciones.
-                M.FormSelect.init(document.querySelectorAll('select'));
             });
         } else {
             console.log(request.status + ' ' + request.statusText);

@@ -226,7 +226,7 @@ function openDeleteProductos(id) {
     const data = new FormData();
     data.append('iddp', id);
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
-    confirmDeleteInv(API_PRODUCTOS, data);
+       confirmDelete(API_PRODUCTOS, data);
     openShowProductos();
 }
 
@@ -418,7 +418,7 @@ function openDeleteMarcas(id) {
     const data = new FormData();
     data.append('iddm', id);
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
-    confirmDeleteInv(API_MARCAS, data);
+       confirmDelete(API_MARCAS, data);
     openShowMarcas();
 }
 
@@ -597,7 +597,7 @@ function openDeleteTipo(id) {
     const data = new FormData();
     data.append('iddt', id);
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
-    confirmDeleteInv(API_TIPO, data);
+       confirmDelete(API_TIPO, data);
     openShowTipo();
 }
 // Función para abrir el reporte de productos.
