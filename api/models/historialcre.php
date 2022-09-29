@@ -33,11 +33,11 @@ class Historialcre extends Validator
     /* Método para buscar en el historial .................................................... */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_fiscal, nombre_cli, fecha_credito
+        $sql = "SELECT id_fiscal, nombre_cli, fecha_credito
         FROM credito_fiscal
-        INNER JOIN cliente c
-        ON id_cliente = c.id_cliente                                              
-        WHERE nombre_cli ILIKE ?';
+        INNER JOIN cliente using (id_cliente)                                                 
+        WHERE nombre_cli ILIKE ?
+        order by nombre_cli";
         $params = array("%$value%");
         Database::getRows($sql, $params);
         return Database::getRows($sql, $params);
