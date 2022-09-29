@@ -44,8 +44,6 @@ if (isset($_GET['action'])) {
                 $_POST = $detalles->validateForm($_POST);
                 if (!$detalles->setIdProducto($_POST['codigo'])) {
                 $result['exception'] = 'id_producto incorrecto';
-                } elseif (!$detalles->setnombre_com($_POST['nombre_com'])) {
-                    $result['exception'] = 'nombre no valido';
                 } elseif (!$detalles->setPrecioU($_POST['precioU'])) {
                 $result['exception'] = 'precio unidad no valido';
                 }elseif (!$detalles->setPrecioTotal($_POST['total'])) {

@@ -80,9 +80,9 @@ class Productos extends Validator{
     public function createdetalle()
     {
     $sql = 'INSERT INTO detalle_factura(
-        id_producto, precio_u, precio_total, cantidad_com, nombre_com)
+        id_producto, precio_u, precio_total,cantidad_com)
        VALUES (?, ?, ?, ?, ?)';
-    $params = array($this->id, $this->precio_u, $this->precio_total, $this->cantidad_com,$this->nombre_com);
+    $params = array($this->id, $this->precio_u, $this->precio_total, $this->cantidad_com);
     return Database::executeRow($sql, $params);
     }
     public function setId($value){
