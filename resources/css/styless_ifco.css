@@ -21,6 +21,42 @@ table {
     border: #284B63;
 
 }
+table.scroll {
+    width: 20%; /* 140px * 5 column + 16px scrollbar width */
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+table.scroll tbody,
+table.scroll thead tr { display: block; }
+
+table.scroll tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: scroll;
+}
+
+table.scroll tbody td,
+table.scroll thead th {
+    width: 140px;
+    border: 1px solid black;
+}
+
+table.scroll thead th:last-child {
+    width: 156px; /* 140px + 16px scrollbar width */
+}
+
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    /*text-align: left;*/
+}
+
+tbody { border-top: 2px solid black; }
+
+tbody td:last-child, thead th:last-child {
+    border-right: none !important;
+}
 /* ................................................................................................... */
 
 /* Logo del nav */

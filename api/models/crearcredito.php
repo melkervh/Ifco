@@ -134,25 +134,7 @@ class createcredito extends Validator
             return false;
         }
     }
-    public function setnumerocre($value)
-    {
-        if ($this->validateString($value)) {
-            $this->numero_credi = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
     /*set de el detalle*/
-    public function setIdDetallecre($value)
-    {
-        if ($this->validateNaturalNumber($value)) {
-            $this->$id_detallecre = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
     public function setIdProductoCre($value)
     {
         if ($this->validateNaturalNumber($value)) {

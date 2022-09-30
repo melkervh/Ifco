@@ -44,10 +44,10 @@ class Historialcre extends Validator
     }
     public function readAlld()
     {
-        $sql = 'SELECT id_detalle_fac, nombre_prodroducto, descripcion_producto, precio_u, detalle_factura.cantidad_com
-           FROM detalle_factura
-        inner join producto on detalle_factura.id_producto = producto.id_producto
-        where id_fact_nor =?';
+        $sql = 'SELECT id_detallecre,nombre_prodroducto, cantidad_cre, precio_u, total,detalle_credito.cantidad_cre
+        FROM detalle_credito
+     inner join producto on detalle_credito.id_producto = producto.id_producto
+     where id_detallecre = ?';
         $params = array($this->id_fact_nor);
         return Database::getRows($sql, $params);
     }

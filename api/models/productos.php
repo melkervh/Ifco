@@ -154,17 +154,6 @@ class Productos extends Validator{
             return false;
         }
     }
-
-    public function setUsuario($value){
-
-        if($this->validateNaturalNumber($value)){
-            $this->tipo = $usuario;
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     /* Métodos para obtener valores de los atributos. */
 
     public function getId(){
