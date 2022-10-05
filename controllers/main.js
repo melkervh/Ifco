@@ -80,7 +80,7 @@ function ventaspormes() {
                         fecha_credito.push(row.nombre_mes);
                     });
                     // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-                    lineGraph1('chart2', fecha_credito, id_fiscal, 'ventas', 'cantidad de facturas credito fiscal por mes');
+                    lineGraph1('chart2', fecha_credito, id_fiscal, 'ventas', ' Facturas de crédito fiscal registradas por mes');
                 } else {
                     document.getElementById('chart2').remove();
                     console.log(response.exception);
@@ -111,7 +111,7 @@ function ventaspormes() {
                         fecha_fn.push(row.nombre_mes);
                     });
                     // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-                    lineGraph1('chart2',  fecha_fn , id_fact_nor, 'ventas', 'cantidad de facturas por mes');
+                    lineGraph1('chart2',  fecha_fn , id_fact_nor, 'ventas', 'Facturas registradas por mes');
                 } else {
                     document.getElementById('chart2').remove();
                     console.log(response.exception);
@@ -146,7 +146,7 @@ function estadoproducto() {
                         cantidades.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-                    pieGraph2 ('chart7', categoria, cantidades, 'Lista de estado productos');
+                    pieGraph2 ('chart7', categoria, cantidades, 'productos por estado ');
                 } else {
                     document.getElementById('chart7').remove();
                     console.log(response.exception);
