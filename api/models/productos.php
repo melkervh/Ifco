@@ -2,7 +2,7 @@
 /* Clase para manejar la tabla producto de la base de datos. */
 /* Es clase hija de Validator. */
 
-class Productos extends Validator{
+class Productos extends Validator {
 
     // Declaración de atributos (propiedades).
     private $id = null;
@@ -81,7 +81,7 @@ class Productos extends Validator{
     {
     $sql = 'INSERT INTO detalle_factura(
         id_producto, precio_u, precio_total,cantidad_com)
-       VALUES (?, ?, ?, ?, ?)';
+       VALUES (?, ?, ?, ?)';
     $params = array($this->id, $this->precio_u, $this->precio_total, $this->cantidad_com);
     return Database::executeRow($sql, $params);
     }
@@ -154,6 +154,17 @@ class Productos extends Validator{
             return false;
         }
     }
+
+    public function setUsuario($value){
+
+        if($this->validateNaturalNumber($value)){
+            $this->tipo = $usuario;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     /* Métodos para obtener valores de los atributos. */
 
     public function getId(){

@@ -1,4 +1,5 @@
 <?php
+
 class createcredito extends Validator
 {
     /* valores del cliente*/ 
@@ -134,7 +135,25 @@ class createcredito extends Validator
             return false;
         }
     }
+    public function setnumerocre($value)
+    {
+        if ($this->validateString($value)) {
+            $this->numero_credi = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     /*set de el detalle*/
+    public function setIdDetallecre($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->$id_detallecre = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function setIdProductoCre($value)
     {
         if ($this->validateNaturalNumber($value)) {
@@ -204,9 +223,9 @@ class createcredito extends Validator
     public function createDetalleCre()
     {
     $sql = 'INSERT INTO detalle_credito(
-        id_producto, nombre_cre, precio_u, total)
+        id_producto, cantidad_cre, precio_u, total)
         VALUES ( ?, ?, ?, ?)';
-    $params = array($this->id_producto,$this->nombre_cre,$this->precio_u,$this->total);
+    $params = array($this->id_producto,$this->cantidad_cre,$this->precio_u,$this->total);
     return Database::executeRow($sql, $params);
     }
 }

@@ -47,7 +47,7 @@ class Historialcre extends Validator
         $sql = 'SELECT id_detallecre,nombre_prodroducto, cantidad_cre, precio_u, total,detalle_credito.cantidad_cre
         FROM detalle_credito
      inner join producto on detalle_credito.id_producto = producto.id_producto
-     where id_detallecre = ?';
+     where id_detallecre =?';
         $params = array($this->id_fact_nor);
         return Database::getRows($sql, $params);
     }
@@ -64,7 +64,7 @@ class Historialcre extends Validator
 
     /* Método para los productos de los reportes de la factura */
     public function readAllProductosC(){
-        $sql = '	SELECT detalle_credito, nombre_prodroducto, precio_u, total, cantidad_cre
+        $sql = 'SELECT detalle_credito, nombre_prodroducto, precio_u, total, cantidad_cre
         FROM detalle_credito
 		inner join credito_fiscal using (id_fiscal)
 		inner join producto using (id_producto)

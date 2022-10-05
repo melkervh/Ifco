@@ -3,6 +3,7 @@
 *	Clase para manejar la tabla de factura en  la base de datos.
 *   Es clase hija de Validator.
 */
+
 class FacturaNormal extends Validator
 {
     private $id_factura= null;
