@@ -134,10 +134,10 @@ class Database
         // Se compara el código del error para establecer un error personalizado.
         switch ($code) {
             case '7':
-              //  self::$error = 'Existe un problema al conectar con el servidor';
+                self::$error = 'Existe un problema al conectar con el servidor';
                 break;
             case '42703':
-             //   self::$error = 'Nombre de campo desconocido';
+                self::$error = 'Nombre de campo desconocido';
                 break;
             case '23505':
                 self::$error = 'Dato duplicado, no se puede guardar';
@@ -146,10 +146,56 @@ class Database
                 self::$error = 'Nombre de tabla desconocido';
                 break;
             case '23503':
-               self::$error = 'Registro ocupado, no se puede eliminar';
+                self::$error = 'Registro ocupado, no se puede eliminar';
+                break;
+            //Casos nuevos agregados
+            case '23502':
+                self::$error = 'El dato no puede ser nulo';
+                break;
+            case '08P01':
+                self::$error = 'Se envían menos parámetros de los requeridos';
+                break;
+            case 'HY093':
+                self::$error = 'Se envían más parámetros de los requeridos';
+                break;
+            case '22001':
+                self::$error = 'Los datos ingresados superan el límite de caracteres permitidos';
+                break;
+            case '22P02':
+                self::$error = 'El tipo de dato ingresado no coincide con la base de datos';
+                break;
+            case '22007':
+                self::$error = 'El formato de fecha no es válido';
+                break;
+            case '42601':
+                self::$error = 'Error de sintaxis en consulta o instrucción a ejecutar';
+                break;
+            case '42883':
+                self::$error = 'Nombre de función desconocido';
+                break;
+            case '42702':
+                self::$error = 'La referencia a la columna es ambigua';
+                break;
+            case '42712':
+                self::$error = 'El nombre de tabla fue especificado más de una vez';
+                break;
+            case '53000':
+                self::$error = 'Recursos insuficientes';
+                break;
+            case '53100':
+                self::$error = 'Espacio en disco lleno';
+                break;
+            case '53200':
+                self::$error = 'No hay memoria disponible';
+                break;
+            case '53300':
+                self::$error = 'Existen demasiadas conexiones activas, vuelva a intentar.';
+                break;
+            case 'XX000':
+                self::$error = 'Ha ocurrido un error interno, vuelva a intentar.';
                 break;
             default:
-               // self::$error = 'Ocurrió un problema en la base de datos';
+                self::$error = "Ha ocurrido un error, contacte con su administrador para solucionarlo.";
         }
     }
 
