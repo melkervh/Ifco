@@ -13,7 +13,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario'])|| 1==1) {
+    if (isset($_SESSION['id_usuario'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action'])
@@ -58,6 +58,8 @@ if (isset($_GET['action'])) {
                 $_POST = $createcredito ->validateForm($_POST);
                 if (!$createcredito ->setIdProductoCre($_POST['codigo01'])) {
                 $result['exception'] = 'codigo incorrecto';
+                }  elseif (!$createcredito ->setNombrCre($_POST['nombre_pro'])) {
+                $result['exception'] = 'nombre no valido';
                 }elseif (!$createcredito ->setCantidadCre($_POST['cantidad'])) {
                 $result['exception'] = 'precio no valido';
                 }elseif (!$createcredito -> setPrecioUni($_POST['precio_u'])) {

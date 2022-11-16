@@ -5,7 +5,7 @@
 /*
 *   Constante para establecer la ruta del servidor.
 */
-const SERVER = 'http://localhost/ifco/api/';
+const SERVER = 'http://localhost/ifco-main/api/';
 
 /*
 *   Función para obtener todos los registros disponibles en los mantenimientos de tablas (operación read).
@@ -236,6 +236,7 @@ function fillSelect(endpoint, select, selected) {
                 // Se agregan las opciones a la etiqueta select mediante su id.
                 document.getElementById(select).innerHTML = content;
                 // Se inicializa el componente Select del formulario para que muestre las opciones.
+                M.FormSelect.init(document.querySelectorAll('select'));
             });
         } else {
             console.log(request.status + ' ' + request.statusText);
@@ -697,7 +698,7 @@ var inactivityTime = function () {
     }
     function resetTimer() {
         clearTimeout(time);
-        time = setTimeout(logOut, 30000000)
+        time = setTimeout(logOut, 300000)
         // 1000 milisegundos = 1 segundo
         // 300000 milisegundos = 5 min
     }

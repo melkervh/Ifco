@@ -26,6 +26,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Correo de usuario indefinido';
                 }
                 break;
+                //esta el la accion para cerrar sesion
             case 'logOut':
                 if (session_destroy()) {
                     $result['status'] = 1;
@@ -46,6 +47,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No existen usuarios registrados';
                 }
                 break;
+                //aqui se registran los usuarios
             case 'register':
                 $_POST = $usuario->validateForm($_POST);
                 if (!$usuario->setNombreUsuario($_POST['nombres'])) {
@@ -58,6 +60,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$usuario->setClaveUsuario($_POST['clave'])) {
                     $result['exception'] = $usuario->getPasswordError();
+                } elseif (strpos($_POST['contrasena1'], $_POST['nombre_usuario']) !== false) {
+                    $result['exception'] = 'La contraseña no puede contener el nombre del usuario en ella';
                 } elseif ($usuario->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario registrado correctamente';
@@ -65,17 +69,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //este el login donde el usuario verifica que a iniciado sesion
             case 'logIn':
                 $_POST = $usuario->validateForm($_POST);
                 if (!$usuario->checkUser($_POST['correo'])) {
-                    $result['exception'] = 'correo incorrecto';
+                    $result['exception'] = 'credenciales incorrectas';
                 } elseif ($usuario->getFechaIntentos() > $date) {
                     $result['exception'] = 'Tu cuenta esta bloqueada momentaneamente, intentalo más tarde';
                 } elseif ($usuario->getIntentos() > 2) {
                     $result['exception'] = 'Limite de intentos alcanzado, tu cuenta ha sido bloqueda temporalmente';
                     $usuario->bloqueoIntentos($_POST['correo'], $date);
                 } elseif (!$usuario->checkPassword($_POST['clave'])) {
-                    $result['exception'] = 'Contraseña incorrecta.';                    
+                    $result['exception'] = 'Credenciales incorrectas.';                    
                     $usuario->intentoFallido($_POST['correo']);
                     $result['status'] = 0;
                     $_SESSION['fechaexp'] = 0;

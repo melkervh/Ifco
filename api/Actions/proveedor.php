@@ -29,19 +29,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-                case 'search':
-                    $_POST = $proveedor->validateForm($_POST);
-                    if ($_POST['search'] == '') {
-                        $result['exception'] = 'Ingrese un valor para buscar';
-                    } elseif ($result['dataset'] = $proveedor->searchRows($_POST['search'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Valor encontrado';
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'No hay coincidencias';
-                    }
-                    break;
+            case 'search':
+                $_POST = $proveedor ->validateForm($_POST);
+                if ($_POST['search'] == '') {
+                    $result['exception'] = 'Ingrese un valor para buscar';
+                } elseif ($result['dataset'] = $proveedor ->searchRows($_POST['search'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Valor encontrado';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
+                }
+                break;
             case 'readOne':
                 if (!$proveedor ->setIdProveedor($_POST['id_proveedor'])) {
                     $result['exception'] = 'Usuario incorrecto';

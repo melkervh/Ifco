@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
             request.json().then(function (response) {
                 // Se define una variable para asignar el encabezado del documento.
                 let header = '';
-                // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
+                // e comprueba si el usuariSo está autenticado para establecer el encabezado respectivo.
                 if (response.session) {
                     header = `
                     <nav class="navbar navbar-expand-lg navbar-light navbar-dark">

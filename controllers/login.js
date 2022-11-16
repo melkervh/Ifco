@@ -3,6 +3,12 @@ const API_USUARIOS = SERVER + 'Actions/usuario.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
+    //Se bloquea el pegar en el input
+    var myInput = document.getElementById('clave');
+    myInput.onpaste = function (e) {
+        e.preventDefault();
+        sweetAlert(3, "Esta acción no esta disponible", null);
+    }
     // Petición para consultar si existen usuarios registrados.
     fetch(API_USUARIOS + 'readUsers', {
         method: 'get'

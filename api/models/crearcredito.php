@@ -1,5 +1,4 @@
 <?php
-
 class createcredito extends Validator
 {
     /* valores del cliente*/ 
@@ -223,9 +222,9 @@ class createcredito extends Validator
     public function createDetalleCre()
     {
     $sql = 'INSERT INTO detalle_credito(
-        id_producto, cantidad_cre, precio_u, total)
-        VALUES ( ?, ?, ?, ?)';
-    $params = array($this->id_producto,$this->cantidad_cre,$this->precio_u,$this->total);
+        id_producto, nombre_cre, cantidad_cre, precio_u, total)
+        VALUES ( ?, ?, ?, ?, ?)';
+    $params = array($this->id_producto,$this->nombre_cre,$this->cantidad_cre,$this->precio_u,$this->total);
     return Database::executeRow($sql, $params);
     }
 }

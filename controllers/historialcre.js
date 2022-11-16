@@ -19,11 +19,6 @@ function fillTable(dataset) {
 
                 <td class="texto3">${row.nombre_cli}</td>
                 <td class="texto3">${row.fecha_credito}</td>
-                <td class="texto3">
-                <a onclick="openDetalle(${row.id_fiscal})" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#detalle">
-                <i class="fa-sharp fa-solid fa-eye cart_nav1"></i>
-                </a>
-                </td>
                 <td class="texto3  justify-content-center"> <a onclick="openCredito(${row.id_fiscal})" class="btn btn-dark">
                 <i class="fa-solid fa-circle-info cart_nav1"></i></a></td>
         </a>

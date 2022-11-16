@@ -1,5 +1,4 @@
 <?php
-
 class createfactura extends Validator{
     private $id_cliente  = null;
     private $nombre_cli  = null;

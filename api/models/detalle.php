@@ -1,6 +1,7 @@
 <?php
 /* Clase para manejar la productos de la base de datos. */
 /* Es clase hija de Validator. */
+
 class Detalles extends Validator{
     private $id_produto= null;
     private $precio_u= null;
@@ -67,9 +68,9 @@ class Detalles extends Validator{
     public function createdetalle()
     {
     $sql = 'INSERT INTO detalle_factura(
-        id_producto, precio_u, precio_total, cantidad_com, id_fact_nor)
-       VALUES (?, ?, ?, ?,?)';
-    $params = array($this->id_producto, $this->precio_u, $this->precio_total, $this->cantidad_com, $this->id_fact_nor);
+        id_producto, nombre_com, precio_u, precio_total, cantidad_com, id_fact_nor)
+       VALUES (?, ?, ?, ?, ?,?)';
+    $params = array($this->id_producto, $this->nombre_com, $this->precio_u, $this->precio_total, $this->cantidad_com, $this->id_fact_nor);
     return Database::executeRow($sql, $params);
     }
 

@@ -38,38 +38,49 @@
                             <div class="modal-body">
                                 <form autocomplete="off" method="post" id="save-form">
                                     <div class="row">
-                                        <input class="hidden" style="visibility:hidden;" type="number" id="id_cliente"
+                                        <input class="hidden" style="visibility:hidden;" type="number" id="cliente"
                                             name="id_cliente">
                                         <div class="col-lg-6">
-                                            <label for="Nombrec" class="form-label">Nombre</label>
+                                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" placeholder=""
-                                                aria-label="First name" id="Nombrec" name="Nombrec">
+                                                aria-label="First name">
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="apellidoc" class="form-label">Apellido</label>
+                                            <label for="formGroupExampleInput" class="form-label">Apellido</label>
                                             <input type="text" class="form-control" placeholder=""
-                                                aria-label="Last name" id="apellidoc" name="apellidoc">
+                                                aria-label="Last name">
                                         </div>
                                     </div>
                                     <div class="clave">
                                         <div class="row ">
                                             <div class="col-lg-6">
-                                                <label for="DUI" class="form-label">Dui</label>
+                                                <label for="formGroupExampleInput" class="form-label">Dui</label>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    aria-label="Last name" id="DUI" name="DUI">
+                                                    aria-label="Last name">
                                             </div>
                                             <div class="col-lg-6">
-                                                <label for="Telefono" class="form-label">Telefono</label>
+                                                <label for="formGroupExampleInput" class="form-label">Telefono</label>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    aria-label="Last name" id="Telefono" name="Telefono">
+                                                    aria-label="Last name">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput"
+                                                    class="form-label">Departamento</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="Last name">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="formGroupExampleInput" class="form-label">Municipio</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    aria-label="Last name">
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="reset"  class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit"id="save-modal" class="btn btn-primary">guardar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">guardar</button>
                             </div>
                         </div>
                     </div>
@@ -80,15 +91,14 @@
         <main class="container-xl">
             <section class="container-xl">
                 <div class="contenedortbad">
-                    <div class="Listas table-responsive">
+                    <div class="Listas">
                         <nav class="navbar ">
                             <div class="container-fluid">
-                                <form autocomplete="off" class="d-flex" role="search" method="post"
-                                id="search-form">
-                                <input class="form-control me-2" type="search" placeholder="Search"
-                                    aria-label="Search" name="search" id="search">
-                                <button class="btn btn-outline-primary" type="submit">Search</button>
-                            </form>
+                                <form autocomplete="off" class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search"
+                                        aria-label="Search">
+                                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                                </form>
                             </div>
                         </nav>
                         <table class="table table-borderless">
@@ -118,8 +128,8 @@
     <script src="https://kit.fontawesome.com/a478d5fd56.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
-    <script src="../controllers/acounst.js"></script>
     <script src="../controllers/clientes.js"></script>
+    <script src="../controllers/acounst.js"></script>
 </body>
 
 </html>

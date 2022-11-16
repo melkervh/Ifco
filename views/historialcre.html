@@ -21,51 +21,44 @@
             <div class="historial">
                 <nav class="navbar ">
                     <div class="container-fluid">
-                        <form autocomplete="off" class="d-flex" role="search" method="post" id="search-form">
-                            <input class="form-control me-2" type="search" name="search" id="search"
-                                placeholder="Buscar por nombre del cliente ..." aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit">Search</button>
-                        </form>
+                      <form autocomplete="off" class="d-flex" role="search" method="post" id="search-form">
+                        <input class="form-control me-2" type="search" name="search" id="search" placeholder="Buscar por nombre del cliente ..." aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                      </form>
                     </div>
-                </nav>
+                  </nav>
                 <table class="table aria-label">
                     <thead class="table-dark">
                         <tr>
-                            <th scope="col" class="texte">Nombre</th>
-                            <th scope="col" class="texte">Fecha</th>
-                            <th scope="col" class="texte">Vista previa</th>
-                            <th scope="col" class="texte">factura</th>
+                            <th scope="col" class="texte">NOMBRE</th>
+                            <th scope="col" class="texte">FECHA</th>
+                            <th scope="col" class="texte">VISTA</th>
                         </tr>
                     </thead>
                     <tbody id="historial-tabla"></tbody>
                 </table>
                 <div class="modal fade " id="detalle" tabindex="-1" aria-labelledby="detalleLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl table-responsive">
+                    <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Detalle pedido</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body ">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th class="text-center">NOMBRE</th>
-                                                <th class="text-center">DESCRIPCION</th>
-                                                <th class="text-center">PRECIO</th>
-                                                <th class="text-center">CANTIDAD</th>
-                                                <th class="text-center">SUB-TOTAL</th>
-                                            </tr>
-                                        </thead>
-                                        <!--Cuerpo de la tabla para mostrar un registro por fila -->
-                                        <tbody id="tbody-rows-detalle"></tbody>
-                                    </table>
-                                    <div class="d-flex justify-content-end">Total (US$) <b id="total"></b></div>
-                                    </table>
-                                </div>
-
+                            <div class="modal-body">
+                                <table class="table border table-bordered">
+                                    <!--Cabeza de la tabla para mostrar los títulos de las columnas-->
+                                    <thead class="table-dark" >
+                                        <tr>
+                                            <th class="text-center">NOMBRE</th>
+                                            <th class="text-center">DESCRIPCION</th>
+                                            <th class="text-center">PRECIO</th>
+                                            <th class="text-center">CANTIDAD</th>
+                                            <th class="text-center">SUB-TOTAL</th>
+                                        </tr>
+                                    </thead>
+                                    <!--Cuerpo de la tabla para mostrar un registro por fila -->
+                                    <tbody id="tbody-rows-detalle"></tbody>
+                                </table>
                                 <div class="d-flex justify-content-end">Total (US$) <b id="total"></b></div>
                             </div>
                         </div>

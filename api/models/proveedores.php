@@ -55,14 +55,14 @@ class Proveedores extends Validator
 
     //Busqueda de Usuario//
     public function searchRows($value)
-      {
-          $sql = 'SELECT id_proveedor,nombre_prv,contacto
-          FROM proveedor
-          WHERE nombre_prv ILIKE ? OR contacto ILIKE ?
-          ORDER BY nombre_prv';
-          $params = array("%$value%", "%$value%");
-          return Database::getRows($sql, $params);
-      }
+    {
+        $sql = 'SELECT id_proveedor, nombre_prv, contacto
+        FROM proveedor
+       WHERE nombre_prv ILIKE ?
+              ORDER BY nombre_pvr';
+        $params = array("%$value%");
+        return Database::getRows($sql, $params);
+    }
     public function readOne()
     {
         $sql = 'SELECT id_proveedor, nombre_prv, contacto
