@@ -98,10 +98,6 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'La nueva clave debe ser diferente a la anterior';
                     } elseif (!$listas->setClaveUsuario($_POST['clave_usuario'])) {
                         $result['exception'] = $listas->getPasswordError();
-                    } elseif (strpos($_POST['clave_usuario'], $_POST['nombre_usuario']) !== false) {
-                        $result['exception'] = 'La contraseña no puede contener el nombre del usuario en ella';
-                    } elseif (strpos($_POST['clave_usuario'], $_POST['apellido_usuario']) !== false) {
-                        $result['exception'] = 'La contraseña no puede contener el apellido del usuario en ella';
                     } elseif ($listas->updateClave()) {
                         $result['status'] = 1;
                         $result['message'] = 'Usuario modificado correctamente';

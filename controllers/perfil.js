@@ -2,6 +2,26 @@
 const API_PERFIL = SERVER + 'Actions/lista.php?action=';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
+    //Se bloquea el pegar en el input
+    var myInput = document.getElementById('clave_actual');
+    myInput.onpaste = function (e) {
+        e.preventDefault();
+        sweetAlert(3, "Esta acción no esta disponible", null);
+    }
+
+    //Se bloquea el pegar en el input
+    var myInput1 = document.getElementById('clave_usuario');
+    myInput1.onpaste = function (e) {
+        e.preventDefault();
+        sweetAlert(3, "Esta acción no esta disponible", null);
+    }
+
+    //Se bloquea el pegar en el input
+    var myInput2 = document.getElementById('confirmar');
+    myInput2.onpaste = function (e) {
+        e.preventDefault();
+        sweetAlert(3, "Esta acción no esta disponible", null);
+    }
 
     // Se llama a la función que muestra el historial
     openUpdate();
