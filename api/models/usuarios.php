@@ -14,6 +14,7 @@ class Usuarios extends Validator
     private $fecha = null;
     private $intentos = null;
     private $fecha_intentos;
+    private $secret = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -78,9 +79,34 @@ class Usuarios extends Validator
         }
     }
 
+    public function setSecret($value)
+    {
+        if ($this->validateAlphanumeric($value, 16, 16)) {
+            $this->secret = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setCode2fa($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->code_2fa = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
+    public function getSecret()
+    {
+        return $this->secret;
+    }
+
     public function getIdUsuario()
     {
         return $this->id_usuario;
@@ -303,5 +329,53 @@ class Usuarios extends Validator
         $params = array($this->clave_usuario, $fecha_actual, $_SESSION['id_usuario'] );
         return Database::executeRow($sql, $params);
       }
+
+          /*------------------------------------------------------------
+    AUTENTICACIÓN EN 2 PASOS USANDO GOOGLE AUTHENTICATOR */
+
+    public function readTwoFactor()
+    {
+        $sql = 'SELECT two_factor
+                FROM usuario
+                WHERE id_usuario = ?';
+        $params = array($_SESSION['id_usuario']);
+        return Database::getRow($sql, $params);
+    }
+
+    public function get2fa()
+    {
+        $sql = 'SELECT two_factor FROM usuario WHERE id_usuario = ?';
+        $params = array($this->id_usuario);
+        $two_factor = Database::getRow($sql, $params);
+        return $two_factor['two_factor'];
+    }
+
+    public function getUserSecret()
+    {
+        $sql = 'SELECT 2factor_key FROM usuario WHERE id_usuario = ?';
+        $params = array($this->id_usuario);
+        $secret = Database::getRow($sql, $params);
+        return $secret['2factor_key'];
+    }
+
+    public function set2fa()
+    {
+        $sql = 'UPDATE usuario
+        SET two_factor = true,
+        2factor_key = ?
+        WHERE id_usuario = ?';
+        $params = array($this->secret, $this->id_usuario);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function deactivate2fa()
+    {
+        $sql = "UPDATE usuario
+        SET two_factor = false,
+        2factor_key = null
+        WHERE id_usuario = ?";
+        $params = array($this->id_usuario);
+        return Database::executeRow($sql, $params);
+    }
 }
 ?>

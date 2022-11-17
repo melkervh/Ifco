@@ -35,6 +35,57 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
+            //Buscar el two_factor
+            case 'knownTwoFactor':
+                if ($result['dataset'] = $usuario->readTwoFactor()) {
+                    $result['estado'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Verificación incorrecta';
+                }
+                break;
+                //Saber si esta activa la autenticación en 2 pasos
+            case 'get2fa':
+                if (!$usuario->setIdUsuario($_SESSION['idusuario_empleado'])) {
+                    $result['exception'] = 'Nombre de usuario inválido';
+                } elseif (!$usuario->setSecret($auth->generateRandomSecret())) {
+                    $result['exception'] = 'Error al generar secreto.';
+                } elseif (!$usuario->set2fa()) {
+                    $result['exception'] = Database::getException();
+                } elseif ($result['dataset'] = $auth->getQR('KoffiSoft', $usuario->getSecret())) {
+                    $result['estado'] = 1;
+                    $result['message'] = 'Activación de autenticación en 2 pasos completa.';
+                } else {
+                    $result['exception'] = 'Ha ocurrido un error al generar el código QR.';
+                }
+                break;
+                //Activar la autenticación en 2 pasos
+            case 'activate2fa':
+                if (!$usuario->setIdUsuario($_SESSION['idusuario_empleado'])) {
+                    $result['exception'] = 'Nombre de usuario inválido';
+                } elseif (!$usuario->setSecret($auth->generateRandomSecret())) {
+                    $result['exception'] = 'Error al generar secreto.';
+                } elseif (!$usuario->set2fa()) {
+                    $result['exception'] = Database::getException();
+                } elseif ($result['dataset'] = $auth->getQR('Koffi-Soft', $usuario->getSecret())) {
+                    $result['estado'] = 1;
+                    $result['message'] = 'Activación de autenticación en 2 pasos completa.';
+                } else {
+                    $result['exception'] = 'Ha ocurrido un error al generar el código QR.';
+                }
+                break;
+                //Desactivar la autenticación en 2 pasos
+            case 'deactivate2fa':
+                if (!$usuario->setIdUsuario($_SESSION['idusuario_empleado'])) {
+                    $result['exception'] = 'Nombre de usuario inválido';
+                } elseif ($usuario->deactivate2fa()) {
+                    $result['estado'] = 1;
+                    $result['message'] = 'Se ha desactivado la autenticación en 2 pasos.';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
         }
     } else {
         // Se compara la acción a realizar cuando el administrador no ha iniciado sesión.
@@ -106,4 +157,3 @@ if (isset($_GET['action'])) {
 } else {
     print(json_encode('Recurso no disponible'));
 }
-?>

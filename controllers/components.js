@@ -698,7 +698,33 @@ var inactivityTime = function () {
     }
     function resetTimer() {
         clearTimeout(time);
-        time = setTimeout(logOut, 300000)
+        time = setTimeout(logOut, 900000)
+        // 1000 milisegundos = 1 segundo
+        // 300000 milisegundos = 5 min
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    deleteText();
+});
+
+var deleteText = function () {
+    var time;
+    window.onload = resetTimer;
+    // DOM Events
+    document.onmousemove = resetTimer; // Reconoce movimiento del mouse
+    document.onkeydown = resetTimer;  // Reconoce teclas presionadas
+    window.onmousedown = resetTimer;  // Reconoce toques de pantalla táctil     
+    window.ontouchstart = resetTimer; // Reconoce deslizes de pantalla táctil     
+    window.ontouchmove = resetTimer;  // Required by some devices 
+    window.onclick = resetTimer;      // Reconoce clicks de pantalla táctil
+    window.addEventListener('scroll', resetTimer, true); // Reconoce el scroll
+    function deleteText() {
+        document.getElementById("clave").value = "";
+        document.getElementById("correo").value = "";
+    }
+    function resetTimer() {
+        clearTimeout(time);
+        time = setTimeout(deleteText, 10000)
         // 1000 milisegundos = 1 segundo
         // 300000 milisegundos = 5 min
     }

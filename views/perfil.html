@@ -34,10 +34,12 @@
             </div>
             <div class="col-md-6 col-sm-12 center-align mt-4">
                 <button type="submit" class="btn btn-primary" data-tooltip="Guardar" id="save-modal">guardar </button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA"
-                    onclick="openCreate()"> Cambiar contraseña
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA"> Cambiar
+                    contraseña
                 </button>
-
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    autentificacion en 2 pasos
+                </button>
             </div>
         </form>
         <section class="container-xl tamaño">
@@ -62,15 +64,18 @@
                                                 id="id_usuario" name="id_usuario">
                                             <div class="col-lg-6">
                                                 <label for="clave_actual" class="form-label">clave actual</label>
-                                                <input type="password" class="form-control" name="clave_actual" id="clave_actual">
+                                                <input type="password" class="form-control" name="clave_actual"
+                                                    id="clave_actual">
                                             </div>
                                             <div class="col-lg-6">
                                                 <label for="clave_usuario" class="form-label">Clave</label>
-                                                <input type="password" class="form-control" name="clave_usuario" id="clave_usuario">
+                                                <input type="password" class="form-control" name="clave_usuario"
+                                                    id="clave_usuario">
                                             </div>
                                             <div class="col-lg-6">
                                                 <label for="confirmar" class="form-label">Confirmar clave</label>
-                                                <input type="password" class="form-control" name="confirmar" id="confirmar">
+                                                <input type="password" class="form-control" name="confirmar"
+                                                    id="confirmar">
                                             </div>
 
                                         </div>
@@ -90,6 +95,36 @@
                     </div>
                 </div>
         </section>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="titulo_proveedor" class="modal-title">
+                            Autentificación en 2 pasos</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="text-center">
+                                    <label for="contrasenia" id="lbcontra" class="form-label"><b>1. Para activar el
+                                            segundo
+                                            factor de autenticacion instale Google
+                                            Authenticator en su telefono y escanee el codigo
+                                            QR.</b></label>
+                                    <img id="imgQR" src="" alt="Código QR">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="boton_modal">
+                            <button data-bs-dismiss="modal" class="btn btn-info center-align">Activar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer></footer>
     <!--JS bootstrap-->
