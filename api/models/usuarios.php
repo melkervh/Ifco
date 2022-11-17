@@ -352,17 +352,17 @@ class Usuarios extends Validator
 
     public function getUserSecret()
     {
-        $sql = 'SELECT 2factor_key FROM usuario WHERE id_usuario = ?';
+        $sql = 'SELECT two_factor_key FROM usuario WHERE id_usuario = ?';
         $params = array($this->id_usuario);
         $secret = Database::getRow($sql, $params);
-        return $secret['2factor_key'];
+        return $secret['two_factor_key'];
     }
 
     public function set2fa()
     {
         $sql = 'UPDATE usuario
         SET two_factor = true,
-        2factor_key = ?
+        two_factor_key = ?
         WHERE id_usuario = ?';
         $params = array($this->secret, $this->id_usuario);
         return Database::executeRow($sql, $params);
@@ -372,7 +372,7 @@ class Usuarios extends Validator
     {
         $sql = "UPDATE usuario
         SET two_factor = false,
-        2factor_key = null
+        two_factor_key = null
         WHERE id_usuario = ?";
         $params = array($this->id_usuario);
         return Database::executeRow($sql, $params);

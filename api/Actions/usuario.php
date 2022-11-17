@@ -2,6 +2,7 @@
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
 require_once('../models/usuarios.php');
+require_once('../helpers/2fa.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -9,8 +10,9 @@ if (isset($_GET['action'])) {
     session_start();
     // Se instancia la clase correspondiente.
     $usuario = new Usuarios;
+    $auth = new Authenticator;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'password'=>0, 'fechaexp' => null, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
+    $result = array('status' => 0, 'session' => 0, 'password'=>0, 'fechaexp' => null, 'two_factor' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     date_default_timezone_set('America/El_Salvador');
     $date = date('Y-m-d H:i');
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -38,7 +40,7 @@ if (isset($_GET['action'])) {
             //Buscar el two_factor
             case 'knownTwoFactor':
                 if ($result['dataset'] = $usuario->readTwoFactor()) {
-                    $result['estado'] = 1;
+                    $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -47,14 +49,14 @@ if (isset($_GET['action'])) {
                 break;
                 //Saber si esta activa la autenticación en 2 pasos
             case 'get2fa':
-                if (!$usuario->setIdUsuario($_SESSION['idusuario_empleado'])) {
+                if (!$usuario->setIdUsuario($_SESSION['id_usuario'])) {
                     $result['exception'] = 'Nombre de usuario inválido';
                 } elseif (!$usuario->setSecret($auth->generateRandomSecret())) {
                     $result['exception'] = 'Error al generar secreto.';
                 } elseif (!$usuario->set2fa()) {
                     $result['exception'] = Database::getException();
-                } elseif ($result['dataset'] = $auth->getQR('KoffiSoft', $usuario->getSecret())) {
-                    $result['estado'] = 1;
+                } elseif ($result['dataset'] = $auth->getQR('IFCO', $usuario->getSecret())) {
+                    $result['status'] = 1;
                     $result['message'] = 'Activación de autenticación en 2 pasos completa.';
                 } else {
                     $result['exception'] = 'Ha ocurrido un error al generar el código QR.';
@@ -62,14 +64,14 @@ if (isset($_GET['action'])) {
                 break;
                 //Activar la autenticación en 2 pasos
             case 'activate2fa':
-                if (!$usuario->setIdUsuario($_SESSION['idusuario_empleado'])) {
+                if (!$usuario->setIdUsuario($_SESSION['id_usuario'])) {
                     $result['exception'] = 'Nombre de usuario inválido';
                 } elseif (!$usuario->setSecret($auth->generateRandomSecret())) {
                     $result['exception'] = 'Error al generar secreto.';
                 } elseif (!$usuario->set2fa()) {
                     $result['exception'] = Database::getException();
-                } elseif ($result['dataset'] = $auth->getQR('Koffi-Soft', $usuario->getSecret())) {
-                    $result['estado'] = 1;
+                } elseif ($result['dataset'] = $auth->getQR('IFCO', $usuario->getSecret())) {
+                    $result['status'] = 1;
                     $result['message'] = 'Activación de autenticación en 2 pasos completa.';
                 } else {
                     $result['exception'] = 'Ha ocurrido un error al generar el código QR.';
@@ -77,10 +79,10 @@ if (isset($_GET['action'])) {
                 break;
                 //Desactivar la autenticación en 2 pasos
             case 'deactivate2fa':
-                if (!$usuario->setIdUsuario($_SESSION['idusuario_empleado'])) {
+                if (!$usuario->setIdUsuario($_SESSION['id_usuario'])) {
                     $result['exception'] = 'Nombre de usuario inválido';
                 } elseif ($usuario->deactivate2fa()) {
-                    $result['estado'] = 1;
+                    $result['status'] = 1;
                     $result['message'] = 'Se ha desactivado la autenticación en 2 pasos.';
                 } else {
                     $result['exception'] = Database::getException();
@@ -141,6 +143,7 @@ if (isset($_GET['action'])) {
                     $_SESSION['id_usuario'] = $usuario->getIdUsuario();
                     $_SESSION['correo_usuario'] = $usuario->getCorreoUsuario();
                     $_SESSION['fechaexp'] = 1;
+                    $result['two_factor'] = 1;
                 }   else {
                     $result['password'] = 1;
                     $result['exception'] = 'La contraseña expiro despues de 90 dias';

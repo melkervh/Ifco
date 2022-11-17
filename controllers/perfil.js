@@ -1,5 +1,8 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_PERFIL = SERVER + 'Actions/lista.php?action=';
+const API_USUARIOS = SERVER + 'Actions/usuario.php?action=';
+
+let two_factor = false;
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     //Se bloquea el pegar en el input
@@ -25,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Se llama a la función que muestra el historial
     openUpdate();
-    openUpdate2();
-});
 
+    peticiones_user('knownTwoFactor', twoFactor);
+});
 // Función para preparar el formulario al momento de modificar un registro.
 function openUpdate(id_usuario) {
     // Se define un objeto con los datos del registro seleccionado.
@@ -82,3 +85,54 @@ document.getElementById('clave-form').addEventListener('submit', function (event
     saveRow(API_PERFIL, action, 'clave-form', 'save-form');
 });
 
+//Función para cargar los datos del usuario en los inputs
+function twoFactor(response){
+    document.getElementById('generateQR').innerText = (response.dataset.two_factor ? 'Desactivar' : 'Activar') + ' autenticación en 2 pasos'
+    two_factor = response.dataset.two_factor;
+}
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
+document.getElementById('generateQR').addEventListener('click', () => {
+    if (two_factor) {
+        peticiones_user('deactivate2fa', deactivate2fa, true);
+    } else {
+        peticiones_user('activate2fa', activate2fa, true);
+    }
+
+});
+
+function activate2fa(response){
+    //Se declara e inicializa al elemento de Bootstrap
+    var modal = new bootstrap.Modal(document.getElementById('twoFactor'));
+    modal.show();
+    document.getElementById('imgQR').setAttribute('src', response.dataset);
+    document.getElementById('generateQR').innerText = 'Desactivar autenticación en 2 pasos';
+    two_factor = true;
+}
+
+function deactivate2fa() {
+    document.getElementById('imgQR').setAttribute('src', '');
+    document.getElementById('generateQR').innerText = 'Activar autenticación en 2 pasos';
+    two_factor = false;
+}
+
+function peticiones_user(action, func, error){
+    fetch(API_USUARIOS + action, {
+        method: 'get'
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si existe una sesión, de lo contrario se revisa si la respuesta es satisfactoria.
+                if (response.status) {
+                    if (error) sweetAlert(1, response.message);
+                    if (func) func(response);
+                } else {
+                    sweetAlert(2, response.exception);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+}

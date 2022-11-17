@@ -37,9 +37,10 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuaiosA"> Cambiar
                     contraseña
                 </button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    autentificacion en 2 pasos
-                </button>
+                <div class="mt-4">
+                    <a id="generateQR" type="button" class="btn btn-danger">Autentificación
+                        en 2 pasos</a>
+                </div>
             </div>
         </form>
         <section class="container-xl tamaño">
@@ -95,31 +96,35 @@
                     </div>
                 </div>
         </section>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div id="twoFactor" class="modal" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal">
+                <!-- Modal Contenido-->
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 id="titulo_proveedor" class="modal-title">
-                            Autentificación en 2 pasos</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12">
-                                <div class="text-center">
-                                    <label for="contrasenia" id="lbcontra" class="form-label"><b>1. Para activar el
-                                            segundo
-                                            factor de autenticacion instale Google
-                                            Authenticator en su telefono y escanee el codigo
-                                            QR.</b></label>
-                                    <img id="imgQR" src="" alt="Código QR">
+                    <div class="container">
+                        <div class="modal-header">
+                            <h4 id="titulo_proveedor" class="modal-title">
+                                Autentificación en 2 pasos</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="text-center">
+                                        <label for="contrasenia" id="lbcontra"
+                                            class="form-label"><b>1. Para activar el segundo
+                                                factor de autenticacion instale Google
+                                                Authenticator en su telefono y escanee el codigo
+                                                QR.</b></label>
+                                        <img id="imgQR" src="" alt="Código QR">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div id="boton_modal">
-                            <button data-bs-dismiss="modal" class="btn btn-info center-align">Activar</button>
+                            <br>
+                            <div id="boton_modal">
+                                <button data-bs-dismiss="modal"
+                                    class="btn btn-info">Activar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
