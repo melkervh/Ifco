@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </nav>
                     `;
+                    location.href = 'index.html';
                 }
                 // Se asigna a la página web el contenido del encabezado.
                 document.querySelector('header').innerHTML = header;
